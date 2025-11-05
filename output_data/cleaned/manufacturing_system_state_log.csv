@@ -1,0 +1,10 @@
+timestamp,resource,state
+0,shopFloor,idle
+0,shopFloor,busy
+5,shopFloor,idle
+5,shopFloor,busy
+10,shopFloor,idle
+10,shopFloor,busy
+15,shopFloor,idle
+15,shopFloor,busy
+20,shopFloor,idle
