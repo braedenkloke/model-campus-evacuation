@@ -1,25 +1,8 @@
-# Manufacturing System DEVS Model and Simulation
-[DEVS](https://en.wikipedia.org/wiki/DEVS) model and simulation of a manufacturing system using [Cadmium](https://devssim.carleton.ca/).
-
-# Background
-
-## Manufacturing System
-The modeled system is based off the smart manufacturing system studied by [Friederich and Lazarova-Molnar (2024)](https://journals.sagepub.com/doi/full/10.1177/00375497241302866?casa_token=TZrSVjFZ1-YAAAAA%3AI2L_IkiDduYKh8NvE_x07_OGoQNQjjB3_x00TFNuzlrwdu8NNnzc1HG7uaIE3aYi7RN6gynVvqpXbQ).
-
-The sytem consists of a Customer, 
-a [manufacturing execution system (MES)](https://en.wikipedia.org/wiki/Manufacturing_execution_system),
-and a ShopFloor.
-The Customer places orders to the system.
-The MES handles new orders and directs them to a line on the ShopFloor.
-The ShopFloor consists of a single line with an assembly cell which assembles the orders.
-Both the MES and Customer are considered as stateless.
-
-Future work would consist of expanding the ShopFloor to have multiple production lines, 
-autonomous ground vehicles (AGVs),
-and components with failure states.
+# Campus Evacuation DEVS Model and Simulation
+[DEVS](https://en.wikipedia.org/wiki/DEVS) model and simulation of a university campus evacuation using [Cadmium](https://devssim.carleton.ca/). 
 
 # Usage
-With [Cadmium](https://devssim.carleton.ca/) installed, run
+To execute the simulation, run
 ```
 source run.sh
 ```
@@ -61,17 +44,29 @@ You can configure the simulation by modifying [main/main.cpp](main/main.cpp).
 ## Remote Simulation
 Alternatively, you can run the simulation remotely on the [DEVSim servers](https://devssim.carleton.ca/). 
 
-# Acknowledgements
-- [Sanja Lazarova-Molnar](https://lazarova-molnar.net/) and the [SYDSEN Research Group](https://sydsen.aifb.kit.edu/) 
-- [Gabriel Wainer](https://www.sce.carleton.ca/faculty/wainer/doku.php) and the [ARSLab](https://arslab.sce.carleton.ca/) 
-- [Mitacs](https://www.mitacs.ca/our-programs/globalink-research-award/)
+# Install
+Install Cadmium by running a [bootstrap script](https://github.com/braedenkloke/scripts-devssim),
+or by following the instructions in the [Cadmium Installation Manual](https://devssim.carleton.ca/manuals/installation/).
 
-# See Also
-- [DEVS-miner](https://github.com/braedenkloke/devs-miner)
-- [Friederich, J. (2023). *Data-Driven Assessment of Reliability for Cyber-Physical Production Systems*.](https://portal.findresearcher.sdu.dk/en/publications/data-driven-assessment-of-reliability-for-cyber-physical-producti)
-- [Cadmium Project Template](https://github.com/Sasisekhar/blank_project_rt)
+Move this project folder to your Cadmium projects folder as such
+```
+cadmium-projects
+|--cadmium_v2
+|--model-campus-evacuation
+```
+
+Lastly, ensure you have your `CADMIUM` environment variable is set to your `cadmium_v2/include` directory
+```
+printenv | grep CADMIUM
+```
+
+# Further Reading
+- [Cadmium and the DEVSsim Server](https://devssim.carleton.ca/): Two tools for discrete-event modeling and simulation.
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 - [hackergrrl/art-of-readme](https://github.com/hackergrrl/art-of-readme)
+
+# Acknowledgements
+- [Gabriel Wainer](https://www.sce.carleton.ca/faculty/wainer/doku.php) and the [ARSLab](https://arslab.sce.carleton.ca/) 
 
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
