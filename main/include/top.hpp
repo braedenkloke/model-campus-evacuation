@@ -8,8 +8,8 @@ using namespace cadmium;
 
 struct TopCoupled : public Coupled {
 
-    TopCoupled(const std::string& id, std::vector<int> orders, double cellAssemblyTime) : Coupled(id) {
-        auto parkingLot = addComponent<ParkingLot>("parking lot", orders);
+    TopCoupled(const std::string& id, std::vector<int> carDepartureTimes) : Coupled(id) {
+        auto parkingLot = addComponent<ParkingLot>("parking lot", carDepartureTimes);
     }
 };
 
