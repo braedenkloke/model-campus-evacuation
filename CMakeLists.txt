@@ -2,7 +2,7 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.16)
 
-set(projectName "manufacturing_system")
+set(projectName "campus_evacuation")
 
 # Define options
 option(SIM "Build for simulation" OFF)
