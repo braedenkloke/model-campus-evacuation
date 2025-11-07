@@ -12,6 +12,9 @@ struct TopCoupled : public Coupled {
     TopCoupled(const std::string& id, std::vector<int> carDepartureTimes) : Coupled(id) {
         auto parkingLot = addComponent<ParkingLot>("parking lot", carDepartureTimes);
         auto road = addComponent<Road>("road", 100, 30);
+
+        // Couple output ports to input ports
+        addCoupling(parkingLot->exit, road->entrance);
     }
 };
 
