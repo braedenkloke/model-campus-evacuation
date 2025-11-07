@@ -25,12 +25,15 @@ std::ostream& operator<<(std::ostream &out, const ParkingLotState& state) {
 // Atomic DEVS model of a ParkingLot which cars depart from.
 class ParkingLot : public Atomic<ParkingLotState> {
 public:
+    Port<int> exit;
 
     // ARGUMENTS
     // id - Model name.
     // carDepartureTimes - Car departure times sorted in ascending order, i.e., the first car to depart is the
     //                     first element and the last car to leave is the last element. 
     ParkingLot(const std::string id, std::vector<int> carDepartureTimes) : Atomic<ParkingLotState>(id, ParkingLotState()) {
+        exit = addOutPort<int>("exit");
+
         if (!carDepartureTimes.empty()) {
 
             // Sort orders in descending order, makes working with std::vector<> easier.
@@ -72,6 +75,9 @@ public:
 	void externalTransition(ParkingLotState& state, double e) const override {}
     
     void output(const ParkingLotState& state) const override {
+        static int carID = 0;
+        carID++;
+        exit->addMessage(carID); 
     }
 
     [[nodiscard]] double timeAdvance(const ParkingLotState& state) const override {     
