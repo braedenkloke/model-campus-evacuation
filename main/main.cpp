@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     std::vector<int> carDepartureTimes;
 
     // Configure simulation
-    std::string inputFile = "input_data/default.txt";
+    std::string inputFile = "input_data/parking_lot_schedules/parking_lot_schedule_03_three_cars.txt";
     std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
     double maxSimulationTime = 30.0;
 
