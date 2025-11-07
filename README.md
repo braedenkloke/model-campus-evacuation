@@ -64,6 +64,7 @@ printenv | grep CADMIUM
 - [Cadmium and the DEVSsim Server](https://devssim.carleton.ca/): Two tools for discrete-event modeling and simulation.
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 - [hackergrrl/art-of-readme](https://github.com/hackergrrl/art-of-readme)
+- [The Turing Way: Naming files, folders and other things](https://book.the-turing-way.org/project-design/info-management/filenaming/)
 
 # Acknowledgements
 - [Gabriel Wainer](https://www.sce.carleton.ca/faculty/wainer/doku.php) and the [ARSLab](https://arslab.sce.carleton.ca/) 
