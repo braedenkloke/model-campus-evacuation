@@ -17,7 +17,6 @@ struct ParkingLotState {
 };
 
 #ifndef NO_LOGGING
-// Formats the state log. This model is considered stateless.
 std::ostream& operator<<(std::ostream &out, const ParkingLotState& state) {
     return out << state.numCars;
 }
