@@ -8,13 +8,12 @@ using namespace cadmium;
 
 int main(int argc, char* argv[]) {
     std::ifstream f;
-    std::vector<int> orders;
+    std::vector<int> carDepartureTimes;
 
     // Configure simulation
     std::string inputFile = "input_data/default.txt";
     std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
     double maxSimulationTime = 30.0;
-    double cellAssemblyTime = 5;
 
     // Parse command line arguments
     if (argc == 2) {
@@ -26,16 +25,16 @@ int main(int argc, char* argv[]) {
 
     // Load orders
     f.open(inputFile);
-    int order;
-    while (f >> order) {
-        orders.push_back(order);
+    int carDeparture;
+    while (f >> carDeparture) {
+        carDepartureTimes.push_back(carDeparture);
     }
 
-    auto model = std::make_shared<TopCoupled>("top", orders, cellAssemblyTime);
+    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes);
     auto rootCoordinator = cadmium::RootCoordinator(model);
 
-    //rootCoordinator.setLogger<STDOUTLogger>(",");
-    rootCoordinator.setLogger<CSVLogger>(outputFile, ",");
+    rootCoordinator.setLogger<STDOUTLogger>(",");
+    //rootCoordinator.setLogger<CSVLogger>(outputFile, ",");
     rootCoordinator.start();
     rootCoordinator.simulate(maxSimulationTime);
     rootCoordinator.stop();	
