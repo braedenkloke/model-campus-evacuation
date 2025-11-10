@@ -7,37 +7,25 @@ To execute the simulation, run
 source run.sh
 ```
 
-You output will be in the directory [output_data/cleaned/](output_data/cleaned).
-
-Your event log will look like this
+Your output should look like this
 ```
-timestamp;order_id;resource;activity
-0;1;mes;enter
-5;1;cell;end
-5;2;mes;enter
-10;2;cell;end
-10;3;mes;enter
-15;3;cell;end
-15;4;mes;enter
-20;4;cell;end
-```
-
-Your state log will look like this
-```
-timestamp;resource;state
-0;shopFloor;idle
-0;shopFloor;busy
-5;shopFloor;idle
-5;shopFloor;busy
-10;shopFloor;idle
-10;shopFloor;busy
-15;shopFloor;idle
-15;shopFloor;busy
-20;shopFloor;idle
+time,model_id,model_name,port_name,data
+0,1,road,,0
+0,2,parking lot,,3
+0,1,road,,1
+0,2,parking lot,exit,1
+0,2,parking lot,,2
+1,1,road,,2
+...
+14,1,road,exit,1
+14,1,road,,0
+14,1,road,,0
+14,2,parking lot,,0
+Done.
 ```
 
-For how to supply your own order inputs, 
-refer to the README file in the directory [input_data/](input_data/).
+For how to supply your own inputs, 
+refer to the README file in the subdirectores of [input_data/](input_data/).
 
 You can configure the simulation by modifying [main/main.cpp](main/main.cpp).
 
@@ -64,6 +52,7 @@ printenv | grep CADMIUM
 - [Cadmium and the DEVSsim Server](https://devssim.carleton.ca/): Two tools for discrete-event modeling and simulation.
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 - [hackergrrl/art-of-readme](https://github.com/hackergrrl/art-of-readme)
+- [The Turing Way: Naming files, folders and other things](https://book.the-turing-way.org/project-design/info-management/filenaming/)
 
 # Acknowledgements
 - [Gabriel Wainer](https://www.sce.carleton.ca/faculty/wainer/doku.php) and the [ARSLab](https://arslab.sce.carleton.ca/) 
