@@ -1,5 +1,5 @@
 # !/bin/sh
 
 source build_sim.sh
-./bin/manufacturing_system
+./bin/campus_evacuation
 echo "Done."
