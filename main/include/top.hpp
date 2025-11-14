@@ -2,7 +2,7 @@
 #define TOP_HPP
 
 #include "cadmium/modeling/devs/coupled.hpp"
-#include "parking_lot.hpp"
+#include "atomics/parking_lot.hpp"
 #include "atomics/road_intersection.hpp"
 #include "data_structures/od_datum.hpp"
 
