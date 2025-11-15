@@ -1,5 +1,8 @@
 build/
 bin/
 
+# External Libraries
+main/lib/
+
 # Vim
 *.swp
