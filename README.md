@@ -33,9 +33,9 @@ You can configure the simulation by modifying [main/main.cpp](main/main.cpp).
 Alternatively, you can run the simulation remotely on the [DEVSim servers](https://devssim.carleton.ca/). 
 
 # Install
-First, install additional C++ libraries by running
+First, install this project's dependencies by running
 ```
-source bootstrap.sh
+source install.sh
 ```
 
 Next, install Cadmium by running a [bootstrap script](https://github.com/braedenkloke/scripts-devssim),
