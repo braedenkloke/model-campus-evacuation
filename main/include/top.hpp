@@ -2,19 +2,22 @@
 #define TOP_HPP
 
 #include "cadmium/modeling/devs/coupled.hpp"
-#include "parking_lot.hpp"
-#include "road.hpp"
+#include "atomics/parking_lot.hpp"
+#include "atomics/road_intersection.hpp"
+#include "data_structures/od_datum.hpp"
 
 using namespace cadmium;
 
 struct TopCoupled : public Coupled {
 
-    TopCoupled(const std::string& id, std::vector<int> carDepartureTimes) : Coupled(id) {
-        auto parkingLot = addComponent<ParkingLot>("parking lot", carDepartureTimes);
-        auto road = addComponent<Road>("road", 100, 30);
+    TopCoupled(const std::string& id, std::vector<int> carDepartureTimes, std::vector<ODDatum> odData) : Coupled(id) {
+        auto parkingLot = addComponent<ParkingLot>("P1", carDepartureTimes);
+        auto intersectionA = addComponent<RoadIntersection>("A", odData);
+        auto intersectionB = addComponent<RoadIntersection>("B", odData);
 
         // Couple output ports to input ports
-        addCoupling(parkingLot->exit, road->entrance);
+        addCoupling(parkingLot->exit, intersectionA->entrance);
+        addCoupling(intersectionA->exit, intersectionB->entrance);
     }
 };
 

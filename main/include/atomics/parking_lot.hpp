@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "cadmium/modeling/devs/atomic.hpp"
-#include "constants.hpp"
+#include "../constants.hpp"
 
 using namespace cadmium;
 
