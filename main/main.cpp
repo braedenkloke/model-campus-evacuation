@@ -10,7 +10,6 @@
 using namespace cadmium;
 using json = nlohmann::json;
 
-
 int main(int argc, char* argv[]) {
     std::ifstream f;
     std::vector<int> carDepartureTimes;
