@@ -1,8 +1,24 @@
 #ifndef LOAD_DATA_HPP
 #define LOAD_DATA_HPP
 
+#include "../data_structures/intersection_config.hpp"
 #include "../data_structures/od_datum.hpp"
 #include "../../lib/rapidcsv.h"
+#include "../../lib/nlohmann/json.hpp"
+
+using json = nlohmann::json;
+
+std::vector<IntersectionConfig> loadIntersectionGeoJSONData(std::string filepath) {
+    std::ifstream f(filepath);
+    json data = json::parse(f);
+
+    std::vector<IntersectionConfig> intersections;
+    for (auto f: data["features"]) {
+        intersections.push_back(IntersectionConfig(f["id"]));
+    }
+    
+    return intersections;
+}
 
 std::vector<ODDatum> loadODData(std::string filepath) {
     rapidcsv::Document doc(filepath);

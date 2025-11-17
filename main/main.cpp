@@ -5,10 +5,8 @@
 #include "cadmium/simulation/root_coordinator.hpp"
 #include "cadmium/simulation/logger/stdout.hpp"
 #include "cadmium/simulation/logger/csv.hpp"
-#include <lib/nlohmann/json.hpp>
 
 using namespace cadmium;
-using json = nlohmann::json;
 
 int main(int argc, char* argv[]) {
     std::ifstream f;
@@ -35,11 +33,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::vector<ODDatum> odData = loadODData("input_data/od_data/od_data_00_ab.csv");
-
-    // Read JSON file
-    std::ifstream f2("input_data/geographic_data/intersections_ab.geojson");
-    json data = json::parse(f2);
-    std::cout << "JSON: " << data;
+    std::vector<IntersectionConfig> intersectionData = loadIntersectionGeoJSONData("input_data/geographic_data/intersections_ab.geojson");
 
     auto model = std::make_shared<TopCoupled>("top", carDepartureTimes, odData);
     auto rootCoordinator = cadmium::RootCoordinator(model);
