@@ -4,20 +4,26 @@
 #include "cadmium/modeling/devs/coupled.hpp"
 #include "atomics/parking_lot.hpp"
 #include "atomics/road_intersection.hpp"
+#include "data_structures/intersection_config.hpp"
 #include "data_structures/od_datum.hpp"
 
 using namespace cadmium;
 
 struct TopCoupled : public Coupled {
 
-    TopCoupled(const std::string& id, std::vector<int> carDepartureTimes, std::vector<ODDatum> odData) : Coupled(id) {
+    TopCoupled(const std::string& id, std::vector<int> carDepartureTimes, std::vector<IntersectionConfig> intersectionData,
+               std::vector<ODDatum> odData) : Coupled(id) {
         auto parkingLot = addComponent<ParkingLot>("P1", carDepartureTimes);
-        auto intersectionA = addComponent<RoadIntersection>("A", odData);
-        auto intersectionB = addComponent<RoadIntersection>("B", odData);
+
+        std::vector<std::shared_ptr<RoadIntersection>> intersections;
+        for (IntersectionConfig config: intersectionData) {
+            auto i = addComponent<RoadIntersection>(config.id, odData);
+            intersections.push_back(i);
+        }
 
         // Couple output ports to input ports
-        addCoupling(parkingLot->exit, intersectionA->entrance);
-        addCoupling(intersectionA->exit, intersectionB->entrance);
+        addCoupling(parkingLot->exit, intersections[0]->entrance);
+        addCoupling(intersections[0]->exit, intersections[1]->entrance);
     }
 };
 

@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     std::vector<ODDatum> odData = loadODData("input_data/od_data/od_data_00_ab.csv");
     std::vector<IntersectionConfig> intersectionData = loadIntersectionGeoJSONData("input_data/geographic_data/intersections_ab.geojson");
 
-    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes, odData);
+    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes, intersectionData, odData);
     auto rootCoordinator = cadmium::RootCoordinator(model);
 
     rootCoordinator.setLogger<STDOUTLogger>(",");
