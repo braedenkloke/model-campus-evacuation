@@ -2,7 +2,7 @@ build/
 bin/
 
 # External Libraries
-main/lib/
+lib/
 
 # Vim
 *.swp

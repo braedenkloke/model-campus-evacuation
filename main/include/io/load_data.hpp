@@ -6,13 +6,14 @@
 
 std::vector<ODDatum> loadODData(std::string filepath) {
     rapidcsv::Document doc(filepath);
+    std::vector<int> ids = doc.GetColumn<int>("ID");
     std::vector<std::string> origins = doc.GetColumn<std::string>("ORIGIN");
     std::vector<std::string> destinations = doc.GetColumn<std::string>("DEST");
     std::vector<int> flowRates = doc.GetColumn<int>("FLOW");
 
     std::vector<ODDatum> odData;
     for (int i = 0; i < origins.size(); i++) {
-        odData.push_back(ODDatum(origins[i], destinations[i], flowRates[i]));
+        odData.push_back(ODDatum(ids[i], origins[i], destinations[i], flowRates[i]));
     }
     return odData;
 }
