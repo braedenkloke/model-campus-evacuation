@@ -35,7 +35,9 @@ public:
                                    // Using roads car information for intresection
     Port<int> outSelectedRouteId;  // Select route id for sending to the coupling model (top)
    
-    // Constructor
+    // ARGUMENTS
+    // id - Model name.
+    // odData - Origin-destination data.
     Intersection(const std::string id, const std::vector<ODDatum>& odData): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<int>("inCar");
@@ -54,8 +56,8 @@ public:
         state.sigma = infinity; 
     }
 
-    // Triggered whenever a car enters to the intersection
     void externalTransition(IntersectionState& state, double e) const override {
+        // Car enters intersection.
         
         if (!inCar->getBag().empty()) {
             state.currentCarId = inCar->getBag().back();
@@ -66,11 +68,7 @@ public:
 
             // To get response immediately
             state.sigma = 0.0; 
-        } else {
-             if(state.sigma != infinity){
-                 state.sigma -= e;
-            }
-        }
+        } 
     }
 
      void output(const IntersectionState& state) const override {
