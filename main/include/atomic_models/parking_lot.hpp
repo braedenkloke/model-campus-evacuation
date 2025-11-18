@@ -11,7 +11,8 @@ using namespace cadmium;
 struct ParkingLotState {
     double sigma;
     int numCars;                           // Number of cars in the parking lot.
-    std::queue<int> carDepartureWaitTimes; // Relative wait times between car departures 
+    std::queue<int> carDepartureTimes;     // Relative wait times between car departures.
+
     explicit ParkingLotState(): sigma(infinity), numCars(0) {}
 };
 
@@ -28,48 +29,36 @@ public:
 
     // ARGUMENTS
     // id - Model name.
-    // carDepartureTimes - A std::vector<int> of absolute departure times.
-    //                     This vector must be in ascending order. (taken from input file)
-    ParkingLot(const std::string id, std::vector<int> carDepartureTimes) : Atomic<ParkingLotState>(id, ParkingLotState()) {
+    // carDepartureTimes - The times that cars leave the parking lot, sorted in ascending order.
+    ParkingLot(const std::string id, std::vector<int> carDepartureTimes): Atomic<ParkingLotState>(id, ParkingLotState()) {
         exit = addOutPort<int>("exit");
-        // Total car counter from the size of the input vector.
-        state.numCars = carDepartureTimes.size();
 
         if (!carDepartureTimes.empty()) {
-            int lastTime = 0; // Tracks the time of previous departure
-           
-            // Relative Time Calculation //
-            // This loop converting absolute time (vector) to relative wait time (queue)
+            // Convert departure times to be relative to the previous car's departure time.
+            // Simplifies time advance calculations.
+            //
+            // For example:
+            // 
+            // [ 0, 1, 2 ] --> [ 0, 1, 1 ]
+            // [ 1, 2, 3 ] --> [ 1, 1, 1 ]
+            int prevDepartureTime = 0; 
             for(int i = 0; i < carDepartureTimes.size(); i++){
-                int absoluteTime = carDepartureTimes[i];
-                // Calculate the time between ith car and the last car.
-                int waitTime = absoluteTime - lastTime;
-                state.carDepartureWaitTimes.push(waitTime);
-                lastTime = absoluteTime;
+                int relativeDepartureTime = carDepartureTimes[i] - prevDepartureTime;
+                state.carDepartureTimes.push(relativeDepartureTime);
+                prevDepartureTime = carDepartureTimes[i];
             }
            
-			state.sigma = state.carDepartureWaitTimes.front();
-            state.carDepartureWaitTimes.pop();
-
-            /* --- WHY QUEUE? ---
-            - Using queue in the parking lot simplify reversing the list with its FIFO nature.
-           
-            - It takes the simple input list [0, 1, 2] then it calculates the relative wait times 
-            forward to create a queue [0, 1, 1].
-           
-            - Afer that it reads events from the front of the queue and deletes them with pop.
-           
-            - The parking lot model's job is static. It only needs to process a time schedule.*/ 
+            state.numCars = state.carDepartureTimes.size();
+			state.sigma = state.carDepartureTimes.front();
+            state.carDepartureTimes.pop();
         } 
     }
 
     void internalTransition(ParkingLotState& state) const override {
-        state.numCars--;
-        // After decreasing if there are still cars in the parking lot
-        // it takes next wait time and set to sigma
-        if(!state.carDepartureWaitTimes.empty()){
-            state.sigma = state.carDepartureWaitTimes.front();
-            state.carDepartureWaitTimes.pop();
+        state.numCars = state.carDepartureTimes.size();
+        if(!state.carDepartureTimes.empty()){
+            state.sigma = state.carDepartureTimes.front();
+            state.carDepartureTimes.pop();
         } else {
             state.sigma = infinity;
         }
