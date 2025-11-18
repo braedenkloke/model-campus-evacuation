@@ -18,7 +18,8 @@ int main(int argc, char* argv[]) {
     std::string inputFile = "input_data/parking_lot_schedules/parking_lot_schedule_03_three_cars.txt";
     std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
     double maxSimulationTime = 30.0;
-    std::string odFile = "input_data/od_data/od_data_ab_00.csv";
+    std::string odFile = "input_data/od_data/od_data_abcd.csv";
+
     // Parse command line arguments
     if (argc == 2) {
         inputFile = argv[1];
