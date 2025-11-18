@@ -28,7 +28,7 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 }
 #endif
 
-
+// Atomic DEVS model of a road intersection.
 class Intersection : public Atomic<IntersectionState> {
 public:
     Port<int> inCar;               // Incoming car from a road model
@@ -48,8 +48,8 @@ public:
         } 
     }
 
-    // Goes back to sleeping after sending output
     void internalTransition(IntersectionState& state) const override {
+        // Wait for next car to enter intersection.
         state.hasCar = false; 
         state.sigma = infinity; 
     }
