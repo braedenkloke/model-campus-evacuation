@@ -8,7 +8,6 @@
 #include "../data_structures/od_datum.hpp"
 #include "../constants.hpp"
 
-
 using namespace cadmium;
 
 struct IntersectionState {
@@ -32,31 +31,10 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 class Intersection : public Atomic<IntersectionState> {
 public:
     std::string origin; 
-
     Port<int> inCar;               // Incoming car from a road model
                                    // Using roads car information for intresection
     Port<int> outSelectedRouteId;  // Select route id for sending to the coupling model (top)
    
-    int selectRouteWithMaxFlow(const std::vector<ODDatum>& data) const {
-        int bestID = -1;
-        int maxFlow = -1;
-
-        // Select the route with the highest flow rate for this intersection
-        for(size_t i = 0; i < data.size(); i++) {
-            
-            // Only check entries that match this intersection's origin
-            if(data[i].origin == origin) {
-                
-                // Choose the highest flow value
-                if(data[i].flowRate > maxFlow) {
-                    maxFlow = data[i].flowRate; 
-                    bestID = data[i].id;        
-                }
-            }
-        }
-        return bestID; 
-    }
-
     // Constructor
     Intersection(const std::string id, const std::vector<ODDatum>& odData) : Atomic<IntersectionState>(id, IntersectionState()) {
         
@@ -110,6 +88,27 @@ public:
 
     [[nodiscard]] double timeAdvance(const IntersectionState& state) const override {     
         return state.sigma;
+    }
+
+private:
+    int selectRouteWithMaxFlow(const std::vector<ODDatum>& data) const {
+        int bestID = -1;
+        int maxFlow = -1;
+
+        // Select the route with the highest flow rate for this intersection
+        for(size_t i = 0; i < data.size(); i++) {
+            
+            // Only check entries that match this intersection's origin
+            if(data[i].origin == origin) {
+                
+                // Choose the highest flow value
+                if(data[i].flowRate > maxFlow) {
+                    maxFlow = data[i].flowRate; 
+                    bestID = data[i].id;        
+                }
+            }
+        }
+        return bestID; 
     }
 };
 
