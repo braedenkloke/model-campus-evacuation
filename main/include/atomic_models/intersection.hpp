@@ -73,18 +73,11 @@ public:
         }
     }
 
-    // Output log
      void output(const IntersectionState& state) const override {
-       
         if (state.hasCar && state.selectedRouteId != -1) {
-            /*std::cout << "[Intersection " << origin << "] Car #" << state.currentCarId 
-                      << " arrived. Selecting Route ID: " << state.selectedRouteId 
-                      << " (Max Flow)" << std::endl;*/
-            
             outSelectedRouteId->addMessage(state.selectedRouteId);
         }
     }
-   
 
     [[nodiscard]] double timeAdvance(const IntersectionState& state) const override {     
         return state.sigma;
