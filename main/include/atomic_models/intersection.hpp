@@ -13,6 +13,7 @@ using namespace cadmium;
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData; 
+    std::string origin;
     bool hasCar;           // Is there a car waiting to be processed in intersection
     int currentCarId;      // The ID of the arrived car to the intersection
     int selectedRouteId;   // Chosen route for that car (as ID)
@@ -30,21 +31,20 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 
 class Intersection : public Atomic<IntersectionState> {
 public:
-    std::string origin; 
     Port<int> inCar;               // Incoming car from a road model
                                    // Using roads car information for intresection
     Port<int> outSelectedRouteId;  // Select route id for sending to the coupling model (top)
    
     // Constructor
-    Intersection(const std::string id, const std::vector<ODDatum>& odData) : Atomic<IntersectionState>(id, IntersectionState()) {
-        
+    Intersection(const std::string id, const std::vector<ODDatum>& odData): 
+                 Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<int>("inCar");
         outSelectedRouteId = addOutPort<int>("outForSelectedRoute");
         state.odData = odData;
 
-        // If the OD file isn't empty, use the first row to set the origin (for now)
+        // If the OD file isn't empty, use the first row to set the origin.
         if(!odData.empty()) {
-            origin = odData[0].origin; 
+            state.origin = odData[0].origin; 
         } 
     }
 
@@ -99,7 +99,7 @@ private:
         for(size_t i = 0; i < data.size(); i++) {
             
             // Only check entries that match this intersection's origin
-            if(data[i].origin == origin) {
+            if(data[i].origin == state.origin) {
                 
                 // Choose the highest flow value
                 if(data[i].flowRate > maxFlow) {
