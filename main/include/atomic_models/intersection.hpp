@@ -12,7 +12,7 @@ using namespace cadmium;
 
 struct IntersectionState {
     double sigma;
-    std::vector<ODDatum> allOdData; 
+    std::vector<ODDatum> odData; 
     bool hasCar;           // Is there a car waiting to be processed in intersection
     int currentCarId;      // The ID of the arrived car to the intersection
     int selectedRouteId;   // Chosen route for that car (as ID)
@@ -40,7 +40,7 @@ public:
         
         inCar = addInPort<int>("inCar");
         outSelectedRouteId = addOutPort<int>("outForSelectedRoute");
-        state.allOdData = odData;
+        state.odData = odData;
 
         // If the OD file isn't empty, use the first row to set the origin (for now)
         if(!odData.empty()) {
@@ -62,7 +62,7 @@ public:
             state.hasCar = true;
 
             // Pick the best route (based on origin)
-            state.selectedRouteId = selectRouteWithMaxFlow(state.allOdData);
+            state.selectedRouteId = selectRouteWithMaxFlow(state.odData);
 
             // To get response immediately
             state.sigma = 0.0; 
