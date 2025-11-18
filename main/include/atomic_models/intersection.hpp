@@ -13,7 +13,6 @@ using namespace cadmium;
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData; 
-    std::string origin;
     bool hasCar;           // Is there a car waiting to be processed in intersection
     int currentCarId;      // The ID of the arrived car to the intersection
     int selectedRouteId;   // Chosen route for that car (as ID)
@@ -36,18 +35,13 @@ public:
     Port<int> outSelectedRouteId;  // Identifier for which route the car took in the OD data.
    
     // ARGUMENTS
-    // id - Model name.
-    // odData - Origin-destination data.
+    // id - Model name. Equivalent to the origin in the OD data.
+    // odData - Origin-destination (OD) data.
     Intersection(const std::string id, const std::vector<ODDatum>& odData): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<int>("inCar");
         outSelectedRouteId = addOutPort<int>("outForSelectedRoute");
         state.odData = odData;
-
-        // If the OD file isn't empty, use the first row to set the origin.
-        if(!odData.empty()) {
-            state.origin = odData[0].origin; 
-        } 
     }
 
     void internalTransition(IntersectionState& state) const override {
@@ -58,15 +52,10 @@ public:
 
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
-        
         if (!inCar->getBag().empty()) {
             state.currentCarId = inCar->getBag().back();
             state.hasCar = true;
-
-            // Pick the best route (based on origin)
             state.selectedRouteId = selectRouteWithMaxFlow(state.odData);
-
-            // To get response immediately
             state.sigma = 0.0; 
         } 
     }
@@ -90,7 +79,7 @@ private:
         for(size_t i = 0; i < data.size(); i++) {
             
             // Only check entries that match this intersection's origin
-            if(data[i].origin == state.origin) {
+            if(data[i].origin == this->id) {
                 
                 // Choose the highest flow value
                 if(data[i].flowRate > maxFlow) {

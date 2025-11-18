@@ -14,7 +14,8 @@ struct TopCoupled : public Coupled {
     TopCoupled(const std::string& id, std::vector<int> carDepartureTimes, const std::vector<ODDatum>& odData ): Coupled(id) {
         auto parkingLot = addComponent<ParkingLot>("parking lot", carDepartureTimes);
         auto road = addComponent<Road>("road", 100, 30);
-        auto intersection = addComponent<Intersection>("intersection", odData);
+        auto intersection = addComponent<Intersection>("A", odData);
+
         // Couple output ports to input ports
         addCoupling(parkingLot->exit, intersection->inCar);
         addCoupling(intersection->outSelectedRouteId, road->entrance);
