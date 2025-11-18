@@ -28,12 +28,12 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 }
 #endif
 
-// Atomic DEVS model of a road intersection.
+// Atomic DEVS model of a road intersection. Routes cars entering the intersection
+// by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<int> inCar;               // Incoming car from a road model
-                                   // Using roads car information for intresection
-    Port<int> outSelectedRouteId;  // Select route id for sending to the coupling model (top)
+    Port<int> inCar;               // Incoming car from a road model.
+    Port<int> outSelectedRouteId;  // Identifier for which route the car took in the OD data.
    
     // ARGUMENTS
     // id - Model name.
