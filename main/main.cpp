@@ -1,5 +1,4 @@
 #include <limits>
-//#include "include/top.hpp"
 #include "include/data_structures/od_datum.hpp"
 #include "include/coupled_models/top.hpp"
 #include "include/io/load_data.hpp"
@@ -19,14 +18,6 @@ int main(int argc, char* argv[]) {
     std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
     double maxSimulationTime = 30.0;
     std::string odFile = "input_data/od_data/od_data_abcd.csv";
-
-    // Parse command line arguments
-    if (argc == 2) {
-        inputFile = argv[1];
-    } else if (argc > 2) {
-        std::cout << "Invalid number of arguments ... aborting gracefully.";
-        return 1;
-    }
 
     // Load data
     f.open(inputFile);
