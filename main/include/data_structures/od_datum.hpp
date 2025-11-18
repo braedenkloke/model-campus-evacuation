@@ -1,6 +1,8 @@
 #ifndef OD_DATUM_HPP
 #define OD_DATUM_HPP
 
+#include <string>
+
 struct ODDatum{
     int id;
     std::string origin;
