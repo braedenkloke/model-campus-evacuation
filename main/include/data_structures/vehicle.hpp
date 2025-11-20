@@ -7,11 +7,12 @@
 using namespace cadmium;
 
 struct Vehicle {
-    int id;               // Unique vehicle identifier.
+    int id;
 
-    // Full constructor
-    Vehicle(int id = -1)
-        : id(id) {}
+    explicit Vehicle() {
+        static int id = 1;
+        id = id++;
+    }
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Vehicle& v) {
