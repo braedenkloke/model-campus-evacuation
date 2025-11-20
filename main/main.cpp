@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 
     std::vector<ODDatum> odData = loadODData("input_data/od_data/od_data_00_ab.csv");
 
-    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes);
+    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes, odData);
     auto rootCoordinator = cadmium::RootCoordinator(model);
 
     rootCoordinator.setLogger<STDOUTLogger>(",");

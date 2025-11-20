@@ -5,13 +5,15 @@
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../constants.hpp"
 #include "../data_structures/od_datum.hpp"
+#include "vehicle.hpp"
 
 using namespace cadmium;
 
 struct RoadIntersectionState {
     double sigma;
     std::vector<ODDatum> odData;
-    std::vector<int> carDepartureTimesInSeconds;    
+    std::vector<int> carDepartureTimesInSeconds;  
+    std::vector<Vehicle> vehicles;  
 
     explicit RoadIntersectionState(): sigma(infinity) {}
 };
@@ -26,15 +28,15 @@ std::ostream& operator<<(std::ostream &out, const RoadIntersectionState& state) 
 // origin-destination (OD) data.
 class RoadIntersection : public Atomic<RoadIntersectionState> {
 public:
-    Port<int> entrance, exit;
+    Port<Vehicle> entrance, exit;
 
     // ARGUMENTS
     // id - Model name.
     // odData - Origin-destination data.
     RoadIntersection(const std::string id, std::vector<ODDatum> odData): 
                      Atomic<RoadIntersectionState>(id, RoadIntersectionState()) {
-        entrance = addInPort<int>("entrance");
-        exit = addOutPort<int>("exit");
+        entrance = addInPort<Vehicle>("entrance");
+        exit = addOutPort<Vehicle>("exit");
 
         // Filter OD data for origins that match this model's name.
         std::vector<ODDatum> tmp;
@@ -57,8 +59,10 @@ public:
         // Remove car that's exiting from departure times.
         for (int i = 0; i < state.carDepartureTimesInSeconds.size() - 1; i++) {
             state.carDepartureTimesInSeconds[i] = state.carDepartureTimesInSeconds[i + 1];
+            state.vehicles[i] = state.vehicles[i + 1];
         }
         state.carDepartureTimesInSeconds.pop_back();
+        state.vehicles.pop_back();
 
         // Set time advance to be the next time a car is exiting.
         if (!state.carDepartureTimesInSeconds.empty()) {
@@ -80,16 +84,27 @@ public:
         // Route vehicle.
         if (!state.odData.empty()) {
             // Calculate travel time.
-            double carTravelTimeInSeconds = 10; // Placeholder. Takes a vehicle X seconds to travel anywhere.
+            int carTravelTimeInSeconds = 10; // Placeholder. Takes a vehicle X seconds to travel anywhere.
 
             // Schedule vehicle to exit the road.
-            state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
-            state.sigma = state.carDepartureTimesInSeconds.front();
+            auto msgs = entrance->getBag();
+            if (!msgs.empty()) {
+                for (int i = 0; i < msgs.size(); i++) {
+                    state.vehicles.push_back(msgs[i]);
+                    state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
+                }
+
+                state.sigma = state.carDepartureTimesInSeconds.front();
+            }
         }
     }
     
     void output(const RoadIntersectionState& state) const override {
-        exit->addMessage(1); // Indicates that one vehicle has left the intersection 
+        if (!state.vehicles.empty()) {
+            Vehicle v = state.vehicles.front();
+            exit->addMessage(v);
+        }
+        //exit->addMessage(Vehicle(carID, origin, next, 0.0)); // Indicates that one vehicle has left the intersection 
                              // and arrived at another intersection after some amount of travel time.
     }
 

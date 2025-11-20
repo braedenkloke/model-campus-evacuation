@@ -4,6 +4,7 @@
 #include <iostream>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../constants.hpp"
+#include "vehicle.hpp"
 
 using namespace cadmium;
 
@@ -25,14 +26,14 @@ std::ostream& operator<<(std::ostream &out, const ParkingLotState& state) {
 // Atomic DEVS model of a ParkingLot which cars depart from.
 class ParkingLot : public Atomic<ParkingLotState> {
 public:
-    Port<int> exit;
+    Port<Vehicle> exit;
 
     // ARGUMENTS
     // id - Model name.
     // carDepartureTimes - Car departure times sorted in ascending order, i.e., the first car to depart is the
     //                     first element and the last car to leave is the last element. 
     ParkingLot(const std::string id, std::vector<int> carDepartureTimes) : Atomic<ParkingLotState>(id, ParkingLotState()) {
-        exit = addOutPort<int>("exit");
+        exit = addOutPort<Vehicle>("exit");
 
         if (!carDepartureTimes.empty()) {
 
@@ -77,7 +78,11 @@ public:
     void output(const ParkingLotState& state) const override {
         static int carID = 0;
         carID++;
-        exit->addMessage(carID); 
+
+        std::string origin = this->id;
+        std::string next = "A";
+
+        exit->addMessage(Vehicle(carID, origin, next, 0.0));
     }
 
     [[nodiscard]] double timeAdvance(const ParkingLotState& state) const override {     
