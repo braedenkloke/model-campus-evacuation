@@ -18,7 +18,7 @@ struct TopCoupled : public Coupled {
 
         // Couple output ports to input ports
         addCoupling(parkingLot->exit, intersection->inCar);
-        addCoupling(intersection->outSelectedRouteId, road->entrance);
+        addCoupling(intersection->outSelectedCar, road->entrance);
     }
 };
 #endif // TOP_HPP
