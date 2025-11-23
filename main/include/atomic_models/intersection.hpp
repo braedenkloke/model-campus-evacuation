@@ -7,6 +7,7 @@
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../data_structures/od_datum.hpp"
 #include "../constants.hpp"
+#include "../data_structures/vehicle.hpp"
 
 using namespace cadmium;
 
@@ -14,10 +15,10 @@ struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData; 
     bool hasCar;           // Is there a car waiting to be processed in intersection
-    int currentCarId;      // The ID of the arrived car to the intersection
+    Vehicle currentCar;      // The car currently in the intersection
     int selectedRouteId;   // Chosen route for that car (as ID)
 
-    explicit IntersectionState(): sigma(infinity), hasCar(false), currentCarId(-1), selectedRouteId(-1) {} 
+    explicit IntersectionState(): sigma(infinity), hasCar(false), currentCar(), selectedRouteId(-1) {} 
 
 };
 
@@ -31,7 +32,7 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 // by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<int> inCar;               // Incoming car from a road model.
+    Port<Vehicle> inCar;               // Incoming car from a road model.
     Port<int> outSelectedRouteId;  // Identifier for which route the car took in the OD data.
    
     // ARGUMENTS
@@ -39,7 +40,7 @@ public:
     // odData - Origin-destination (OD) data.
     Intersection(const std::string id, const std::vector<ODDatum>& odData): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
-        inCar = addInPort<int>("inCar");
+        inCar = addInPort<Vehicle>("inCar");
         outSelectedRouteId = addOutPort<int>("outForSelectedRoute");
         state.odData = odData;
     }
@@ -53,7 +54,7 @@ public:
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
         if (!inCar->getBag().empty()) {
-            state.currentCarId = inCar->getBag().back();
+            state.currentCar = inCar->getBag().back();
             state.hasCar = true;
             state.selectedRouteId = selectRouteWithMaxFlow(state.odData);
             state.sigma = 0.0; 

@@ -5,6 +5,7 @@
 #include <deque>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../constants.hpp"
+#include "../data_structures/vehicle.hpp"
 
 using namespace cadmium;
 
@@ -15,6 +16,7 @@ struct RoadState {
     std::deque<double> carDepartureTimesInSeconds;  // Using double
                                                     // because time = length/speed 
                                                     // can be floating point format
+    std::deque<Vehicle> vehiclesOnRoad;        // Stores vehicles currently on the road.                                         
     explicit RoadState(): sigma(infinity) {}
 };
 
@@ -27,15 +29,15 @@ std::ostream& operator<<(std::ostream &out, const RoadState& state) {
 // Atomic DEVS model of a road which cars enter and exit from.
 class Road : public Atomic<RoadState> {
 public:
-    Port<int> entrance, exit;
+    Port<Vehicle> entrance, exit;
 
     // ARGUMENTS
     // id - Model name.
     // lengthInMetres - Length of road in metres.
     // speedLimitInKmph - Speed limit of road in kilometres per hour.
     Road(const std::string id, int lengthInMetres, int speedLimitInKmph) : Atomic<RoadState>(id, RoadState()) {
-        entrance = addInPort<int>("entrance");
-        exit = addOutPort<int>("exit");
+        entrance = addInPort<Vehicle>("entrance");
+        exit = addOutPort<Vehicle>("exit");
 
         state.lengthInMetres = lengthInMetres; 
         state.speedLimitInKmph = speedLimitInKmph;
@@ -58,7 +60,10 @@ public:
         }else {
             state.sigma = infinity;
         }
-
+        
+        if(!state.vehiclesOnRoad.empty()){
+            state.vehiclesOnRoad.pop_front(); //remove vechile exiting road
+        }
         /* --- WHY DEQUE? ---
         
         - It can add and remove elements from back and front.
@@ -95,13 +100,21 @@ public:
         double minutes = hours * 60;
         double carTravelTimeInSeconds = minutes * 60;
 
+
+        if (!entrance->getBag().empty()) {
+            Vehicle v = entrance->getBag().back();
+            state.vehiclesOnRoad.push_back(v);   // add vehicle to road queue
+        }
+
         // Schedule car to exit the road.
         state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
         state.sigma = state.carDepartureTimesInSeconds.front();
     }
     
     void output(const RoadState& state) const override {
-        exit->addMessage(1); // Placeholder. Indicates that one car has left the road.
+        if(!state.vehiclesOnRoad.empty()){
+            exit->addMessage(state.vehiclesOnRoad.front()); //vehicle object leaves road
+        }
     }
 
     [[nodiscard]] double timeAdvance(const RoadState& state) const override {     
