@@ -33,7 +33,7 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 class Intersection : public Atomic<IntersectionState> {
 public:
     Port<Vehicle> inCar;               // Incoming car from a road model.
-    Port<int> outSelectedRouteId;  // Identifier for which route the car took in the OD data.
+    Port<Vehicle> outSelectedCar;  // Identifier for which route the car took in the OD data.
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
@@ -41,7 +41,7 @@ public:
     Intersection(const std::string id, const std::vector<ODDatum>& odData): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<Vehicle>("inCar");
-        outSelectedRouteId = addOutPort<int>("outForSelectedRoute");
+        outSelectedCar = addOutPort<Vehicle>("outForSelectedRoute");
         state.odData = odData;
     }
 
@@ -63,7 +63,9 @@ public:
 
      void output(const IntersectionState& state) const override {
         if (state.hasCar && state.selectedRouteId != -1) {
-            outSelectedRouteId->addMessage(state.selectedRouteId);
+            Vehicle v = state.currentCar;
+            v.routeId = state.selectedRouteId;
+            outSelectedCar->addMessage(v);
         }
     }
 
