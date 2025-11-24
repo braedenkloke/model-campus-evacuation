@@ -5,6 +5,7 @@
 #include <queue>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../constants.hpp"
+#include "../data_structures/vehicle.hpp"
 
 using namespace cadmium;
 
@@ -12,8 +13,9 @@ struct ParkingLotState {
     double sigma;
     int numCars;                           // Number of cars in the parking lot.
     std::queue<int> carDepartureTimes;     // Relative wait times between car departures.
+    int nextCarId;
 
-    explicit ParkingLotState(): sigma(infinity), numCars(0) {}
+    explicit ParkingLotState(): sigma(infinity), numCars(0), nextCarId(1) {}
 };
 
 #ifndef NO_LOGGING
@@ -25,13 +27,13 @@ std::ostream& operator<<(std::ostream &out, const ParkingLotState& state) {
 // Atomic DEVS model of a ParkingLot which cars depart from.
 class ParkingLot : public Atomic<ParkingLotState> {
 public:
-    Port<int> exit;
+    Port<Vehicle> exit;
 
     // ARGUMENTS
     // id - Model name.
     // carDepartureTimes - The times that cars leave the parking lot, sorted in ascending order.
     ParkingLot(const std::string id, std::vector<int> carDepartureTimes): Atomic<ParkingLotState>(id, ParkingLotState()) {
-        exit = addOutPort<int>("exit");
+        exit = addOutPort<Vehicle>("exit");
 
         if (!carDepartureTimes.empty()) {
             // Convert departure times to be relative to the previous car's departure time.
@@ -56,6 +58,7 @@ public:
 
     void internalTransition(ParkingLotState& state) const override {
         state.numCars = state.carDepartureTimes.size();
+        state.nextCarId++;
         if(!state.carDepartureTimes.empty()){
             state.sigma = state.carDepartureTimes.front();
             state.carDepartureTimes.pop();
@@ -67,9 +70,9 @@ public:
 	void externalTransition(ParkingLotState& state, double e) const override {}
     
     void output(const ParkingLotState& state) const override {
-        static int carID = 0;
-        carID++;
-        exit->addMessage(carID); 
+        Vehicle newCar;
+        newCar.id = state.nextCarId - 1;
+        exit->addMessage(newCar);
     }
 
     [[nodiscard]] double timeAdvance(const ParkingLotState& state) const override {     
