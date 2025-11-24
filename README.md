@@ -4,7 +4,8 @@
 # Usage
 To execute the simulation, run
 ```
-source run.sh
+source build_sim.sh
+./bin/campus-evacuation
 ```
 
 Your output should look like this
