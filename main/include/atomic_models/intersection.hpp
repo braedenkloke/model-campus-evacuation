@@ -14,7 +14,7 @@ using namespace cadmium;
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData; 
-    bool hasCar;           // Is there a car waiting to be processed in intersection
+    bool hasCar;              // Is there a car waiting to be processed in intersection
     int currentCarId;         // Vehicle ID 
     int selectedRouteIndex;   // Chosen route for that car (as index)
 
