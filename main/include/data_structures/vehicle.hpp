@@ -2,7 +2,7 @@
 #define VEHICLE_HPP
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 using namespace cadmium;
 
@@ -10,14 +10,16 @@ struct Vehicle {
     int id;
 
     explicit Vehicle() {
-        static int id = 1;
-        id = id++;
+        static int idCounter = 1;
+        id = idCounter++;
     }
 };
 
-inline std::ostream& operator<<(std::ostream& os, const Vehicle& v) {
-    os << "Vehicle{id=" << v.id;
-    return os;
+#ifndef NO_LOGGING
+std::ostream& operator<<(std::ostream &out, const Vehicle& v) {
+    out << "Vehicle{id=" << v.id;
+    return out;
 }
+#endif
 
 #endif // VEHICLE_HPP

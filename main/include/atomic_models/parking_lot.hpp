@@ -13,9 +13,8 @@ struct ParkingLotState {
     double sigma;
     int numCars;                           // Number of cars in the parking lot.
     std::queue<int> carDepartureTimes;     // Relative wait times between car departures.
-    int nextCarId;
 
-    explicit ParkingLotState(): sigma(infinity), numCars(0), nextCarId(1) {}
+    explicit ParkingLotState(): sigma(infinity), numCars(0) {}
 };
 
 #ifndef NO_LOGGING
@@ -58,7 +57,6 @@ public:
 
     void internalTransition(ParkingLotState& state) const override {
         state.numCars = state.carDepartureTimes.size();
-        state.nextCarId++;
         if(!state.carDepartureTimes.empty()){
             state.sigma = state.carDepartureTimes.front();
             state.carDepartureTimes.pop();
@@ -70,9 +68,7 @@ public:
 	void externalTransition(ParkingLotState& state, double e) const override {}
     
     void output(const ParkingLotState& state) const override {
-        Vehicle newCar;
-        newCar.id = state.nextCarId - 1;
-        exit->addMessage(newCar);
+        exit->addMessage(Vehicle());
     }
 
     [[nodiscard]] double timeAdvance(const ParkingLotState& state) const override {     
