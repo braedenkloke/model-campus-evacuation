@@ -49,8 +49,7 @@ public:
     void internalTransition(IntersectionState& state) const override {
         // Wait for next car to enter intersection.
         state.hasCar = false; 
-        state.currentCar = Vehicle();  
-        state.selectedRouteId = -1;            // maintain clean state
+        state.selectedRouteId = -1;
         state.sigma = infinity; 
     }
 
