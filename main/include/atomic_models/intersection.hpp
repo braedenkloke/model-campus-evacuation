@@ -59,15 +59,14 @@ public:
             state.currentCar = inCar->getBag().back();
             state.hasCar = true;
             state.selectedRouteId = selectRouteWithMaxFlow(state.odData); 
+            state.currentCar.routeId = state.selectedRouteId;
             state.sigma = 0.0; 
         } 
     }
 
      void output(const IntersectionState& state) const override {
         if (state.hasCar && state.selectedRouteId != -1) {
-            Vehicle v = state.currentCar;
-            v.routeId = state.selectedRouteId;
-            outSelectedCar->addMessage(v);
+            outSelectedCar->addMessage(state.currentCar);
         }
     }
 
