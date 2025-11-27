@@ -11,10 +11,9 @@ using namespace cadmium;
 struct RoadState {
     double sigma;
     double lengthInMetres; 
-    double speedLimitInKmph; 
-    std::deque<double> carDepartureTimesInSeconds;  // Using double
-                                                    // because time = length/speed 
-                                                    // can be floating point format
+    double speedLimitInKmph;
+    std::deque<Vehicle> vehicles; 
+    std::deque<double> carDepartureTimesInSeconds;  // Use double for time calculation (length/speed)
     explicit RoadState(): sigma(infinity) {}
 };
 
@@ -27,15 +26,15 @@ std::ostream& operator<<(std::ostream &out, const RoadState& state) {
 // Atomic DEVS model of a road which cars enter and exit from.
 class Road : public Atomic<RoadState> {
 public:
-    Port<int> entrance, exit;
+    Port<Vehicle> entrance, exit;
 
     // ARGUMENTS
     // id - Model name.
     // lengthInMetres - Length of road in metres.
     // speedLimitInKmph - Speed limit of road in kilometres per hour.
     Road(const std::string id, int lengthInMetres, int speedLimitInKmph) : Atomic<RoadState>(id, RoadState()) {
-        entrance = addInPort<int>("entrance");
-        exit = addOutPort<int>("exit");
+        entrance = addInPort<Vehicle>("entrance");
+        exit = addOutPort<Vehicle>("exit");
 
         state.lengthInMetres = lengthInMetres; 
         state.speedLimitInKmph = speedLimitInKmph;
@@ -43,14 +42,15 @@ public:
 
     void internalTransition(RoadState& state) const override {
         // Car exits road.
-        // The time at the front of queue is the elapsed time
+        // Time at the queue front = elapsed time
         double elapsedTime = state.carDepartureTimesInSeconds.front();
         // Update remaining departure times
         for(int i = 1; i < state.carDepartureTimesInSeconds.size(); i++){
             state.carDepartureTimesInSeconds[i] = state.carDepartureTimesInSeconds[i] - elapsedTime;
         }
-        // Romeving departed car's time 
+        // Remove departed car time
         state.carDepartureTimesInSeconds.pop_front();
+        state.vehicles.pop_front();
 
         // Set sigma to next car's departure time.
         if(!state.carDepartureTimesInSeconds.empty()){
@@ -86,6 +86,8 @@ public:
             state.carDepartureTimesInSeconds[i] = state.carDepartureTimesInSeconds[i] - e;
             
         }
+        // Get car
+        Vehicle inCar = entrance->getBag().back();
 
         // Calculate how long the car that entered takes to travel the road.
         //
@@ -95,13 +97,14 @@ public:
         double minutes = hours * 60;
         double carTravelTimeInSeconds = minutes * 60;
 
-        // Schedule car to exit the road.
+        // Add car to queue and schedule its road exit.
+        state.vehicles.push_back(inCar);
         state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
         state.sigma = state.carDepartureTimesInSeconds.front();
     }
     
     void output(const RoadState& state) const override {
-        exit->addMessage(1); // Placeholder. Indicates that one car has left the road.
+        exit->addMessage(state.vehicles.front()); // The car has left the road.
     }
 
     [[nodiscard]] double timeAdvance(const RoadState& state) const override {     
