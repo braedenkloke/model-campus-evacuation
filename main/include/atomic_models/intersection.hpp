@@ -63,11 +63,8 @@ public:
     }
 
      void output(const IntersectionState& state) const override {
-        // Protect default assignment
         if (state.hasCar && state.selectedRouteIndex != -1) {
-            Vehicle outVehicle;
-            outVehicle.id = state.currentCarId; 
-            outVehicle.selectedRouteIndex = state.selectedRouteIndex;
+            Vehicle outVehicle(state.currentCarId, state.selectedRouteIndex);
             outCarWithRoute->addMessage(outVehicle);
         }
     }

@@ -11,7 +11,9 @@ public:
     int id;
     int selectedRouteIndex; // Store selected route in vehicle
     
-    explicit Vehicle() : id(generate_vehicle()), selectedRouteIndex(-1){}
+    explicit Vehicle(int currentId = 0, int routeIndex = -1) 
+        : id(currentId == 0 ? generate_vehicle() : currentId), 
+          selectedRouteIndex(routeIndex) {}
 
 private:
     static int generate_vehicle(){
