@@ -7,17 +7,23 @@
 using namespace cadmium;
 
 struct Vehicle {
+public:
     int id;
+    int selectedRouteIndex; // Store selected route in vehicle
+    
+    explicit Vehicle() : id(generate_vehicle()), selectedRouteIndex(-1){}
 
-    explicit Vehicle() {
+private:
+    static int generate_vehicle(){
         static int idCounter = 1;
-        id = idCounter++;
+        return idCounter++;
     }
+
 };
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const Vehicle& v) {
-    out << "Vehicle{id=" << v.id;
+    out << "Vehicle{id=" << v.id << ", routeIndex=" << v.selectedRouteIndex << "}";
     return out;
 }
 #endif
