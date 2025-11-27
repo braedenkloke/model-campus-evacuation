@@ -2,13 +2,13 @@
 #define VEHICLE_HPP
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 using namespace cadmium;
 
 struct Vehicle {
     int id;
-    int routeId; // ID of the route the vehicle is taking
+    int routeId; // ID / index of the route the vehicle is taking
 
     explicit Vehicle() {
         static int next_id = 0;
@@ -17,9 +17,11 @@ struct Vehicle {
     }
 };
 
+#ifndef NO_LOGGING
 inline std::ostream& operator<<(std::ostream& os, const Vehicle& v) {
     os << "Vehicle{id=" << v.id << " routeId=" << v.routeId << "}";
     return os;
 }
+#endif
 
 #endif // VEHICLE_HPP

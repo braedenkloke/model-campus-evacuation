@@ -6,6 +6,7 @@
 #include <string>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../data_structures/od_datum.hpp"
+#include "../data_structures/vehicle.hpp"
 #include "../constants.hpp"
 #include "../data_structures/vehicle.hpp"
 
@@ -24,7 +25,7 @@ struct IntersectionState {
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
-   return out << "HasCar:"<< state.hasCar << ",RouteId:" << state.selectedRouteId;
+   return out << "HasCar:"<< state.hasCar << ",RouteIndex:" << state.selectedRouteId;
 }
 #endif
 
@@ -48,6 +49,8 @@ public:
     void internalTransition(IntersectionState& state) const override {
         // Wait for next car to enter intersection.
         state.hasCar = false; 
+        state.currentCar = Vehicle();  
+        state.selectedRouteId = -1;            // maintain clean state
         state.sigma = infinity; 
     }
 
@@ -56,7 +59,7 @@ public:
         if (!inCar->getBag().empty()) {
             state.currentCar = inCar->getBag().back();
             state.hasCar = true;
-            state.selectedRouteId = selectRouteWithMaxFlow(state.odData);
+            state.selectedRouteId = selectRouteWithMaxFlow(state.odData); 
             state.sigma = 0.0; 
         } 
     }
@@ -75,7 +78,7 @@ public:
 
 private:
     int selectRouteWithMaxFlow(const std::vector<ODDatum>& data) const {
-        int bestID = -1;
+        int bestIndex = -1;
         int maxFlow = -1;
 
         // Select the route with the highest flow rate for this intersection
@@ -87,11 +90,11 @@ private:
                 // Choose the highest flow value
                 if(data[i].flowRate > maxFlow) {
                     maxFlow = data[i].flowRate; 
-                    bestID = data[i].id;        
+                    bestIndex = i;        
                 }
             }
         }
-        return bestID; 
+        return bestIndex; 
     }
 };
 
