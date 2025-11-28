@@ -8,23 +8,24 @@
 #include "../data_structures/od_datum.hpp"
 #include "../data_structures/vehicle.hpp"
 #include "../constants.hpp"
+#include "../data_structures/vehicle.hpp"
 
 using namespace cadmium;
 
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData; 
-    bool hasCar;              // Is there a car waiting to be processed in intersection
-    int currentCarId;         // Vehicle ID 
-    int selectedRouteIndex;   // Chosen route for that car (as index)
+    bool hasCar;           // Is there a car waiting to be processed in intersection
+    Vehicle currentCar;      // The car currently in the intersection
+    int selectedRouteId;   // Chosen route for that car (as ID)
 
-    explicit IntersectionState(): sigma(infinity), hasCar(false), currentCarId(-1), selectedRouteIndex(-1) {} 
+    explicit IntersectionState(): sigma(infinity), hasCar(false), currentCar(), selectedRouteId(-1) {} 
 
 };
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
-   return out << "HasCar:"<< state.hasCar << ",RouteIndex:" << state.selectedRouteIndex;
+   return out << "HasCar:"<< state.hasCar << ",RouteIndex:" << state.selectedRouteId;
 }
 #endif
 
@@ -32,8 +33,8 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 // by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<Vehicle> inCar;              // Incoming car from a parking lot/road model.
-    Port<int> outSelectedRouteIndex;  // Route index
+    Port<Vehicle> inCar;               // Incoming car from a road model.
+    Port<Vehicle> outSelectedCar;  // Identifier for which route the car took in the OD data.
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
@@ -41,30 +42,31 @@ public:
     Intersection(const std::string id, const std::vector<ODDatum>& odData): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<Vehicle>("inCar");
-        outSelectedRouteIndex = addOutPort<int>("outSelectedRouteIndex");
+        outSelectedCar = addOutPort<Vehicle>("outForSelectedRoute");
         state.odData = odData;
     }
 
     void internalTransition(IntersectionState& state) const override {
         // Wait for next car to enter intersection.
         state.hasCar = false; 
-        state.currentCarId = -1;
+        state.selectedRouteId = -1;
         state.sigma = infinity; 
     }
 
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
         if (!inCar->getBag().empty()) {
-            state.currentCarId = inCar->getBag().back().id;
+            state.currentCar = inCar->getBag().back();
             state.hasCar = true;
-            state.selectedRouteIndex = selectRouteWithMaxFlow(state.odData);
+            state.selectedRouteId = selectRouteWithMaxFlow(state.odData); 
+            state.currentCar.routeId = state.selectedRouteId;
             state.sigma = 0.0; 
         } 
     }
 
      void output(const IntersectionState& state) const override {
-        if (state.hasCar && state.selectedRouteIndex != -1) {
-            outSelectedRouteIndex->addMessage(state.selectedRouteIndex);
+        if (state.hasCar && state.selectedRouteId != -1) {
+            outSelectedCar->addMessage(state.currentCar);
         }
     }
 
