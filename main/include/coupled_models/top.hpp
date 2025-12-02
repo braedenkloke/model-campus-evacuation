@@ -17,7 +17,7 @@ struct TopCoupled : public Coupled {
 
     TopCoupled(const std::string& id, std::vector<int> carDepartureTimes, const std::vector<ODDatum>& odData ): Coupled(id) {
         auto parkingLot = addComponent<ParkingLot>("parking lot", carDepartureTimes);
-       
+        // A -> [B,C,D]
         std::map<std::string, std::vector<std::string>> topology;
         std::set<std::string> allIntersections;
 
@@ -47,7 +47,7 @@ struct TopCoupled : public Coupled {
 
                 // Road from origin to destination
                 std::string roadName = "road_" + originId + "_to_" + destId; 
-                auto road = addComponent<Road>(roadName, 100, 30);
+                auto road = addComponent<Road>(roadName, 100, 30, originId, destId);
 
                 // Connect origin intersection output port to road entrance
                 if (i == 0) addCoupling(originModel->outRoad1, road->entrance);
@@ -65,7 +65,7 @@ struct TopCoupled : public Coupled {
         }
 
         /* IT WILL DELETED AFTER REVIEWING
-        CREATED A MAP FOR THIS LOGIC
+        CREATE DYNAMIC VERSION OF THIS HARDCODE 
         auto road1 = addComponent<Road>("road_1", 100, 30);
         auto road2 = addComponent<Road>("road_2", 100, 30);
         auto road3 = addComponent<Road>("road_3", 100, 30);
