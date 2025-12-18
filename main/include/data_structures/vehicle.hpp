@@ -7,11 +7,11 @@
 using namespace cadmium;
 
 struct Vehicle {
-    int id;         // Unique identifer for this Vehicle.
-    int routeIndex;    // Index for the route this vehicle is taking. -1 when no route is assigned.
-    Vehicle() : id(-1), routeIndex(-1) {}
-    explicit Vehicle(int rIndex) : routeIndex(rIndex) {
-        static int idCounter = 0;
+    int id;             // Unique identifer for this Vehicle.
+    int routeIndex;     // Index for the route this vehicle is taking. -1 when no route is assigned.
+
+    explicit Vehicle(int routeIndex = -1) : routeIndex(routeIndex) {
+        static int idCounter = 1;
         id = idCounter++;
     }
 };
