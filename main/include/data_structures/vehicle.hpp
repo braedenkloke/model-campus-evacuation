@@ -7,18 +7,18 @@
 using namespace cadmium;
 
 struct Vehicle {
-    int id;         // Unique identifer for this Vehicle.
-    int routeId;    // Identifier for the route this vehicle is taking. -1 when no route is assigned.
+    int id;             // Unique identifer for this Vehicle.
+    int routeIndex;     // Index for the route this vehicle is taking. -1 when no route is assigned.
 
-    explicit Vehicle(int routeId = -1): id(id), routeId(routeId) {
-        static int idCounter = 0;
+    explicit Vehicle(int routeIndex = -1) : routeIndex(routeIndex) {
+        static int idCounter = 1;
         id = idCounter++;
     }
 };
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const Vehicle& v) {
-    out << "Vehicle{id=" << v.id << " routeId=" << v.routeId << "}";
+    out << "Vehicle{id=" << v.id << " routeIndex=" << v.routeIndex << "}";
     return out;
 }
 #endif

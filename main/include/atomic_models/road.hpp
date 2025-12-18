@@ -30,12 +30,18 @@ std::ostream& operator<<(std::ostream &out, const RoadState& state) {
 class Road : public Atomic<RoadState> {
 public:
     Port<Vehicle> entrance, exit;
+    std::string originId;
+    std::string destId;
 
     // ARGUMENTS
     // id - Model name.
     // lengthInMetres - Length of road in metres.
     // speedLimitInKmph - Speed limit of road in kilometres per hour.
-    Road(const std::string id, int lengthInMetres, int speedLimitInKmph) : Atomic<RoadState>(id, RoadState()) {
+    // origin  Origin intersection id for road model. 
+    // dest - Destination interscetion id for road model.
+    Road(const std::string id, int lengthInMetres, int speedLimitInKmph,
+        std::string origin, std::string dest) : 
+        Atomic<RoadState>(id, RoadState()),originId(origin), destId(dest) {
         entrance = addInPort<Vehicle>("entrance");
         exit = addOutPort<Vehicle>("exit");
 
