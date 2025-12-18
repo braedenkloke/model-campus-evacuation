@@ -63,35 +63,6 @@ struct TopCoupled : public Coupled {
         if (intersectionModels.count("A")) {
             addCoupling(parkingLot->exit, intersectionModels["A"]->inCar);
         }
-
-        /* IT WILL DELETED AFTER REVIEWING
-        CREATE DYNAMIC VERSION OF THIS HARDCODE 
-        auto road1 = addComponent<Road>("road_1", 100, 30);
-        auto road2 = addComponent<Road>("road_2", 100, 30);
-        auto road3 = addComponent<Road>("road_3", 100, 30);
-        auto road4 = addComponent<Road>("road_4", 100, 30);
-        auto intersectionA = addComponent<Intersection>("A", odData);
-        auto intersectionB = addComponent<Intersection>("B", odData);
-        auto intersectionC = addComponent<Intersection>("C", odData);
-        auto intersectionD = addComponent<Intersection>("D", odData);
-        auto intersectionE = addComponent<Intersection>("E", odData);
-    
-
-        // Couple output ports to input ports
-        addCoupling(parkingLot->exit, intersectionA->inCar);
-
-        addCoupling(intersectionA->outRoad1, road1->entrance);
-        addCoupling(road1->exit, intersectionB->inCar);
-
-        addCoupling(intersectionA->outRoad2, road2->entrance);
-        addCoupling(road2->exit, intersectionC->inCar);
-
-        addCoupling(intersectionA->outRoad3, road3->entrance);
-        addCoupling(road3->exit, intersectionD->inCar);
-
-        addCoupling(intersectionA->outRoad4, road4->entrance);
-        addCoupling(road4->exit, intersectionE->inCar);
-        */
     }
 };
 #endif // TOP_HPP
