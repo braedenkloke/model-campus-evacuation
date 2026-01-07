@@ -1,6 +1,6 @@
 #include <limits>
 #include "include/data_structures/od_datum.hpp"
-#include "include/coupled_models/top.hpp"
+#include "include/coupled_models/carleton_university_campus.hpp"
 #include "include/io/load_data.hpp"
 #include "cadmium/simulation/root_coordinator.hpp"
 #include "cadmium/simulation/logger/stdout.hpp"
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     // Load OD data
     std::vector<ODDatum> odData = loadODData(odFile);
 
-    auto model = std::make_shared<TopCoupled>("top", carDepartureTimes, odData);
+    auto model = std::make_shared<CarletonUniversityCampusCoupled>("Carleton University Campus", carDepartureTimes, odData);
     auto rootCoordinator = cadmium::RootCoordinator(model);
 
     rootCoordinator.setLogger<STDOUTLogger>(",");
