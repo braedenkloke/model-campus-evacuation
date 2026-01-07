@@ -38,9 +38,9 @@ public:
     // lengthInMetres - Length of road in metres.
     // speedLimitInKmph - Speed limit of road in kilometres per hour.
     // origin  Origin intersection id for road model. 
-    // dest - Destination interscetion id for road model.
-    Road(const std::string id, int lengthInMetres, int speedLimitInKmph,
-        std::string origin, std::string dest) : 
+    // dest - Destination intersection id for road model.
+    Road(const std::string id, int lengthInMetres = 100, int speedLimitInKmph = 40,
+        std::string origin = "", std::string dest = "") : 
         Atomic<RoadState>(id, RoadState()),originId(origin), destId(dest) {
         entrance = addInPort<Vehicle>("entrance");
         exit = addOutPort<Vehicle>("exit");

@@ -1,10 +1,10 @@
-
 #ifndef INTERSECTION_HPP
 #define INTERSECTION_HPP
 
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../data_structures/od_datum.hpp"
 #include "../data_structures/vehicle.hpp"
@@ -21,6 +21,7 @@ struct IntersectionState {
     Vehicle currentCar;                 // The car currently in the intersection
     int targetPortIndex;                // Selected port index for this intersection
     int selectedOdIndex;                // Selected route for that car from OD data (as index)
+    std::map<int, std::string> opm;
 
     explicit IntersectionState(): sigma(infinity), hasCar(false), targetPortIndex(-1),selectedOdIndex(-1) {} 
 
@@ -39,27 +40,28 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 // by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<Vehicle> inCar;               // Incoming car from a road model.
-    Port<Vehicle> outRoad1;            // Car exits through one of 4 out ports
-    Port<Vehicle> outRoad2; 
-    Port<Vehicle> outRoad3; 
-    Port<Vehicle> outRoad4;  
+    Port<Vehicle> in;               // Incoming car from a road model.
+    Port<Vehicle> out1;            // Car exits through one of 4 out ports
+    Port<Vehicle> out2; 
+    Port<Vehicle> out3; 
+    Port<Vehicle> out4;  
 
     std::vector <Port<Vehicle>> outPorts;
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
     // odData - Origin-destination (OD) data.
-    Intersection(const std::string id, const std::vector<ODDatum>& odData): 
+    // opm - Outport port map.
+    Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::map<int, std::string>& opm): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
-        inCar = addInPort<Vehicle>("inCar");
+        in = addInPort<Vehicle>("in");
         
-        outRoad1 = addOutPort<Vehicle>("outRoad1");
-        outRoad2 = addOutPort<Vehicle>("outRoad2");
-        outRoad3 = addOutPort<Vehicle>("outRoad3");
-        outRoad4 = addOutPort<Vehicle>("outRoad4");
+        out1 = addOutPort<Vehicle>("out1");
+        out2 = addOutPort<Vehicle>("out2");
+        out3 = addOutPort<Vehicle>("out3");
+        out4 = addOutPort<Vehicle>("out4");
 
-        outPorts = {outRoad1,outRoad2,outRoad3,outRoad4};
+        outPorts = {out1,out2,out3,out4};
         // Store OD data route indices (max 4) that share the same origin/intersection
         for(int i = 0; i < odData.size(); i++){
             if(odData[i].origin == id){
@@ -69,6 +71,7 @@ public:
             }
         }
         state.odData = odData;
+        state.opm = opm;
     }
 
     void internalTransition(IntersectionState& state) const override {
@@ -81,29 +84,20 @@ public:
 
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
-        if (!inCar->getBag().empty()) {
-            state.currentCar = inCar->getBag().back();
+        if (!in->getBag().empty()) {
+            Vehicle v = in->getBag().back();
             state.hasCar = true;
-
-            if(state.validRouteIndices.empty()){
-                state.sigma = infinity;
-                return;
-            }
-
-            state.targetPortIndex = selectRouteWithMaxFlow(state);
-            if (state.targetPortIndex != -1) {
-                state.selectedOdIndex = state.validRouteIndices[state.targetPortIndex];
-                state.currentCar.routeIndex = state.selectedOdIndex;
-                state.sigma = 0.0; // Output immediately
-            } else {
-                state.sigma = infinity;
-            }
+            v.dest = selectDest(state);
+            state.sigma = 0.0; // Output immediately
+        } else {
+            state.sigma = infinity;
         }
     }
 
      void output(const IntersectionState& state) const override {
-        if (state.hasCar && state.targetPortIndex >= 0 && state.targetPortIndex < outPorts.size()){
-            outPorts[state.targetPortIndex]->addMessage(state.currentCar);
+        int o = getOutputPort(state);
+        if (o == 1){
+            out1->addMessage(state.currentCar);
         }
     }
 
@@ -112,6 +106,20 @@ public:
     }
 
 private:
+    std::string selectDest(const IntersectionState& state) const {
+        // Select destination based on OD data.
+        std::string dest = "";
+        for (ODDatum d : state.odData) {
+            // Assign last destination in odData as target destination.
+            dest = d.dest;
+        }
+        return dest;
+    }
+
+    int getOutputPort(const IntersectionState& state) const {
+        return 1;
+    }
+
     int selectRouteWithMaxFlow(const IntersectionState& state) const {
         int bestPortIndex = -1;
         int maxFlow = -1;
