@@ -21,7 +21,12 @@ struct CarletonUniversityCampusCoupled : public Coupled {
 
         auto library_rd_and_p1_intersection = addComponent<Intersection>("Library Rd & P1", odData);
 
+        auto r01 = addComponent<Road>("Library Rd & P1 to Library Rd & University Dr");
+
         addCoupling(p1->exit, library_rd_and_p1_intersection->inCar);
+
+        // Couple roads to intersections
+        addCoupling(library_rd_and_p1_intersection->outRoad1, r01->entrance);
     }
 };
 #endif // CARLETON_UNIVERSITY_CAMPUS_HPP
