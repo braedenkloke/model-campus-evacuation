@@ -83,22 +83,12 @@ public:
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
         if (!inCar->getBag().empty()) {
-            state.currentCar = inCar->getBag().back();
+            Vehicle v = inCar->getBag().back();
             state.hasCar = true;
-
-            if(state.validRouteIndices.empty()){
-                state.sigma = infinity;
-                return;
-            }
-
-            state.targetPortIndex = selectRouteWithMaxFlow(state);
-            if (state.targetPortIndex != -1) {
-                state.selectedOdIndex = state.validRouteIndices[state.targetPortIndex];
-                state.currentCar.routeIndex = state.selectedOdIndex;
-                state.sigma = 0.0; // Output immediately
-            } else {
-                state.sigma = infinity;
-            }
+            v.dest = selectDest(state);
+            state.sigma = 0.0; // Output immediately
+        } else {
+            state.sigma = infinity;
         }
     }
 
@@ -113,6 +103,16 @@ public:
     }
 
 private:
+    std::string selectDest(const IntersectionState& state) const {
+        // Select destination based on OD data.
+        std::string dest = "";
+        for (ODDatum d : state.odData) {
+            // Assign last destination in odData as target destination.
+            dest = d.dest;
+        }
+        return dest;
+    }
+
     int selectRouteWithMaxFlow(const IntersectionState& state) const {
         int bestPortIndex = -1;
         int maxFlow = -1;
