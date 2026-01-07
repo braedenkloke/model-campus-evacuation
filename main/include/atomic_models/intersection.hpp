@@ -21,6 +21,7 @@ struct IntersectionState {
     Vehicle currentCar;                 // The car currently in the intersection
     int targetPortIndex;                // Selected port index for this intersection
     int selectedOdIndex;                // Selected route for that car from OD data (as index)
+    std::map<int, std::string> opm;
 
     explicit IntersectionState(): sigma(infinity), hasCar(false), targetPortIndex(-1),selectedOdIndex(-1) {} 
 
@@ -70,6 +71,7 @@ public:
             }
         }
         state.odData = odData;
+        state.opm = opm;
     }
 
     void internalTransition(IntersectionState& state) const override {
@@ -93,8 +95,9 @@ public:
     }
 
      void output(const IntersectionState& state) const override {
-        if (state.hasCar && state.targetPortIndex >= 0 && state.targetPortIndex < outPorts.size()){
-            outPorts[state.targetPortIndex]->addMessage(state.currentCar);
+        int o = getOutputPort(state);
+        if (o == 1){
+            outRoad1->addMessage(state.currentCar);
         }
     }
 
@@ -111,6 +114,10 @@ private:
             dest = d.dest;
         }
         return dest;
+    }
+
+    int getOutputPort(const IntersectionState& state) const {
+        return 1;
     }
 
     int selectRouteWithMaxFlow(const IntersectionState& state) const {
