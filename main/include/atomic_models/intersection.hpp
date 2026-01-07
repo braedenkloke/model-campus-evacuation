@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../data_structures/od_datum.hpp"
 #include "../data_structures/vehicle.hpp"
@@ -49,7 +50,8 @@ public:
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
     // odData - Origin-destination (OD) data.
-    Intersection(const std::string id, const std::vector<ODDatum>& odData): 
+    // opm - Outport port map.
+    Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::map<int, std::string>& opm): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
         inCar = addInPort<Vehicle>("inCar");
         
