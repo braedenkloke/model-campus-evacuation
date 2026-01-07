@@ -29,10 +29,10 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto r01 = addComponent<Road>("Library Rd & P1 to Library Rd & University Dr");
 
         // Couple intersection inputs
-        addCoupling(p1->exit, x01->inCar);
+        addCoupling(p1->exit, x01->in);
 
         // Couple intersection outputs
-        addCoupling(x01->outRoad1, r01->entrance);
+        addCoupling(x01->out1, r01->entrance);
     }
 };
 #endif // CARLETON_UNIVERSITY_CAMPUS_HPP

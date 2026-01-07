@@ -40,11 +40,11 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 // by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<Vehicle> inCar;               // Incoming car from a road model.
-    Port<Vehicle> outRoad1;            // Car exits through one of 4 out ports
-    Port<Vehicle> outRoad2; 
-    Port<Vehicle> outRoad3; 
-    Port<Vehicle> outRoad4;  
+    Port<Vehicle> in;               // Incoming car from a road model.
+    Port<Vehicle> out1;            // Car exits through one of 4 out ports
+    Port<Vehicle> out2; 
+    Port<Vehicle> out3; 
+    Port<Vehicle> out4;  
 
     std::vector <Port<Vehicle>> outPorts;
    
@@ -54,14 +54,14 @@ public:
     // opm - Outport port map.
     Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::map<int, std::string>& opm): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
-        inCar = addInPort<Vehicle>("inCar");
+        in = addInPort<Vehicle>("in");
         
-        outRoad1 = addOutPort<Vehicle>("outRoad1");
-        outRoad2 = addOutPort<Vehicle>("outRoad2");
-        outRoad3 = addOutPort<Vehicle>("outRoad3");
-        outRoad4 = addOutPort<Vehicle>("outRoad4");
+        out1 = addOutPort<Vehicle>("out1");
+        out2 = addOutPort<Vehicle>("out2");
+        out3 = addOutPort<Vehicle>("out3");
+        out4 = addOutPort<Vehicle>("out4");
 
-        outPorts = {outRoad1,outRoad2,outRoad3,outRoad4};
+        outPorts = {out1,out2,out3,out4};
         // Store OD data route indices (max 4) that share the same origin/intersection
         for(int i = 0; i < odData.size(); i++){
             if(odData[i].origin == id){
@@ -84,8 +84,8 @@ public:
 
     void externalTransition(IntersectionState& state, double e) const override {
         // Car enters intersection.
-        if (!inCar->getBag().empty()) {
-            Vehicle v = inCar->getBag().back();
+        if (!in->getBag().empty()) {
+            Vehicle v = in->getBag().back();
             state.hasCar = true;
             v.dest = selectDest(state);
             state.sigma = 0.0; // Output immediately
@@ -97,7 +97,7 @@ public:
      void output(const IntersectionState& state) const override {
         int o = getOutputPort(state);
         if (o == 1){
-            outRoad1->addMessage(state.currentCar);
+            out1->addMessage(state.currentCar);
         }
     }
 
