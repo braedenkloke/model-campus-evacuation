@@ -47,7 +47,7 @@ public:
     Port<Vehicle> out3; 
     Port<Vehicle> out4;  
     std::vector <Port<Vehicle>> outPorts;
-    bool verbose;
+    bool verbose;   // Prints debugging statements when true.
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
@@ -56,7 +56,7 @@ public:
     //            Output ports are allocated to each road name in the order given, i.e., outRoads.first() -> out1.
     Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::vector<std::string>& outRoads): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
-        verbose = true;
+        verbose = false; 
 
         in = addInPort<Vehicle>("in");
         
@@ -120,11 +120,14 @@ public:
 
 private:
     std::string selectDest(const IntersectionState& state) const {
+        // Temporary solution: Cycle through OD data
         std::string dest = "";
- 
-        for (ODDatum d : state.odData) {
-            // Assign last destination in odData as target destination.
-            if(verbose) {std::cout << "Assigning dest: " << d.dest << "\n";}
+        static int i = 0;
+        if (verbose) {std::cout << "Select dest i: " << i << "\n";}
+        if (!state.odData.empty()) {
+            i++;
+            if (i >= state.odData.size()) {i = 0;}
+            ODDatum d = state.odData[i];
             dest = d.dest;
         }
         return dest;
