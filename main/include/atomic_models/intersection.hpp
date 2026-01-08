@@ -17,23 +17,17 @@ using namespace cadmium;
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData;
-    std::vector<int> validRouteIndices; // OD route indices for this intersection
     bool hasCar;                        // Is there a car waiting in intersection
     Vehicle currentCar;                 // The car currently in the intersection
-    int targetPortIndex;                // Selected port index for this intersection
-    int selectedOdIndex;                // Selected route for that car from OD data (as index)
     std::vector<std::string> outRoads;
 
-    explicit IntersectionState(): sigma(infinity), hasCar(false), targetPortIndex(-1),selectedOdIndex(-1) {} 
+    explicit IntersectionState(): sigma(infinity), hasCar(false) {} 
 
 }; 
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
-    return out << "HasCar: " << state.hasCar 
-               << ", IntersectionOutPortIndex: " << state.targetPortIndex
-               << ", SelectedOdDataIndex: " << state.selectedOdIndex;
-
+    return out << "HasCar: " << state.hasCar;
 }
 #endif
 
@@ -46,7 +40,6 @@ public:
     Port<Vehicle> out2; 
     Port<Vehicle> out3; 
     Port<Vehicle> out4;  
-    std::vector <Port<Vehicle>> outPorts;
     bool verbose;   // Prints debugging statements when true.
    
     // ARGUMENTS
@@ -64,26 +57,20 @@ public:
         out2 = addOutPort<Vehicle>("out2");
         out3 = addOutPort<Vehicle>("out3");
         out4 = addOutPort<Vehicle>("out4");
-        outPorts = {out1,out2,out3,out4};
 
-        // Store OD data route indices (max 4) that share the same origin/intersection
+        // Filter OD data
         for(int i = 0; i < odData.size(); i++){
             if(odData[i].origin == id){
-                if(state.validRouteIndices.size()< 4){
-                    state.validRouteIndices.push_back(i);
-                }
+                state.odData.push_back(odData[i]);
             }
         }
-        state.odData = odData;
-        assert(outRoads.size() <= outPorts.size());
+        assert(outRoads.size() <= 4);
         state.outRoads = outRoads;
     }
 
     void internalTransition(IntersectionState& state) const override {
         // Wait for next car to enter intersection.
         state.hasCar = false; 
-        state.targetPortIndex = -1;
-        state.selectedOdIndex = -1;
         state.sigma = infinity; 
     }
 
@@ -147,23 +134,6 @@ private:
             }
         }
         return id;
-    }
-
-    int selectRouteWithMaxFlow(const IntersectionState& state) const {
-        int bestPortIndex = -1;
-        int maxFlow = -1;
-
-        // Select the route with the highest flow rate for this intersection
-        for(size_t i = 0; i < state.validRouteIndices.size(); i++) {
-            int odIndex = state.validRouteIndices[i];
-            int currentFlow = state.odData[odIndex].flowRate;
-
-            if(currentFlow > maxFlow) {
-             maxFlow = currentFlow;
-             bestPortIndex = i;
-            }
-        }
-        return bestPortIndex; 
     }
 };
 
