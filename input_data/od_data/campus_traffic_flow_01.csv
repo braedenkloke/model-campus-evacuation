@@ -1,3 +1,4 @@
 ORIGIN,DEST,FLOW
 Library Rd & P1,Library Rd & P1 to Library Rd & University Dr,50
 Library Rd & P1,Library Rd & P1 to Campus Ave & Library Rd,50
+Campus Ave & Library Rd,Campus Ave & Library Rd to Library Rd & P1,50

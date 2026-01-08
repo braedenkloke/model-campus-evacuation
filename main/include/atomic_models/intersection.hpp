@@ -107,15 +107,12 @@ public:
 
 private:
     std::string selectDest(const IntersectionState& state) const {
-        // Temporary solution: Cycle through OD data
+        // Temporary solution: Choose random destination
         std::string dest = "";
-        static int i = 0;
-        if (verbose) {std::cout << "Select dest i: " << i << "\n";}
         if (!state.odData.empty()) {
-            i++;
-            if (i >= state.odData.size()) {i = 0;}
-            ODDatum d = state.odData[i];
-            dest = d.dest;
+            int i = std::rand() % state.odData.size();
+            if(verbose) {std::cout << "odData size: " << state.odData.size() << "Random i: " << i << "\n";}
+            dest = state.odData[i].dest;
         }
         return dest;
     }
