@@ -46,8 +46,8 @@ public:
     Port<Vehicle> out2; 
     Port<Vehicle> out3; 
     Port<Vehicle> out4;  
-
     std::vector <Port<Vehicle>> outPorts;
+    bool verbose;
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
@@ -56,6 +56,8 @@ public:
     //            Output ports are allocated to each road name in the order given, i.e., outRoads.first() -> out1.
     Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::vector<std::string>& outRoads): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
+        verbose = true;
+
         in = addInPort<Vehicle>("in");
         
         out1 = addOutPort<Vehicle>("out1");
@@ -100,6 +102,7 @@ public:
 
      void output(const IntersectionState& state) const override {
         int o = getOutputPortID(state);
+        if (verbose) {std::cout << this->id << " routing vehicle to out" << o << "\n|";}
         if (o == 1){
             out1->addMessage(state.currentCar);
         } else if (o == 2) {
@@ -117,7 +120,6 @@ public:
 
 private:
     std::string selectDest(const IntersectionState& state) const {
-        bool verbose = false;
         std::string dest = "";
  
         for (ODDatum d : state.odData) {
@@ -130,7 +132,6 @@ private:
 
     // Returns ID of output port. Returns 0 if no ID found.
     int getOutputPortID(const IntersectionState& state) const {
-        bool verbose = false;
         std::string target = state.currentCar.dest;
         int counter = 0;
         int id = counter;
