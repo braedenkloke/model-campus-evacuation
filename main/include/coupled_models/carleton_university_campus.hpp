@@ -20,25 +20,36 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         // Road names, as per documentation in the final report.
         std::string r01Name = "Library Rd & P1 to Library Rd & University Dr";
         std::string r02Name = "Library Rd & P1 to Campus Ave & Library Rd";
+        std::string r03Name = "Library Rd & University Dr to Library Rd & P1";
+        std::string r04Name = "Campus Ave & Library Rd to Library Rd & P1";
 
         // Out roads
         std::vector<std::string> noOutRoads = {};
         std::vector<std::string> x01OutRoads = {r01Name, r02Name};
+        std::vector<std::string> x02OutRoads = {r03Name};
+        std::vector<std::string> x03OutRoads = {r04Name};
 
         // Create models
         auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
         auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
-        auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, noOutRoads);
-        auto x03 = addComponent<Intersection>("Campus Ave & Library Rd", odData, noOutRoads);
+        auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, x02OutRoads);
+        auto x03 = addComponent<Intersection>("Campus Ave & Library Rd", odData, x03OutRoads);
         auto r01 = addComponent<Road>(r01Name);
         auto r02 = addComponent<Road>(r02Name);
+        auto r03 = addComponent<Road>(r03Name);
+        auto r04 = addComponent<Road>(r04Name);
 
         // Couple intersection inputs
         addCoupling(p1->exit, x01->in);
+        addCoupling(r03->exit, x01->in);
+        addCoupling(r04->exit, x01->in);
+        addCoupling(r02->exit, x03->in);
 
         // Couple intersection outputs
         addCoupling(x01->out1, r01->entrance);
         addCoupling(x01->out2, r02->entrance);
+        addCoupling(x02->out1, r03->entrance);
+        addCoupling(x03->out1, r04->entrance);
     }
 };
 #endif // CARLETON_UNIVERSITY_CAMPUS_HPP
