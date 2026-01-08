@@ -6,3 +6,10 @@ lib/
 
 # Vim
 *.swp
+
+# Virtual environments
+venv/
+# Python cache
+__pycache__/
+*.pyc
+cache/
