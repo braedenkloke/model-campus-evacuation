@@ -17,15 +17,12 @@ struct CarletonUniversityCampusCoupled : public Coupled {
 
     CarletonUniversityCampusCoupled(const std::string& id, std::vector<int> carDepartureTimes, 
                                     const std::vector<ODDatum>& odData ): Coupled(id) {
-        // Output port maps
-        // 
-        // Which roads are mapped to which output ports.
-        std::map<int, std::string> x01_opm{{1,"Library Rd & P1 to Library Rd & University Dr"}};
-
+        // Out roads
+        std::vector<std::string> x01OutRoads{"Library Rd & P1 to Library Rd & University Dr"};
 
         // Create models
         auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
-        auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01_opm);
+        auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
         auto r01 = addComponent<Road>("Library Rd & P1 to Library Rd & University Dr");
 
         // Couple intersection inputs
