@@ -1,15 +1,18 @@
 ORIGIN,DEST,FLOW
-Library Rd & P1,Library Rd & P1 to Library Rd & University Dr,50
-Library Rd & P1,Library Rd & P1 to Campus Ave & Library Rd,50
-Campus Ave & Library Rd,Campus Ave & Library Rd to Library Rd & P1,50
 Campus Ave & Library Rd,Campus Ave & Library Rd to Campus Ave & P2,50
+Campus Ave & Library Rd,Campus Ave & Library Rd to Library Rd & P1,50
 Campus Ave & P2,Campus Ave & P2 to Campus Ave & University Dr,50
 Campus Ave & University Dr,Campus Ave & University Dr to Library Rd & University Dr,50
 Campus Ave & University Dr,Campus Ave & University Dr to Raven Rd & University Dr,50
-Raven Rd & University Dr,Raven Rd & University Dr to Campus Ave & University Dr,50
-Raven Rd & University Dr,Raven Rd & University Dr to P3 & Raven Rd,50
+Library Rd & P1,Library Rd & P1 to Campus Ave & Library Rd,50
+Library Rd & P1,Library Rd & P1 to Library Rd & University Dr,50
+Library Rd & University Dr,Library Rd & University Dr to Campus Ave & University Dr,50
+Library Rd & University Dr,Library Rd & University Dr to Colonel By Dr & University Dr,50
+Library Rd & University Dr,Library Rd & University Dr to Library Rd & P1,50
 P3 & Raven Rd,P3 & Raven Rd to Raven Rd & University Dr,50
 P3 & Raven Rd,P3 & Raven Rd to Bronson Ave & Raven Rd,50
-Library Rd & University Dr,Library Rd & University Dr to Colonel By Dr & University Dr,50
-Library Rd & University Dr,Library Rd & University Dr to Campus Ave & University Dr,50
-Library Rd & University Dr,Library Rd & University Dr to Library Rd & P1,50
+P4 & University Dr,P4 & University Dr to Raven Rd & University Dr,50
+P4 & University Dr,P4 & University Dr to Stadium Way & University Dr,50
+Raven Rd & University Dr,Raven Rd & University Dr to Campus Ave & University Dr,50
+Raven Rd & University Dr,Raven Rd & University Dr to P3 & Raven Rd,50
+Raven Rd & University Dr,Raven Rd & University Dr to P4 & University Dr,50
