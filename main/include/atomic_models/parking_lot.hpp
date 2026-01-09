@@ -68,7 +68,7 @@ public:
 	void externalTransition(ParkingLotState& state, double e) const override {}
     
     void output(const ParkingLotState& state) const override {
-        exit->addMessage(Vehicle());
+        exit->addMessage(Vehicle(this->id));
     }
 
     [[nodiscard]] double timeAdvance(const ParkingLotState& state) const override {     
