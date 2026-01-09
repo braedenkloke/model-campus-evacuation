@@ -30,6 +30,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         std::string r10Name = "Raven Rd & University Dr to Campus Ave & University Dr";
         std::string r11Name = "Raven Rd & University Dr to P3 & Raven Rd";
         std::string r12Name = "P3 & Raven Rd to Raven Rd & University Dr";
+        std::string r13Name = "P3 & Raven Rd to Bronson Ave & Raven Rd";
 
         // Out roads
         std::vector<std::string> x01OutRoads = {r01Name, r02Name};
@@ -38,12 +39,13 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         std::vector<std::string> x04OutRoads = {r06Name};
         std::vector<std::string> x05OutRoads = {r07Name, r09Name};
         std::vector<std::string> x06OutRoads = {r10Name, r11Name};
-        std::vector<std::string> x07OutRoads = {r12Name};
+        std::vector<std::string> x07OutRoads = {r12Name, r13Name};
+        std::vector<std::string> x08OutRoads = {};
 
         // Create models
         auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
         auto p2 = addComponent<ParkingLot>("P2", carDepartureTimes);
-        //auto p3 = addComponent<ParkingLot>("P3", carDepartureTimes);
+        auto p3 = addComponent<ParkingLot>("P3", carDepartureTimes);
         auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
         auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, x02OutRoads);
         auto x03 = addComponent<Intersection>("Campus Ave & Library Rd", odData, x03OutRoads);
@@ -51,6 +53,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto x05 = addComponent<Intersection>("Campus Ave & University Dr", odData, x05OutRoads);
         auto x06 = addComponent<Intersection>("Raven Rd & University Dr", odData, x06OutRoads);
         auto x07 = addComponent<Intersection>("P3 & Raven Rd", odData, x07OutRoads);
+        auto x08 = addComponent<Intersection>("Bronson Ave & Raven Rd", odData, x08OutRoads);
         auto r01 = addComponent<Road>(r01Name);
         auto r02 = addComponent<Road>(r02Name);
         auto r03 = addComponent<Road>(r03Name);
@@ -63,6 +66,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto r10 = addComponent<Road>(r10Name);
         auto r11 = addComponent<Road>(r11Name);
         auto r12 = addComponent<Road>(r12Name);
+        auto r13 = addComponent<Road>(r13Name);
 
         // Couple intersection inputs
         addCoupling(p1->exit, x01->in);
@@ -78,7 +82,9 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(r10->exit, x05->in);
         addCoupling(r09->exit, x06->in);
         addCoupling(r12->exit, x06->in);
+        addCoupling(p3->exit, x07->in);
         addCoupling(r11->exit, x07->in);
+        addCoupling(r13->exit, x08->in);
 
         // Couple intersection outputs
         addCoupling(x01->out1, r01->entrance);
@@ -92,6 +98,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(x06->out1, r10->entrance);
         addCoupling(x06->out2, r11->entrance);
         addCoupling(x07->out1, r12->entrance);
+        addCoupling(x07->out2, r13->entrance);
     }
 };
 #endif // CARLETON_UNIVERSITY_CAMPUS_HPP
