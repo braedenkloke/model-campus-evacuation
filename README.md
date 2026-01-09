@@ -5,30 +5,19 @@
 To execute the simulation, run
 ```
 source build_sim.sh
-./bin/campus-evacuation
+./bin/scenario_01 | grep "id=21"
 ```
 
-Your output should look like this
+Your output should look similar to this
 ```
 time,model_id,model_name,port_name,data
-0,1,road,,0
-0,2,parking lot,,3
-0,1,road,,1
-0,2,parking lot,exit,1
-0,2,parking lot,,2
-1,1,road,,2
-...
-14,1,road,exit,1
-14,1,road,,0
-14,1,road,,0
-14,2,parking lot,,0
-Done.
+0,30,P3,exit,Vehicle{src=P3,id=21,dest=}
+0,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=21,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+9,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=21,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
 ```
 
 For how to supply your own inputs, 
 refer to the README file in the subdirectores of [input_data/](input_data/).
-
-You can configure the simulation by modifying [main/main.cpp](main/main.cpp).
 
 ## Remote Simulation
 Alternatively, you can run the simulation remotely on the [DEVSim servers](https://devssim.carleton.ca/). 
