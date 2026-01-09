@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     // Configure simulation
     std::string inputFile = "input_data/parking_lot_schedules/parking_lot_schedule_03_three_cars.txt";
     std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
-    double maxSimulationTime = 120.0;
+    double maxSimulationTime = 10000.0;
     std::string odFile = "input_data/od_data/campus_traffic_flow_01.csv";
 
     // Load data
