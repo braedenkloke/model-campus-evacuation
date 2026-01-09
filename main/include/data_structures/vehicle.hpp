@@ -7,11 +7,11 @@
 using namespace cadmium;
 
 struct Vehicle {
+    std::string src;    // Name of the diffusion element generator this vehicle was created from.
     int id;             // Unique identifer for this Vehicle.
-    int routeIndex;     // Index for the route this vehicle is taking. -1 when no route is assigned.
     std::string dest;
 
-    explicit Vehicle(int routeIndex = -1, std::string dest = "") : routeIndex(routeIndex) {
+    explicit Vehicle(std::string src = "", std::string dest = "") : src(src), dest(dest) {
         static int idCounter = 1;
         id = idCounter++;
     }
@@ -19,7 +19,7 @@ struct Vehicle {
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const Vehicle& v) {
-    out << "Vehicle{id=" << v.id << " routeIndex=" << v.routeIndex << "}";
+    out << "Vehicle{src=" << v.src << ",id=" << v.id << ",dest=" << v.dest << "}";
     return out;
 }
 #endif
