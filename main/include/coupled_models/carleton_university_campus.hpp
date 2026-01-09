@@ -55,6 +55,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
         auto p2 = addComponent<ParkingLot>("P2", carDepartureTimes);
         auto p3 = addComponent<ParkingLot>("P3", carDepartureTimes);
+        auto p4 = addComponent<ParkingLot>("P4", carDepartureTimes);
         auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
         auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, x02OutRoads);
         auto x03 = addComponent<Intersection>("Campus Ave & Library Rd", odData, x03OutRoads);
@@ -104,6 +105,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(r11->exit, x07->in);
         addCoupling(r13->exit, x08->in);
         addCoupling(r14->exit, x09->in);
+        addCoupling(p4->exit, x10->in);
         addCoupling(r15->exit, x10->in);
         addCoupling(r18->exit, x10->in);
         addCoupling(r17->exit, x11->in);
