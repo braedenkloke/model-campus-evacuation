@@ -42,6 +42,9 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         std::string r22Name = "Stadium Way & University Dr to Roundabout";
         std::string r23Name = "Roundabout to Stadium Way & University Dr";
         std::string r24Name = "Roundabout to Bronson Ave & University Dr";
+        std::string r25Name = "Roundabout to Campus Ave & P6";
+        std::string r26Name = "Campus Ave & P6 to Roundabout";
+        std::string r27Name = "Campus Ave & P6 to Campus Ave & Library Rd";
 
         // Out roads
         std::vector<std::string> x01OutRoads = {r01Name, r02Name};
@@ -57,8 +60,9 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         std::vector<std::string> x11OutRoads = {r18Name, r19Name, r22Name};
         std::vector<std::string> x12OutRoads = {r20Name, r21Name};
         std::vector<std::string> x13OutRoads = {};
-        std::vector<std::string> x14OutRoads = {r23Name, r24Name};
+        std::vector<std::string> x14OutRoads = {r23Name, r24Name, r25Name};
         std::vector<std::string> x15OutRoads = {};
+        std::vector<std::string> x16OutRoads = {r26Name, r27Name};
 
         // Create models
         auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
@@ -66,6 +70,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto p3 = addComponent<ParkingLot>("P3", carDepartureTimes);
         auto p4 = addComponent<ParkingLot>("P4", carDepartureTimes);
         auto p5 = addComponent<ParkingLot>("P5", carDepartureTimes);
+        auto p6 = addComponent<ParkingLot>("P6", carDepartureTimes);
         auto p7 = addComponent<ParkingLot>("P7", carDepartureTimes);
         auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
         auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, x02OutRoads);
@@ -82,6 +87,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto x13 = addComponent<Intersection>("Bronson Ave & Stadium Way", odData, x13OutRoads);
         auto x14 = addComponent<Intersection>("Roundabout", odData, x14OutRoads);
         auto x15 = addComponent<Intersection>("Bronson Ave & University Dr", odData, x15OutRoads);
+        auto x16 = addComponent<Intersection>("Campus Ave & P6", odData, x16OutRoads);
         auto r01 = addComponent<Road>(r01Name);
         auto r02 = addComponent<Road>(r02Name);
         auto r03 = addComponent<Road>(r03Name);
@@ -106,6 +112,9 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto r22 = addComponent<Road>(r22Name);
         auto r23 = addComponent<Road>(r23Name);
         auto r24 = addComponent<Road>(r24Name);
+        auto r25 = addComponent<Road>(r25Name);
+        auto r26 = addComponent<Road>(r26Name);
+        auto r27 = addComponent<Road>(r27Name);
 
         // Couple intersection inputs
         addCoupling(p1->exit, x01->in);
@@ -114,6 +123,7 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(r01->exit, x02->in);
         addCoupling(r07->exit, x02->in);
         addCoupling(r02->exit, x03->in);
+        addCoupling(r27->exit, x03->in);
         addCoupling(p2->exit, x04->in);
         addCoupling(r05->exit, x04->in);
         addCoupling(r06->exit, x05->in);
@@ -137,7 +147,10 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(r21->exit, x13->in);
         addCoupling(p7->exit, x14->in);
         addCoupling(r22->exit, x14->in);
+        addCoupling(r26->exit, x14->in);
         addCoupling(r24->exit, x15->in);
+        addCoupling(p6->exit, x16->in);
+        addCoupling(r25->exit, x16->in);
 
         // Couple intersection outputs
         addCoupling(x01->out1, r01->entrance);
@@ -164,6 +177,9 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         addCoupling(x12->out2, r21->entrance);
         addCoupling(x14->out1, r23->entrance);
         addCoupling(x14->out2, r24->entrance);
+        addCoupling(x14->out3, r25->entrance);
+        addCoupling(x16->out1, r26->entrance);
+        addCoupling(x16->out2, r27->entrance);
     }
 };
 #endif // CARLETON_UNIVERSITY_CAMPUS_HPP
