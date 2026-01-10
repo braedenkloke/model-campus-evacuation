@@ -5,15 +5,15 @@
 To execute the simulation, run
 ```
 source build_sim.sh
-./bin/scenario_01 | grep "id=21"
+./bin/scenario_01 | grep "id=1,"
 ```
 
 Your output should look similar to this
 ```
 time,model_id,model_name,port_name,data
-0,30,P3,exit,Vehicle{src=P3,id=21,dest=}
-0,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=21,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-9,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=21,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+0,30,P3,exit,Vehicle{src=P3,id=1,dest=}
+0,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=1,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+9,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=1,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
 ```
 
 For how to supply your own inputs, 

@@ -10,8 +10,9 @@ struct Vehicle {
     std::string src;    // Name of the diffusion element generator this vehicle was created from.
     int id;             // Unique identifer for this Vehicle.
     std::string dest;
+    double t;           // Time left travelling on road.
 
-    explicit Vehicle(std::string src = "", std::string dest = "") : src(src), dest(dest) {
+    explicit Vehicle(std::string src = "") : src(src), dest(""), t(0) {
         static int idCounter = 1;
         id = idCounter++;
     }
