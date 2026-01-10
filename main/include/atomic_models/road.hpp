@@ -76,21 +76,13 @@ public:
             
         }
 
-        // Calculate how long the car that entered takes to travel the road.
-        //
-        // Assume cars travel the speed limit; ignore accelaration and deceleration.
-        double lengthInKm = state.lengthInMetres / 1000;
-        double hours = lengthInKm / state.speedLimitInKmph;
-        double minutes = hours * 60;
-        double carTravelTimeInSeconds = minutes * 60;
-
-
         if (!entrance->getBag().empty()) {
             Vehicle v = entrance->getBag().back();
             state.vehiclesOnRoad.push_back(v);   // add vehicle to road queue
         }
 
         // Schedule car to exit the road.
+        double carTravelTimeInSeconds = calcTravelTimeInSeconds(state.lengthInMetres, state.speedLimitInKmph);
         state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
         state.sigma = state.carDepartureTimesInSeconds.front();
     }
@@ -103,6 +95,16 @@ public:
 
     [[nodiscard]] double timeAdvance(const RoadState& state) const override {     
         return state.sigma;
+    }
+
+private:
+    double calcTravelTimeInSeconds(const double lengthInMetres, const double speedLimitInKmph) const {
+        // Assume cars travel the speed limit; ignore accelaration and deceleration.
+        double lengthInKm = state.lengthInMetres / 1000;
+        double hours = lengthInKm / state.speedLimitInKmph;
+        double minutes = hours * 60;
+        double seconds = minutes * 60;
+        return seconds;
     }
 };
 
