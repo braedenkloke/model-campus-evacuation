@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
 #include <cassert>
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../data_structures/od_datum.hpp"
@@ -15,12 +14,11 @@
 using namespace cadmium;
 
 struct IntersectionState {
-    double sigma;
     std::vector<ODDatum> odData;
     std::vector<Vehicle> vehicles;
     std::vector<std::string> outRoads;
 
-    explicit IntersectionState(): sigma(infinity) {} 
+    explicit IntersectionState() {} 
 
 }; 
 
@@ -67,7 +65,6 @@ public:
     void internalTransition(IntersectionState& state) const override {
         // Wait for next set of vehicles to enter intersection.
         state.vehicles.clear();
-        state.sigma = infinity; 
     }
 
     void externalTransition(IntersectionState& state, double e) const override {
@@ -77,10 +74,7 @@ public:
                 v.dest = selectDest(state);
                 state.vehicles.push_back(v);
             }
-            state.sigma = 0.0; // Output immediately
-        } else {
-            state.sigma = infinity;
-        }
+        } 
     }
 
      void output(const IntersectionState& state) const override {
@@ -99,7 +93,11 @@ public:
     }
 
     [[nodiscard]] double timeAdvance(const IntersectionState& state) const override {     
-        return state.sigma;
+        if (!state.vehicles.empty()) {
+            return 0.0;
+        } else {
+            return infinity;
+        }
     }
 
 private:
