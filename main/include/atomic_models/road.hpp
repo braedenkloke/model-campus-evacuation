@@ -10,14 +10,11 @@
 using namespace cadmium;
 
 struct RoadState {
-    double sigma;
     double lengthInMetres; 
     double speedLimitInKmph; 
-    std::deque<double> carDepartureTimesInSeconds;  // Using double
-                                                    // because time = length/speed 
-                                                    // can be floating point format
-    std::deque<Vehicle> vehiclesOnRoad;        // Stores vehicles currently on the road.                                         
-    explicit RoadState(): sigma(infinity) {}
+    std::deque<Vehicle> vehicles;        
+
+    explicit RoadState() {}
 };
 
 #ifndef NO_LOGGING
@@ -45,56 +42,41 @@ public:
     }
 
     void internalTransition(RoadState& state) const override {
-        // Car exits road.
-        // The time at the front of queue is the elapsed time
-        double elapsedTime = state.carDepartureTimesInSeconds.front();
-        // Update remaining departure times
-        for(int i = 1; i < state.carDepartureTimesInSeconds.size(); i++){
-            state.carDepartureTimesInSeconds[i] = state.carDepartureTimesInSeconds[i] - elapsedTime;
-        }
-        // Romeving departed car's time 
-        state.carDepartureTimesInSeconds.pop_front();
-
-        // Set sigma to next car's departure time.
-        if(!state.carDepartureTimesInSeconds.empty()){
-            state.sigma = state.carDepartureTimesInSeconds.front();
-        }else {
-            state.sigma = infinity;
-        }
-        
-        if(!state.vehiclesOnRoad.empty()){
-            state.vehiclesOnRoad.pop_front(); //remove vechile exiting road
+        Vehicle x = state.vehicles.front();
+        state.vehicles.pop_front();
+        for (Vehicle v: state.vehicles) {
+            v.t = v.t - x.t;
         }
     }
 
 	void externalTransition(RoadState& state, double e) const override {
-        // Car enters road. 
+        // Vehicles enter road. 
 
-        // Update all departure times based on elapsed time.
-        for (int i = 0; i < state.carDepartureTimesInSeconds.size(); i++) {
-            state.carDepartureTimesInSeconds[i] = state.carDepartureTimesInSeconds[i] - e;
-            
+        // Update all travel times based on elapsed time.
+        for (Vehicle v : state.vehicles) {
+            v.t = v.t - e;
         }
 
         if (!entrance->getBag().empty()) {
-            Vehicle v = entrance->getBag().back();
-            state.vehiclesOnRoad.push_back(v);   // add vehicle to road queue
+            for (Vehicle v : entrance->getBag()) {
+                v.t = calcTravelTimeInSeconds(state.lengthInMetres, state.speedLimitInKmph);
+                state.vehicles.push_back(v);
+            }
         }
-
-        // Schedule car to exit the road.
-        double carTravelTimeInSeconds = calcTravelTimeInSeconds(state.lengthInMetres, state.speedLimitInKmph);
-        state.carDepartureTimesInSeconds.push_back(carTravelTimeInSeconds);
-        state.sigma = state.carDepartureTimesInSeconds.front();
     }
     
     void output(const RoadState& state) const override {
-        if(!state.vehiclesOnRoad.empty()){
-            exit->addMessage(state.vehiclesOnRoad.front()); //vehicle object leaves road
+        if(!state.vehicles.empty()){
+            exit->addMessage(state.vehicles.front());
         }
     }
 
     [[nodiscard]] double timeAdvance(const RoadState& state) const override {     
-        return state.sigma;
+        if (state.vehicles.empty()) {
+            return infinity;
+        } else {
+            return state.vehicles.front().t;
+        }
     }
 
 private:
