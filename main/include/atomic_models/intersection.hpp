@@ -17,17 +17,16 @@ using namespace cadmium;
 struct IntersectionState {
     double sigma;
     std::vector<ODDatum> odData;
-    bool hasCar;                        // Is there a car waiting in intersection
-    Vehicle currentCar;                 // The car currently in the intersection
+    std::vector<Vehicle> vehicles;
     std::vector<std::string> outRoads;
 
-    explicit IntersectionState(): sigma(infinity), hasCar(false) {} 
+    explicit IntersectionState(): sigma(infinity) {} 
 
 }; 
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
-    return out << "HasCar: " << state.hasCar;
+    return out << "Number of vehicles in intersection: " << state.vehicles.size();
 }
 #endif
 
@@ -35,12 +34,11 @@ std::ostream& operator<<(std::ostream &out, const IntersectionState& state) {
 // by selecting the destination with the highest flow rate.
 class Intersection : public Atomic<IntersectionState> {
 public:
-    Port<Vehicle> in;               // Incoming car from a road model.
-    Port<Vehicle> out1;            // Car exits through one of 4 out ports
+    Port<Vehicle> in;
+    Port<Vehicle> out1;
     Port<Vehicle> out2; 
     Port<Vehicle> out3; 
     Port<Vehicle> out4;  
-    bool verbose;   // Prints debugging statements when true.
    
     // ARGUMENTS
     // id - Model name. Equivalent to the origin in the OD data.
@@ -49,8 +47,6 @@ public:
     //            Output ports are allocated to each road name in the order given, i.e., outRoads.first() -> out1.
     Intersection(const std::string id, const std::vector<ODDatum>& odData, const std::vector<std::string>& outRoads): 
                  Atomic<IntersectionState>(id, IntersectionState()) {
-        verbose = false; 
-
         in = addInPort<Vehicle>("in");
         
         out1 = addOutPort<Vehicle>("out1");
@@ -69,18 +65,18 @@ public:
     }
 
     void internalTransition(IntersectionState& state) const override {
-        // Wait for next car to enter intersection.
-        state.hasCar = false; 
+        // Wait for next set of vehicles to enter intersection.
+        state.vehicles.clear();
         state.sigma = infinity; 
     }
 
     void externalTransition(IntersectionState& state, double e) const override {
-        // Car enters intersection.
+        // Vehicles enters intersection.
         if (!in->getBag().empty()) {
-            Vehicle v = in->getBag().back();
-            state.hasCar = true;
-            v.dest = selectDest(state);
-            state.currentCar = v;
+            for (Vehicle v : in->getBag()) {
+                v.dest = selectDest(state);
+                state.vehicles.push_back(v);
+            }
             state.sigma = 0.0; // Output immediately
         } else {
             state.sigma = infinity;
@@ -88,16 +84,17 @@ public:
     }
 
      void output(const IntersectionState& state) const override {
-        int o = getOutputPortID(state);
-        if (verbose) {std::cout << this->id << " routing vehicle to out" << o << "\n|";}
-        if (o == 1){
-            out1->addMessage(state.currentCar);
-        } else if (o == 2) {
-            out2->addMessage(state.currentCar);
-        } else if (o == 3) {
-            out3->addMessage(state.currentCar);
-        } else if (o == 4) {
-            out4->addMessage(state.currentCar);
+        for (Vehicle v : state.vehicles) {
+            int o = getOutputPortID(v, state.outRoads);
+            if (o == 1){
+                out1->addMessage(v);
+            } else if (o == 2) {
+                out2->addMessage(v);
+            } else if (o == 3) {
+                out3->addMessage(v);
+            } else if (o == 4) {
+                out4->addMessage(v);
+            }
         }
     }
 
@@ -111,20 +108,18 @@ private:
         std::string dest = "";
         if (!state.odData.empty()) {
             int i = std::rand() % state.odData.size();
-            if(verbose) {std::cout << "odData size: " << state.odData.size() << "Random i: " << i << "\n";}
             dest = state.odData[i].dest;
         }
         return dest;
     }
 
     // Returns ID of output port. Returns 0 if no ID found.
-    int getOutputPortID(const IntersectionState& state) const {
-        std::string target = state.currentCar.dest;
+    int getOutputPortID(const Vehicle v, const std::vector<std::string>& outRoads) const {
+        std::string target = v.dest;
         int counter = 0;
         int id = counter;
 
-        for (std::string r : state.outRoads) {
-            if(verbose) {std::cout << "Comparing Target: " << target << " with OutRoad: "  << r << "\n";}
+        for (std::string r : outRoads) {
             counter++;
             if (target.compare(r) == 0) {
                 id = counter;
