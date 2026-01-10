@@ -30,18 +30,13 @@ std::ostream& operator<<(std::ostream &out, const RoadState& state) {
 class Road : public Atomic<RoadState> {
 public:
     Port<Vehicle> entrance, exit;
-    std::string originId;
-    std::string destId;
 
     // ARGUMENTS
     // id - Model name.
     // lengthInMetres - Length of road in metres.
     // speedLimitInKmph - Speed limit of road in kilometres per hour.
-    // origin  Origin intersection id for road model. 
-    // dest - Destination intersection id for road model.
-    Road(const std::string id, int lengthInMetres = 100, int speedLimitInKmph = 40,
-        std::string origin = "", std::string dest = "") : 
-        Atomic<RoadState>(id, RoadState()),originId(origin), destId(dest) {
+    Road(const std::string id, int lengthInMetres = 100, int speedLimitInKmph = 40): 
+         Atomic<RoadState>(id, RoadState()) {
         entrance = addInPort<Vehicle>("entrance");
         exit = addOutPort<Vehicle>("exit");
 
@@ -70,23 +65,6 @@ public:
         if(!state.vehiclesOnRoad.empty()){
             state.vehiclesOnRoad.pop_front(); //remove vechile exiting road
         }
-        /* --- WHY DEQUE? ---
-        
-        - It can add and remove elements from back and front.
-       
-        - For road model's departure times it also needs to iterate through 
-        the elements in the middle of the list one by one and update them.
-       
-        - Using deque because needed to remove items from the front, and vector is slow for that.
-        
-            loop 1 [10, 20, 30]
-            [10, 10, 30] -> for first car we wait for 10 sec.
-            loop 2 [10, 10, 30]
-            [10, 10, 20] -> also for last car 10 sec past.
-            
-        - Elapsed time going to change with pop_front for next internal transition event.*/ 
-
-
     }
 
 	void externalTransition(RoadState& state, double e) const override {
