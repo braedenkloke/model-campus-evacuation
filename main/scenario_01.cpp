@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 
     // Configure simulation
     std::string inputFile = "input_data/parking_lot_schedules/parking_lot_schedule_03_three_cars.txt";
-    std::string outputFile = "output_data/raw/manufacturing_system_log.csv";
+    std::string outputFile = "output_data/raw/scenario_01_log.csv";
     double maxSimulationTime = 10000.0;
     std::string odFile = "input_data/od_data/campus_traffic_flow_01.csv";
 
@@ -31,8 +31,8 @@ int main(int argc, char* argv[]) {
     auto model = std::make_shared<CarletonUniversityCampusCoupled>("Carleton University Campus", carDepartureTimes, odData);
     auto rootCoordinator = cadmium::RootCoordinator(model);
 
-    rootCoordinator.setLogger<STDOUTLogger>(",");
-    //rootCoordinator.setLogger<CSVLogger>(outputFile, ",");
+    //rootCoordinator.setLogger<STDOUTLogger>(",");
+    rootCoordinator.setLogger<CSVLogger>(outputFile, ",");
     rootCoordinator.start();
     rootCoordinator.simulate(maxSimulationTime);
     rootCoordinator.stop();	

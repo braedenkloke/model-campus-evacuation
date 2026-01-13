@@ -19,7 +19,9 @@ struct RoadState {
 
 #ifndef NO_LOGGING
 std::ostream& operator<<(std::ostream &out, const RoadState& state) {
-    return out << "Number of cars on road: " << state.vehicles.size(); 
+    return out << "Number of cars on road: " << state.vehicles.size() 
+        << ", lengthInMetres: " << state.lengthInMetres
+        << ", speedLimitInKmph: " << state.speedLimitInKmph;
 }
 #endif
 
