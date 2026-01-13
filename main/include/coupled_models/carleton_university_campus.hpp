@@ -10,6 +10,7 @@
 #include "../atomic_models/road.hpp"
 #include "../atomic_models/intersection.hpp"
 #include "../data_structures/od_datum.hpp"
+#include "../io/load_data.hpp"
 
 using namespace cadmium;
 
@@ -88,7 +89,10 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         auto x14 = addComponent<Intersection>("Roundabout", odData, x14OutRoads);
         auto x15 = addComponent<Intersection>("Bronson Ave & University Dr", odData, x15OutRoads);
         auto x16 = addComponent<Intersection>("Campus Ave & P6", odData, x16OutRoads);
-        auto r01 = addComponent<Road>(r01Name);
+
+        //road components
+        auto roadLengths = loadRoadLengths("data_creation/sim_road_lengths.csv");
+        auto r01 = addComponent<Road>(r01Name, roadLengths.at(r01Name));
         auto r02 = addComponent<Road>(r02Name);
         auto r03 = addComponent<Road>(r03Name);
         auto r04 = addComponent<Road>(r04Name);

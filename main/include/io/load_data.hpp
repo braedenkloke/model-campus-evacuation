@@ -4,6 +4,9 @@
 #include "../data_structures/od_datum.hpp"
 #include "../../lib/rapidcsv.h"
 
+#include <unordered_map>
+#include <cmath>
+
 std::vector<ODDatum> loadODData(std::string filepath) {
     rapidcsv::Document doc(filepath);
     std::vector<std::string> origins = doc.GetColumn<std::string>("ORIGIN");
@@ -17,4 +20,15 @@ std::vector<ODDatum> loadODData(std::string filepath) {
     return odData;
 }
 
+std::unordered_map<std::string, int> loadRoadLengths(std::string filepath) {
+    rapidcsv::Document doc(filepath);
+    std::vector<std::string> roads = doc.GetColumn<std::string>("ROAD");
+    std::vector<double> lengths = doc.GetColumn<double>("LENGTH_M");
+
+    std::unordered_map<std::string, int> out;
+    for (int i = 0; i < (int)roads.size(); i++) {
+        out[roads[i]] = (int)std::lround(lengths[i]);
+    }
+    return out;
+}
 #endif // LOAD_DATA_HPP
