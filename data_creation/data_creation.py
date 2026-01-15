@@ -15,9 +15,19 @@ from pyproj import Transformer
 from shapely.geometry import Point, LineString
 
 # MANUAL MARKER POINTS for parking lots
-MARKER_NAME = "Manual Marker"
+P1NAME = "P1"
+P2NAME = "P2"
+P3NAME = "P3"
+P4NAME = "P4"
+RAVENSRDEXITNAME = "Ravensrd Exit"
+STADIUMEXITNAME = "Stadium Exit"
 #Set location
-MARKER_LATLON = (45.3813, -75.7021)
+P1Coord = (45.3813, -75.7021)
+P2Coord = (45.3839, -75.6964)
+P3Coord = (45.3847, -75.6919)
+P4Coord = (45.3857, -75.6950)
+RAVENSRDEXITCOORD = (45.3851, -75.6903)
+STADIUMEXITCOORD = (45.3881, -75.6927)
 
 # Tolerance if marker is basically on an endpoint, don’t split
 ENDPOINT_TOL_M = 1.0
@@ -57,6 +67,51 @@ def _edge_linestring(Gp, u, v, key, data):
 def _new_node_id(Gp):
     # OSMnx node ids are ints
     return int(max(Gp.nodes)) + 1
+
+def add_marker_node_and_connect(Gp, latlon, connect_to_node=None, name="Marker", edge_name="Marker connector"):
+    """
+    Adds a new node exactly at latlon, and connects it to the nearest road node
+    """
+    lat, lon = latlon
+    x, y = to_proj.transform(lon, lat)
+
+    # pick what road node to connect to
+    if connect_to_node is None:
+        connect_to_node = ox.distance.nearest_nodes(Gp, X=x, Y=y)
+
+    # create the marker node
+    marker_id = _new_node_id(Gp)
+    Gp.add_node(
+        marker_id,
+        x=float(x),
+        y=float(y),
+        lon=float(lon),
+        lat=float(lat),
+        street_node=name
+    )
+
+    # build connector geometry + length in metres (projected CRS)
+    x2, y2 = Gp.nodes[connect_to_node]["x"], Gp.nodes[connect_to_node]["y"]
+    geom = LineString([(x, y), (x2, y2)])
+    length_m = float(geom.length)
+
+    # attributes for the connector edge
+    attrs = {
+        "u": marker_id,
+        "v": connect_to_node,
+        "name": edge_name,
+        "highway": "service",
+        "oneway": False,
+        "geometry": geom,
+        "length": length_m,
+    }
+
+    # add both directions so routing works either way (since your graph is directed)
+    Gp.add_edge(marker_id, connect_to_node, **attrs)
+    Gp.add_edge(connect_to_node, marker_id, **{**attrs, "u": connect_to_node, "v": marker_id})
+
+    return marker_id, connect_to_node
+
 
 def cut_line_at_distance(line: LineString, dist: float):
     """
@@ -190,8 +245,13 @@ def split_nearest_edge_with_point(Gp, latlon, name="Inserted Node"):
 
 
 print("Splitting nearest road edge at marker...")
-inserted_node = split_nearest_edge_with_point(G_simp_proj, MARKER_LATLON, name=MARKER_NAME)
-print(f"Inserted/snap node id: {inserted_node}")
+inserted_node = split_nearest_edge_with_point(G_simp_proj, P1Coord, name=P1NAME)
+inserted_node = split_nearest_edge_with_point(G_simp_proj, P2Coord, name=P2NAME)
+inserted_node = split_nearest_edge_with_point(G_simp_proj, P4Coord, name=P4NAME)
+
+p3_marker_node, p3_nearest_road_node = add_marker_node_and_connect(G_simp_proj, P3Coord, connect_to_node=None, name=P3NAME, edge_name="P3 connector")
+p3_marker_node, p3_nearest_road_node = add_marker_node_and_connect(G_simp_proj, RAVENSRDEXITCOORD, connect_to_node=None, name=RAVENSRDEXITNAME, edge_name="Ravensrd Exit connector")
+p3_marker_node, p3_nearest_road_node = add_marker_node_and_connect(G_simp_proj, STADIUMEXITCOORD, connect_to_node=None, name=STADIUMEXITNAME, edge_name="Stadium Exit connector")
 
 # Reproject back to lat/lon
 G_simp = ox.project_graph(G_simp_proj, to_crs="EPSG:4326")
@@ -246,11 +306,78 @@ print("\nAll files exported successfully!")
 PLACES = {
     "Library Rd & P1": (45.3813, -75.7007),
     "Library Rd & University Dr": (45.3793, -75.7005),
+    "Campus Ave & Library Rd": (45.3855, -75.6964),
+    "Campus Ave & P2": (45.3839, -75.6964),
+    "Campus Ave & University Dr": (45.3825, -75.6958),
+    "Raven Rd & University Dr": (45.3840, -75.6940),
+    "P3 & Raven Rd": (45.3847, -75.6919),
+    "Bronson Ave & Raven Rd": (45.3851, -75.6903),
+    "Colonel By Dr & University Dr": (45.3790, -75.7008),
+    "P4 & University Dr": (45.3857, -75.6950),
+    "Stadium Way & University Dr": (45.3875, -75.6956),
+    "P5 & Stadium Way": (45.3876, -75.6950),
+    "Bronson Ave & Stadium Way": (45.3881, -75.6927),
+    "Roundabout": (45.3889, -75.6960),
+    "Bronson Ave & University Dr": (45.3896, -75.6945),
+    "Campus Ave & P6": (45.3886, -75.6970),
+
 }
 
 SIM_ROADS = [
     ("Library Rd & P1", "Library Rd & University Dr",
      "Library Rd & P1 to Library Rd & University Dr"),
+    ("Library Rd & P1", "Campus Ave & Library Rd",
+     "Library Rd & P1 to Campus Ave & Library Rd"),
+    ("Library Rd & University Dr", "Library Rd & P1",
+     "Library Rd & University Dr to Library Rd & P1"),
+    ("Campus Ave & Library Rd", "Library Rd & P1",
+     "Campus Ave & Library Rd to Library Rd & P1"),
+    ("Campus Ave & Library Rd", "Campus Ave & P2",
+     "Campus Ave & Library Rd to Campus Ave & P2"),
+    ("Campus Ave & P2", "Campus Ave & University Dr",
+     "Campus Ave & P2 to Campus Ave & University Dr"),
+    ("Campus Ave & University Dr", "Library Rd & University Dr",
+     "Campus Ave & University Dr to Library Rd & University Dr"),
+    ("Library Rd & University Dr", "Campus Ave & University Dr",
+      "Library Rd & University Dr to Campus Ave & University Dr"),
+    ("Campus Ave & University Dr", "Raven Rd & University Dr",
+      "Campus Ave & University Dr to Raven Rd & University Dr"),
+    ("Raven Rd & University Dr", "Campus Ave & University Dr",
+      "Raven Rd & University Dr to Campus Ave & University Dr"),
+    ("Raven Rd & University Dr", "P3 & Raven Rd",
+      "Raven Rd & University Dr to P3 & Raven Rd"),
+    ("P3 & Raven Rd", "Raven Rd & University Dr",
+      "P3 & Raven Rd to Raven Rd & University Dr"),
+    ("P3 & Raven Rd", "Bronson Ave & Raven Rd",
+      "P3 & Raven Rd to Bronson Ave & Raven Rd"),
+    ("Library Rd & University Dr", "Colonel By Dr & University Dr",
+      "Library Rd & University Dr to Colonel By Dr & University Dr"),
+    ("Raven Rd & University Dr", "P4 & University Dr",
+      "Raven Rd & University Dr to P4 & University Dr"),
+    ("P4 & University Dr", "Raven Rd & University Dr",
+      "P4 & University Dr to Raven Rd & University Dr"),
+    ("P4 & University Dr", "Stadium Way & University Dr",
+      "P4 & University Dr to Stadium Way & University Dr"),
+    ("Stadium Way & University Dr", "P4 & University Dr",
+      "Stadium Way & University Dr to P4 & University Dr"),
+    ("Stadium Way & University Dr", "P5 & Stadium Way",
+      "Stadium Way & University Dr to P5 & Stadium Way"),
+    ("P5 & Stadium Way", "Stadium Way & University Dr",
+      "P5 & Stadium Way to Stadium Way & University Dr"),
+    ("P5 & Stadium Way", "Bronson Ave & Stadium Way",
+      "P5 & Stadium Way to Bronson Ave & Stadium Way"),
+    ("Stadium Way & University Dr", "Roundabout",
+      "Stadium Way & University Dr to Roundabout"),
+    ("Roundabout", "Stadium Way & University Dr",
+      "Roundabout to Stadium Way & University Dr"),
+    ("Roundabout", "Bronson Ave & University Dr",
+      "Roundabout to Bronson Ave & University Dr"),
+    ("Roundabout", "Campus Ave & P6",
+      "Roundabout to Campus Ave & P6"),
+    ("Campus Ave & P6", "Roundabout",
+      "Campus Ave & P6 to Roundabout"),
+    ("Campus Ave & P6", "Campus Ave & Library Rd",
+      "Campus Ave & P6 to Campus Ave & Library Rd"),
 ]
 
 to_proj = Transformer.from_crs("EPSG:4326", proj_crs, always_xy=True)
