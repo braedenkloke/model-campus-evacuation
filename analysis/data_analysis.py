@@ -1,7 +1,7 @@
 import re
+import argparse
 from collections import defaultdict
 from math import ceil
-from typing import Optional, Tuple, Set, Dict, List
 
 # regular expressions to extract vehicle ID and destination from message
 VEH_RE = re.compile(r"id=(\d+)")
@@ -17,7 +17,11 @@ def parse_line(line: str):
     if not line:
         return None
 
-    # skip header if present
+    # skip Excel hint row
+    if line.startswith("sep="):
+        return None
+    
+    # skip header
     if line.startswith("time,"):
         return None
     
@@ -40,7 +44,7 @@ def parse_line(line: str):
     d = DEST_RE.search(msg)
     dest = d.group(1).strip() if d else ""  # dest can be empty
 
-    return t, model_id, model_name, port_name, vehicle_id, dest
+    return t, model_id, model_name, port_name, vehicle_id, dest, msg
 
 def is_parking_lot(name: str) -> bool:
     """
@@ -48,35 +52,32 @@ def is_parking_lot(name: str) -> bool:
     """
     return name.startswith("P") and len(name) <= 3
 
-def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: float = 1.0):
+def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
     """
     exit_models: set of model names that represent campus exits
     """
-    # TODO define which roads are exits
-
-    # road occupancy events (t, road_name, delta)
+    if exit_models is None:
+        exit_models = set()
     
-    lot_depart_time: Dict[int, float] = {}
-    campus_exit_time: Dict[int, float] = {}
+    lot_depart_time = {} # vid -> first time vehicle exited parking lot
+    campus_exit_time = {} # vid -> first time vehicle exited campus
     
     # for evac curve
-    evac_events: List[Tuple[float, int]] = [] # (t, delta)
+    evac_events = [] # (t, delta)
 
     # for road heatmap
-    roads_seen: Set[str] = set()
-    road_events: List[Tuple[float, str, int]] = [] # (t, road, delta)
+    roads_seen = set()
+    road_events= [] # (t, road, delta)
 
-    all_times: List[float] = []
+    all_times = []
 
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            line = line.strip()
-            if not line:
-                continue
             parsed = parse_line(line)
             if not parsed:
                 continue
-            t, model_id, model_name, port_name, vid, dest = parsed
+
+            t, model_id, model_name, port_name, vid, dest, msg= parsed
             all_times.append(t)
 
             if vid is None:
@@ -104,6 +105,8 @@ def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: fl
                 road_events.append((t, road, -1))
             
     # compute metrics
+    total_sim_time = max(all_times) if all_times else 0.0
+
     exited_vids = sorted(campus_exit_time.keys())
 
     # avg from t=0 is just avg(exit_time)
@@ -117,18 +120,12 @@ def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: fl
     for v in exited_vids:
         if v in lot_depart_time:
             lot_based_times.append(campus_exit_time[v] - lot_depart_time[v])
+
     avg_from_lot = (sum(lot_based_times) / len(lot_based_times)
         if lot_based_times else None
     )
 
-    worst_leave_lot = max(lot_depart_time.values()) if lot_depart_time else None
-
-    cars_per_min = None
-    if exited_vids:
-        times = [campus_exit_time[v] for v in exited_vids]
-        duration = max(times) - min(times)
-        if duration > 0:
-            cars_per_min = (len(times) / duration) * 60.0
+    cars_per_min = (len(exited_vids) / total_sim_time) * 60.0
 
     # evacuation curve
     # treating "lot exit" as entering campus, and "campus exit" as leaving campus
@@ -139,7 +136,7 @@ def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: fl
     evac_events.sort()
 
     t_min = 0.0
-    t_max = max(all_times) if all_times else 0.0
+    t_max = total_sim_time
     n = int(ceil((t_max - t_min) / dt_sample)) + 1
     sample_times = [t_min + i * dt_sample for i in range(n)]
 
@@ -169,9 +166,9 @@ def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: fl
             heat[road].append(road_occ[road])
 
     return {
+        "total_sim_time": total_sim_time,
         "avg_from_t0": avg_from_t0,
         "avg_from_lot": avg_from_lot,
-        "worst_leave_lot": worst_leave_lot,
         "cars_per_min": cars_per_min,
         "curve": curve,      # list[(t, cars_on_campus)]
         "roads": roads,      # ordered road list for heat columns
@@ -181,18 +178,26 @@ def analyze_log(path: str, exit_models: Optional[Set[str]] = None, dt_sample: fl
     }
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("log_csv", help="Path to scenario log CSV")
+    parser.add_argument("--dt", type=float, default=1.0, help="Sampling interval for curve/heatmap")
+    args = parser.parse_args()
 
-    # TODO define exits
+    # due to how logging is done, exit time = when the vehicle finished the last road segment that connect to outiside
+    exits = {
+        "P3 & Raven Rd to Bronson Ave & Raven Rd",
+        "Library Rd & University Dr to Colonel By Dr & University Dr",
+        "P5 & Stadium Way to Bronson Ave & Stadium Way",
+        "Roundabout to Bronson Ave & University Dr"
+    }
 
-    exits = None
+    results = analyze_log(args.log_csv, exit_models=exits, dt_sample=args.dt)
 
-    results = analyze_log("LOG_HERE.csv", exit_models=exits, dt_sample=1.0)
-
-    print("Summary ===")
+    print("=== Summary ===")
+    print("Total sim time:", results["total_sim_time"])
     print("Vehicles exited campus:", results["exited_count"])
     print("Vehicles with lot-based time:", results["lot_based_count"])
     print("Avg evac from t=0:", results["avg_from_t0"])
     print("Avg evac from leaving lot:", results["avg_from_lot"])
-    print("Worst-case (last leaving lot):", results["worst_leave_lot"])
     print("Cars/min exiting campus:", results["cars_per_min"])
     print("Curve sample:", results["curve"][:10])
