@@ -1,5 +1,7 @@
 import re
 import argparse
+import os
+import csv
 from collections import defaultdict
 from math import ceil
 
@@ -177,6 +179,49 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
         "lot_based_count": len(lot_based_times),
     }
 
+def write_processed_outputs(results: dict, processed_dir: str):
+    """
+    Write processed outputs (curve CSV, heatmap CSV) to processed_dir.
+    """
+    os.makedirs(processed_dir, exist_ok=True)
+
+    # summary.csv
+    summary_path = os.path.join(processed_dir, "summary.csv")
+    summary_fields = [
+        "total_sim_time",
+        "exited_count",
+        "lot_based_count",
+        "avg_from_t0",
+        "avg_from_lot",
+        "cars_per_min",
+    ]
+
+    with open(summary_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=summary_fields)
+        writer.writeheader()
+        writer.writerow({field: results[field] for field in summary_fields})
+
+    # curve.csv
+    curve_path = os.path.join(processed_dir, "evac_curve.csv")
+    with open(curve_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["time", "cars_on_campus"])
+        for t, occ in results["curve"]:
+            writer.writerow([t, occ])
+
+    # heatmap.csv
+    heatmap_path = os.path.join(processed_dir, "heatmap_matrix.csv")
+    roads = results["roads"]
+    heat = results["heat"] # dict road -> list of occupancy aligned with sample times
+    times = [t for (t, _) in results["curve"]]
+
+    with open(heatmap_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["time"] + roads)
+        for i, t in enumerate(times):
+            row = [t] + [heat[road][i] for road in roads]
+            writer.writerow(row)
+            
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("log_csv", help="Path to scenario log CSV")
@@ -201,3 +246,6 @@ if __name__ == "__main__":
     print("Avg evac from leaving lot:", results["avg_from_lot"])
     print("Cars/min exiting campus:", results["cars_per_min"])
     print("Curve sample:", results["curve"][:10])
+
+    processed_dir = "output_data/processed"
+    write_processed_outputs(results, processed_dir)
