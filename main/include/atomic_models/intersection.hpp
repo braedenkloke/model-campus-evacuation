@@ -54,7 +54,7 @@ public:
 
         // Filter OD data
         for(int i = 0; i < odData.size(); i++){
-            if(odData[i].origin == id){
+            if(odData[i].origin == id and odData[i].flowRate != 0){
                 state.odData.push_back(odData[i]);
             }
         }
@@ -101,13 +101,31 @@ public:
     }
 
 private:
+    // Returns a random destination based on the probability distribution of the OD data.
     std::string selectDest(const IntersectionState& state) const {
-        // Temporary solution: Choose random destination
         std::string dest = "";
         if (!state.odData.empty()) {
-            int i = std::rand() % state.odData.size();
-            dest = state.odData[i].dest;
-        }
+            std::vector<ODDatum> data = state.odData;
+
+            // Make flow rates relative to one another
+            for (int i = 1; i < data.size(); i++) {
+                assert((data[i].flowRate != 0) && "Assume OD data does not have flow rates equal to zero");
+                data[i].flowRate = data[i - 1].flowRate + data[i].flowRate;
+            }
+
+            // Choose random number in range of flow rates [0, max + 1]
+            int r = std::rand() % data.back().flowRate + 1;
+
+            // Select destination
+            int i = 0;
+            while (dest.empty() and i < data.size()) {
+                if (i <= data[i].flowRate) {
+                    dest = data[i].dest;
+                }
+                i++;
+            }
+            assert(!dest.empty());
+        } 
         return dest;
     }
 

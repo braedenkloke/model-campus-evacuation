@@ -5,7 +5,8 @@
 To execute the simulation, run
 ```
 source build_sim.sh
-./bin/scenario_01 | grep "id=1,"
+./bin/scenario_01 
+cat output_data/scenario_01_log.csv | grep "id=1,"
 ```
 
 Your output should look similar to this
