@@ -31,4 +31,17 @@ std::unordered_map<std::string, int> loadRoadLengths(std::string filepath) {
     }
     return out;
 }
+
+std::unordered_map<std::string, int> loadRoadSpeeds(std::string filepath) {
+    rapidcsv::Document doc(filepath);
+    std::vector<std::string> roads = doc.GetColumn<std::string>("ROAD");
+    std::vector<double> speeds = doc.GetColumn<double>("SPEED_KPH");
+
+    std::unordered_map<std::string, int> out;
+    for (int i = 0; i < (int)roads.size(); i++) {
+        out[roads[i]] = (int)std::lround(speeds[i]); // store as int kph
+    }
+    return out;
+}
+
 #endif // LOAD_DATA_HPP
