@@ -10,6 +10,7 @@ import osmnx as ox
 import pandas as pd
 import csv
 import networkx as nx
+import re
 
 from pyproj import Transformer
 from shapely.geometry import Point, LineString
@@ -299,6 +300,55 @@ edges_df.to_csv("carleton_campus_car_edges.csv", index=False)
 
 print("\nAll files exported successfully!")
 
+def parse_maxspeed_to_kph(val):
+    if val is None:
+        return 40
+    if isinstance(val, list) and len(val) > 0:
+        val = val[0]
+    if isinstance(val, (int, float)):
+        return float(val)
+    if not isinstance(val, str):
+        return 40
+
+    s = val.strip().lower()
+    if s in ("", "unknown", "none", "signals", "variable"):
+        return 40
+
+    if ";" in s:
+        s = s.split(";")[0].strip()
+
+    is_mph = "mph" in s
+    m = re.search(r"(\d+(\.\d+)?)", s)
+    if not m:
+        return 40
+
+    num = float(m.group(1))
+    return num * 1.60934 if is_mph else num
+
+def path_speed_limit_kph(Gp, node_path):
+    speeds = []
+
+    for u, v in zip(node_path[:-1], node_path[1:]):
+        edict = Gp.get_edge_data(u, v)
+        if not edict:
+            continue
+
+        # pick the parallel edge with smallest length
+        best = None
+        best_len = float("inf")
+        for k, d in edict.items():
+            L = float(d.get("length", float("inf")))
+            if L < best_len:
+                best_len = L
+                best = d
+
+        sp = parse_maxspeed_to_kph(best.get("maxspeed") if best else None)
+        if sp is not None:
+            speeds.append(sp)
+
+    return (min(speeds) if speeds else None)
+
+
 
 # SIM-ROAD LENGTHS PART
 
@@ -394,18 +444,26 @@ print("Snapped nodes:", place_node)
 out_csv = "sim_road_lengths.csv"
 with open(out_csv, "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerow(["ROAD", "FROM_PLACE", "TO_PLACE", "FROM_NODE", "TO_NODE", "LENGTH_M"])
+    writer.writerow(["ROAD", "FROM_PLACE", "TO_PLACE", "FROM_NODE", "TO_NODE", "LENGTH_M", "SPEED_KPH"])
 
     for a, b, sim_name in SIM_ROADS:
         src = place_node[a]
         dst = place_node[b]
 
         try:
+            node_path = nx.shortest_path(G_simp_proj, source=src, target=dst, weight="length")
             length = nx.shortest_path_length(G_simp_proj, source=src, target=dst, weight="length")
-            writer.writerow([sim_name, a, b, int(src), int(dst), float(length)])
+            speed_kph = path_speed_limit_kph(G_simp_proj, node_path)
         except nx.NetworkXNoPath:
             Gu = G_simp_proj.to_undirected()
+            node_path = nx.shortest_path(Gu, source=src, target=dst, weight="length")
             length = nx.shortest_path_length(Gu, source=src, target=dst, weight="length")
-            writer.writerow([sim_name, a, b, int(src), int(dst), float(length)])
+            speed_kph = path_speed_limit_kph(Gu, node_path)
+
+        writer.writerow([
+            sim_name, a, b, int(src), int(dst), float(length),
+            ("Unknown" if speed_kph is None else float(speed_kph))
+        ])
+
 
 print(f"\nWrote {out_csv} for {len(SIM_ROADS)} simulation roads.")

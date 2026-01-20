@@ -92,33 +92,35 @@ struct CarletonUniversityCampusCoupled : public Coupled {
 
         //road components
         auto roadLengths = loadRoadLengths("data_creation/sim_road_lengths.csv");
-        auto r01 = addComponent<Road>(r01Name, roadLengths.at(r01Name));
-        auto r02 = addComponent<Road>(r02Name, roadLengths.at(r02Name));
-        auto r03 = addComponent<Road>(r03Name, roadLengths.at(r03Name));
-        auto r04 = addComponent<Road>(r04Name, roadLengths.at(r04Name));
-        auto r05 = addComponent<Road>(r05Name, roadLengths.at(r05Name));
-        auto r06 = addComponent<Road>(r06Name, roadLengths.at(r06Name));
-        auto r07 = addComponent<Road>(r07Name, roadLengths.at(r07Name));
-        auto r08 = addComponent<Road>(r08Name, roadLengths.at(r08Name));
-        auto r09 = addComponent<Road>(r09Name, roadLengths.at(r09Name));
-        auto r10 = addComponent<Road>(r10Name, roadLengths.at(r10Name));
-        auto r11 = addComponent<Road>(r11Name, roadLengths.at(r11Name));
-        auto r12 = addComponent<Road>(r12Name, roadLengths.at(r12Name));
-        auto r13 = addComponent<Road>(r13Name, roadLengths.at(r13Name));
-        auto r14 = addComponent<Road>(r14Name, roadLengths.at(r14Name));
-        auto r15 = addComponent<Road>(r15Name, roadLengths.at(r15Name));
-        auto r16 = addComponent<Road>(r16Name, roadLengths.at(r16Name));
-        auto r17 = addComponent<Road>(r17Name, roadLengths.at(r17Name));
-        auto r18 = addComponent<Road>(r18Name, roadLengths.at(r18Name));
-        auto r19 = addComponent<Road>(r19Name, roadLengths.at(r19Name));
-        auto r20 = addComponent<Road>(r20Name, roadLengths.at(r20Name));
-        auto r21 = addComponent<Road>(r21Name, roadLengths.at(r21Name));
-        auto r22 = addComponent<Road>(r22Name, roadLengths.at(r22Name));
-        auto r23 = addComponent<Road>(r23Name, roadLengths.at(r23Name));
-        auto r24 = addComponent<Road>(r24Name, roadLengths.at(r24Name));
-        auto r25 = addComponent<Road>(r25Name, roadLengths.at(r25Name));
-        auto r26 = addComponent<Road>(r26Name, roadLengths.at(r26Name));
-        auto r27 = addComponent<Road>(r27Name, roadLengths.at(r27Name));
+        auto roadSpeeds  = loadRoadSpeeds("data_creation/sim_road_lengths.csv");
+        auto r01 = addComponent<Road>(r01Name, roadLengths.at(r01Name), roadSpeeds.at(r01Name));
+        auto r02 = addComponent<Road>(r02Name, roadLengths.at(r02Name), roadSpeeds.at(r02Name));
+        auto r03 = addComponent<Road>(r03Name, roadLengths.at(r03Name), roadSpeeds.at(r03Name));
+        auto r04 = addComponent<Road>(r04Name, roadLengths.at(r04Name), roadSpeeds.at(r04Name));
+        auto r05 = addComponent<Road>(r05Name, roadLengths.at(r05Name), roadSpeeds.at(r05Name));
+        auto r06 = addComponent<Road>(r06Name, roadLengths.at(r06Name), roadSpeeds.at(r06Name));
+        auto r07 = addComponent<Road>(r07Name, roadLengths.at(r07Name), roadSpeeds.at(r07Name));
+        auto r08 = addComponent<Road>(r08Name, roadLengths.at(r08Name), roadSpeeds.at(r08Name));
+        auto r09 = addComponent<Road>(r09Name, roadLengths.at(r09Name), roadSpeeds.at(r09Name));
+        auto r10 = addComponent<Road>(r10Name, roadLengths.at(r10Name), roadSpeeds.at(r10Name));
+        auto r11 = addComponent<Road>(r11Name, roadLengths.at(r11Name), roadSpeeds.at(r11Name));
+        auto r12 = addComponent<Road>(r12Name, roadLengths.at(r12Name), roadSpeeds.at(r12Name));
+        auto r13 = addComponent<Road>(r13Name, roadLengths.at(r13Name), roadSpeeds.at(r13Name));
+        auto r14 = addComponent<Road>(r14Name, roadLengths.at(r14Name), roadSpeeds.at(r14Name));
+        auto r15 = addComponent<Road>(r15Name, roadLengths.at(r15Name), roadSpeeds.at(r15Name));
+        auto r16 = addComponent<Road>(r16Name, roadLengths.at(r16Name), roadSpeeds.at(r16Name));
+        auto r17 = addComponent<Road>(r17Name, roadLengths.at(r17Name), roadSpeeds.at(r17Name));
+        auto r18 = addComponent<Road>(r18Name, roadLengths.at(r18Name), roadSpeeds.at(r18Name));
+        auto r19 = addComponent<Road>(r19Name, roadLengths.at(r19Name), roadSpeeds.at(r19Name));
+        auto r20 = addComponent<Road>(r20Name, roadLengths.at(r20Name), roadSpeeds.at(r20Name));
+        auto r21 = addComponent<Road>(r21Name, roadLengths.at(r21Name), roadSpeeds.at(r21Name));
+        auto r22 = addComponent<Road>(r22Name, roadLengths.at(r22Name), roadSpeeds.at(r22Name));
+        auto r23 = addComponent<Road>(r23Name, roadLengths.at(r23Name), roadSpeeds.at(r23Name));
+        auto r24 = addComponent<Road>(r24Name, roadLengths.at(r24Name), roadSpeeds.at(r24Name));
+        auto r25 = addComponent<Road>(r25Name, roadLengths.at(r25Name), roadSpeeds.at(r25Name));
+        auto r26 = addComponent<Road>(r26Name, roadLengths.at(r26Name), roadSpeeds.at(r26Name));
+        auto r27 = addComponent<Road>(r27Name, roadLengths.at(r27Name), roadSpeeds.at(r27Name));
+
 
 
         // Couple intersection inputs
