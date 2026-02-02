@@ -1,0 +1,28 @@
+ROAD,EDGE_IDS
+Library Rd & P1 to Library Rd & University Dr,osm_12_0_0
+Library Rd & P1 to Campus Ave & Library Rd,osm_12_3_0
+Library Rd & University Dr to Library Rd & P1,osm_0_12_0
+Campus Ave & Library Rd to Library Rd & P1,osm_3_12_0
+Campus Ave & Library Rd to Campus Ave & P2,osm_3_13_0
+Campus Ave & P2 to Campus Ave & University Dr,osm_13_2_0
+Campus Ave & University Dr to Library Rd & University Dr,osm_2_0_0
+Library Rd & University Dr to Campus Ave & University Dr,osm_0_2_0
+Campus Ave & University Dr to Raven Rd & University Dr,osm_2_9_0
+Raven Rd & University Dr to Campus Ave & University Dr,osm_9_2_0
+Raven Rd & University Dr to P3 & Raven Rd,osm_9_15_0
+P3 & Raven Rd to Raven Rd & University Dr,osm_15_9_0
+P3 & Raven Rd to Bronson Ave & Raven Rd,osm_15_16_0
+Library Rd & University Dr to Colonel By Dr & University Dr,osm_0_1_0
+Raven Rd & University Dr to P4 & University Dr,osm_9_14_0
+P4 & University Dr to Raven Rd & University Dr,osm_14_9_0
+P4 & University Dr to Stadium Way & University Dr,osm_14_7_0
+Stadium Way & University Dr to P4 & University Dr,osm_7_14_0
+Stadium Way & University Dr to P5 & Stadium Way,osm_7_10_0
+P5 & Stadium Way to Stadium Way & University Dr,osm_10_7_0
+P5 & Stadium Way to Bronson Ave & Stadium Way,osm_10_17_0
+Stadium Way & University Dr to Roundabout,osm_7_6_0|osm_6_5_0
+Roundabout to Stadium Way & University Dr,osm_5_6_0|osm_6_7_0
+Roundabout to Bronson Ave & University Dr,osm_5_11_0
+Roundabout to Campus Ave & P6,osm_5_8_0
+Campus Ave & P6 to Roundabout,osm_8_5_0
+Campus Ave & P6 to Campus Ave & Library Rd,osm_8_3_0

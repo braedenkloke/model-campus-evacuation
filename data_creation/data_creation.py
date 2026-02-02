@@ -113,6 +113,27 @@ def add_marker_node_and_connect(Gp, latlon, connect_to_node=None, name="Marker",
 
     return marker_id, connect_to_node
 
+#helper function for edge path conencting for heatmap data
+def path_to_edge_ids(Gp, node_path):
+    edge_ids = []
+    for u, v in zip(node_path[:-1], node_path[1:]):
+        edict = Gp.get_edge_data(u, v)
+        if not edict:
+            continue
+
+        # choose best parallel edge
+        best_key = None
+        best_len = float("inf")
+        for k, d in edict.items():
+            L = float(d.get("length", float("inf")))
+            if L < best_len:
+                best_len = L
+                best_key = k
+
+        if best_key is not None:
+            edge_ids.append(f"osm_{int(u)}_{int(v)}_{int(best_key)}")
+    return edge_ids
+
 
 def cut_line_at_distance(line: LineString, dist: float):
     """
@@ -283,23 +304,6 @@ edges_simp.to_file("carleton_campus_car_roads.geojson", driver="GeoJSON")
 
 print("Exporting CSVs...")
 
-# Extract u,v
-start_nodes = edges_simp.index.get_level_values(0)
-end_nodes = edges_simp.index.get_level_values(1)
-
-edges_df = pd.DataFrame({
-    "start_node": start_nodes,
-    "end_node": end_nodes,
-    "street_name": edges_simp["name"].values,
-    "length_m": edges_simp["length"].values if "length" in edges_simp.columns else None,
-    "maxspeed": edges_simp["maxspeed"].values,
-    "oneway": edges_simp["oneway"].values,
-    "geometry_wkt": edges_simp.geometry.to_wkt().values
-})
-edges_df.to_csv("carleton_campus_car_edges.csv", index=False)
-
-print("\nAll files exported successfully!")
-
 def parse_maxspeed_to_kph(val):
     if val is None:
         return 40
@@ -467,3 +471,24 @@ with open(out_csv, "w", newline="") as f:
 
 
 print(f"\nWrote {out_csv} for {len(SIM_ROADS)} simulation roads.")
+
+out_map_csv = "sim_road_to_osm_edges.csv"
+with open(out_map_csv, "w", newline="") as f2:
+    w2 = csv.writer(f2)
+    w2.writerow(["ROAD", "EDGE_IDS"])  # EDGE_IDS will be pipe-separated
+
+    for a, b, sim_name in SIM_ROADS:
+        src = place_node[a]
+        dst = place_node[b]
+
+        try:
+            node_path = nx.shortest_path(G_simp_proj, source=src, target=dst, weight="length")
+        except nx.NetworkXNoPath:
+            Gu = G_simp_proj.to_undirected()
+            node_path = nx.shortest_path(Gu, source=src, target=dst, weight="length")
+
+        edge_ids = path_to_edge_ids(G_simp_proj, node_path)
+        w2.writerow([sim_name, "|".join(edge_ids)])
+
+print(f"Wrote {out_map_csv}")
+
