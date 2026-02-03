@@ -20,7 +20,7 @@ python3 your_script_name.py
 ```
 
 ## Outputs
-There will be a 3 file output
+There will be a 3 output files
 
 1. carleton_campus_car_roads.geojson
     - A GeoJSON file containing:
@@ -34,7 +34,7 @@ There will be a 3 file output
 3. sim_road_to_osm_edges.csv
     - Maps each simulation road to the underlying OpenStreetMap edges.
         - Columns:
-            ROAD – Simulation road name
-            EDGE_IDS – Pipe-separated OSM edge IDs (osm_u_v_key)
+            - ROAD – Simulation road name
+            - EDGE_IDS – Pipe-separated OSM edge IDs (osm_u_v_key)
 
         - Useful for heatmaps, edge-based aggregation, or coupling with traffic models
