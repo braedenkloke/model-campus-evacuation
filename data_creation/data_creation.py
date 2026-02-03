@@ -1,11 +1,3 @@
-#Must have osmx installed use - pip3 install osmnx
-#may have to creat virtual environemnt if on unbuntu
-# ..../data_creation$ python3 -m venv venv
-# ..../data_creation$ source venv/bin/activate
-# (venv) ..../data_creation$ pip install osmnx
-# (venv) ..../data_creation$ pip install scikit-learn --no-cache-dir
-
-
 import osmnx as ox
 import pandas as pd
 import csv
