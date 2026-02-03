@@ -10,13 +10,14 @@
 #include "../atomic_models/road.hpp"
 #include "../atomic_models/intersection.hpp"
 #include "../data_structures/od_datum.hpp"
+#include "../data_structures/parking_lot_schedule.hpp"
 #include "../io/load_data.hpp"
 
 using namespace cadmium;
 
 struct CarletonUniversityCampusCoupled : public Coupled {
 
-    CarletonUniversityCampusCoupled(const std::string& id, std::vector<int> carDepartureTimes, 
+    CarletonUniversityCampusCoupled(const std::string& id, std::vector<ParkingLotSchedule> parkingLotSchedules, 
                                     const std::vector<ODDatum>& odData ): Coupled(id) {
         // Road names, as per documentation in the final report.
         std::string r01Name = "Library Rd & P1 to Library Rd & University Dr";
@@ -66,13 +67,13 @@ struct CarletonUniversityCampusCoupled : public Coupled {
         std::vector<std::string> x16OutRoads = {r26Name, r27Name};
 
         // Create models
-        auto p1 = addComponent<ParkingLot>("P1", carDepartureTimes);
-        auto p2 = addComponent<ParkingLot>("P2", carDepartureTimes);
-        auto p3 = addComponent<ParkingLot>("P3", carDepartureTimes);
-        auto p4 = addComponent<ParkingLot>("P4", carDepartureTimes);
-        auto p5 = addComponent<ParkingLot>("P5", carDepartureTimes);
-        auto p6 = addComponent<ParkingLot>("P6", carDepartureTimes);
-        auto p7 = addComponent<ParkingLot>("P7", carDepartureTimes);
+        auto p1 = addComponent<ParkingLot>("P1", parkingLotSchedules);
+        auto p2 = addComponent<ParkingLot>("P2", parkingLotSchedules);
+        auto p3 = addComponent<ParkingLot>("P3", parkingLotSchedules);
+        auto p4 = addComponent<ParkingLot>("P4", parkingLotSchedules);
+        auto p5 = addComponent<ParkingLot>("P5", parkingLotSchedules);
+        auto p6 = addComponent<ParkingLot>("P6", parkingLotSchedules);
+        auto p7 = addComponent<ParkingLot>("P7", parkingLotSchedules);
         auto x01 = addComponent<Intersection>("Library Rd & P1", odData, x01OutRoads);
         auto x02 = addComponent<Intersection>("Library Rd & University Dr", odData, x02OutRoads);
         auto x03 = addComponent<Intersection>("Campus Ave & Library Rd", odData, x03OutRoads);

@@ -1,8 +1,9 @@
 #ifndef LOAD_DATA_HPP
 #define LOAD_DATA_HPP
 
-#include "../data_structures/od_datum.hpp"
 #include "../../lib/rapidcsv.h"
+#include "../data_structures/od_datum.hpp"
+#include "../data_structures/parking_lot_schedule.hpp"
 
 #include <unordered_map>
 #include <cmath>
@@ -18,6 +19,21 @@ std::vector<ODDatum> loadODData(std::string filepath) {
         odData.push_back(ODDatum(origins[i], destinations[i], flowRates[i]));
     }
     return odData;
+}
+
+std::vector<ParkingLotSchedule> loadParkingLotSchedules(std::string fp) {
+    rapidcsv::Document doc(fp);
+    std::vector<ParkingLotSchedule> schedules;
+
+    std::vector<std::string> ids = doc.GetColumn<std::string>("id");
+    std::vector<double> e = doc.GetColumn<double>("initEventInSec");
+    std::vector<double> p = doc.GetColumn<double>("periodInSec");
+    std::vector<int> t = doc.GetColumn<int>("totalEvents");
+
+    for (int i = 0; i < ids.size(); i++) {
+        schedules.push_back(ParkingLotSchedule(ids[i], e[i], p[i], t[i]));
+    }
+    return schedules;
 }
 
 std::unordered_map<std::string, int> loadRoadLengths(std::string filepath) {

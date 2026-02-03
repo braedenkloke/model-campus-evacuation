@@ -15,8 +15,11 @@ mkdir -v tmp
 cd tmp
 
 echo "Installing dependencies..."
-git clone https://github.com/d99kris/rapidcsv
+git clone https://github.com/d99kris/rapidcsv --branch v8.90
 cp -v rapidcsv/src/rapidcsv.h ../main/lib/
+
+git clone https://github.com/jarro2783/cxxopts --branch v3.3.1
+cp -v cxxopts/include/cxxopts.hpp ../main/lib/
 
 echo "Cleaning up..."
 cd ..

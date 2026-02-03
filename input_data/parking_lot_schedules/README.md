@@ -2,14 +2,9 @@
 Input files for parking lot schedules.
 
 # Usage
-Each line of parking lot schedule input file corresponds to the integer time in seconds that a car leaves the parking lot.
+The columns of the parking lot schedule input file are:
 
-Examining the `parking_lot_schedule_02_two_cars.txt` input file,
-we observe that a car leaves at 0 seconds, 1 second, and 2 seconds since the start of the simulation.
-
-You can pass different input files to the system as arguments.
-For example,
-
-```
-./bin/campus-evacuation parking_lot_schedule_00_no_cars.txt
-```
+- `id`: Identifier for a parking lot.
+- `initEventInSec`: The time in seconds that the first vehicle leaves.
+- `periodInSec`: The interval in seconds at which vehicles periodically leave.
+- `totalEvents`: The total number of vehicles that leave the lot, i.e., how many vehicles are in the lot.

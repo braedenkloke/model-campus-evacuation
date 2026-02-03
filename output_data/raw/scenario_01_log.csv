@@ -92,455 +92,455 @@ time,model_id,model_name,port_name,data
 0,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
 0,46,Roundabout,out2,Vehicle{src=P7,id=1,dest=Roundabout to Bronson Ave & University Dr}
 0,46,Roundabout,,Number of vehicles in intersection: 0
-1,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-1,17,P7,exit,Vehicle{src=P7,id=8,dest=}
-1,17,P7,,1
-1,19,P4,exit,Vehicle{src=P4,id=9,dest=}
-1,19,P4,,1
-1,20,Library Rd & P1,,Number of vehicles in intersection: 1
-1,21,P3 & Raven Rd,,Number of vehicles in intersection: 1
-1,22,P4 & University Dr,,Number of vehicles in intersection: 1
-1,26,P5,exit,Vehicle{src=P5,id=10,dest=}
-1,26,P5,,1
-1,28,P5 & Stadium Way,,Number of vehicles in intersection: 1
-1,29,P6,exit,Vehicle{src=P6,id=11,dest=}
-1,29,P6,,1
-1,30,P3,exit,Vehicle{src=P3,id=12,dest=}
-1,30,P3,,1
-1,31,P1,exit,Vehicle{src=P1,id=13,dest=}
-1,31,P1,,1
-1,39,P2,exit,Vehicle{src=P2,id=14,dest=}
-1,39,P2,,1
-1,44,Campus Ave & P6,,Number of vehicles in intersection: 1
-1,46,Roundabout,,Number of vehicles in intersection: 1
-1,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 2, lengthInMetres: 190, speedLimitInKmph: 40
-1,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 2, lengthInMetres: 133, speedLimitInKmph: 40
-1,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 141, speedLimitInKmph: 40
-1,15,Campus Ave & P2,out1,Vehicle{src=P2,id=14,dest=Campus Ave & P2 to Campus Ave & University Dr}
-1,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-1,20,Library Rd & P1,out2,Vehicle{src=P1,id=13,dest=Library Rd & P1 to Campus Ave & Library Rd}
-1,20,Library Rd & P1,,Number of vehicles in intersection: 0
-1,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=12,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-1,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
-1,22,P4 & University Dr,out1,Vehicle{src=P4,id=9,dest=P4 & University Dr to Raven Rd & University Dr}
-1,22,P4 & University Dr,,Number of vehicles in intersection: 0
-1,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 700, speedLimitInKmph: 40
-1,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 347, speedLimitInKmph: 40
-1,28,P5 & Stadium Way,out2,Vehicle{src=P5,id=10,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
-1,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
-1,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 203, speedLimitInKmph: 40
-1,44,Campus Ave & P6,out2,Vehicle{src=P6,id=11,dest=Campus Ave & P6 to Campus Ave & Library Rd}
-1,44,Campus Ave & P6,,Number of vehicles in intersection: 0
-1,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 166, speedLimitInKmph: 40
-1,46,Roundabout,out2,Vehicle{src=P7,id=8,dest=Roundabout to Bronson Ave & University Dr}
-1,46,Roundabout,,Number of vehicles in intersection: 0
-2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-2,17,P7,exit,Vehicle{src=P7,id=15,dest=}
-2,17,P7,,0
-2,19,P4,exit,Vehicle{src=P4,id=16,dest=}
-2,19,P4,,0
-2,20,Library Rd & P1,,Number of vehicles in intersection: 1
-2,21,P3 & Raven Rd,,Number of vehicles in intersection: 1
-2,22,P4 & University Dr,,Number of vehicles in intersection: 1
-2,26,P5,exit,Vehicle{src=P5,id=17,dest=}
-2,26,P5,,0
-2,28,P5 & Stadium Way,,Number of vehicles in intersection: 1
-2,29,P6,exit,Vehicle{src=P6,id=18,dest=}
-2,29,P6,,0
-2,30,P3,exit,Vehicle{src=P3,id=19,dest=}
-2,30,P3,,0
-2,31,P1,exit,Vehicle{src=P1,id=20,dest=}
-2,31,P1,,0
-2,39,P2,exit,Vehicle{src=P2,id=21,dest=}
-2,39,P2,,0
-2,44,Campus Ave & P6,,Number of vehicles in intersection: 1
-2,46,Roundabout,,Number of vehicles in intersection: 1
-2,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 3, lengthInMetres: 190, speedLimitInKmph: 40
-2,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 3, lengthInMetres: 133, speedLimitInKmph: 40
-2,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 141, speedLimitInKmph: 40
-2,15,Campus Ave & P2,out1,Vehicle{src=P2,id=21,dest=Campus Ave & P2 to Campus Ave & University Dr}
-2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-2,20,Library Rd & P1,out2,Vehicle{src=P1,id=20,dest=Library Rd & P1 to Campus Ave & Library Rd}
-2,20,Library Rd & P1,,Number of vehicles in intersection: 0
-2,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=19,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-2,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
-2,22,P4 & University Dr,out1,Vehicle{src=P4,id=16,dest=P4 & University Dr to Raven Rd & University Dr}
-2,22,P4 & University Dr,,Number of vehicles in intersection: 0
-2,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 3, lengthInMetres: 700, speedLimitInKmph: 40
-2,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 3, lengthInMetres: 347, speedLimitInKmph: 40
-2,28,P5 & Stadium Way,out2,Vehicle{src=P5,id=17,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
-2,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
-2,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 203, speedLimitInKmph: 40
-2,44,Campus Ave & P6,out2,Vehicle{src=P6,id=18,dest=Campus Ave & P6 to Campus Ave & Library Rd}
-2,44,Campus Ave & P6,,Number of vehicles in intersection: 0
-2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 166, speedLimitInKmph: 40
-2,46,Roundabout,out2,Vehicle{src=P7,id=15,dest=Roundabout to Bronson Ave & University Dr}
-2,46,Roundabout,,Number of vehicles in intersection: 0
-13.97,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=5,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-13.97,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 2, lengthInMetres: 133, speedLimitInKmph: 40
-13.97,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
-13.97,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
-14.69,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=1,dest=Roundabout to Bronson Ave & University Dr}
-14.69,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 141, speedLimitInKmph: 40
-14.69,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
-14.69,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
-16.94,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-16.94,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=7,dest=Campus Ave & P2 to Campus Ave & University Dr}
-16.94,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 166, speedLimitInKmph: 40
-16.94,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 516, speedLimitInKmph: 30
-16.94,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=7,dest=Campus Ave & University Dr to Library Rd & University Dr}
-16.94,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-19.1,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=3,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
-19.1,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 2, lengthInMetres: 190, speedLimitInKmph: 40
-19.1,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
-19.1,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
-20.27,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
-20.27,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=2,dest=P4 & University Dr to Raven Rd & University Dr}
-20.27,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 203, speedLimitInKmph: 40
-20.27,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 310, speedLimitInKmph: 40
-20.27,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=2,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-20.27,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
-25.94,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=12,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-25.94,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 1, lengthInMetres: 133, speedLimitInKmph: 40
-25.94,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
-25.94,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
-27.38,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=8,dest=Roundabout to Bronson Ave & University Dr}
-27.38,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 141, speedLimitInKmph: 40
-27.38,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
-27.38,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
-31.88,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-31.88,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=14,dest=Campus Ave & P2 to Campus Ave & University Dr}
-31.88,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-31.88,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 516, speedLimitInKmph: 30
-31.88,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=14,dest=Campus Ave & University Dr to Library Rd & University Dr}
-31.88,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-33.23,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-33.23,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=4,dest=Campus Ave & P6 to Campus Ave & Library Rd}
-33.23,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 347, speedLimitInKmph: 40
-33.23,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=4,dest=Campus Ave & Library Rd to Campus Ave & P2}
-33.23,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-33.23,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-36.2,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=10,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
-36.2,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 1, lengthInMetres: 190, speedLimitInKmph: 40
-36.2,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
-36.2,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
-37.91,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=19,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
-37.91,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 0, lengthInMetres: 133, speedLimitInKmph: 40
-37.91,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
-37.91,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
-38.54,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
-38.54,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=9,dest=P4 & University Dr to Raven Rd & University Dr}
-38.54,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 203, speedLimitInKmph: 40
-38.54,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 310, speedLimitInKmph: 40
-38.54,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=9,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-38.54,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
-40.07,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=15,dest=Roundabout to Bronson Ave & University Dr}
-40.07,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 141, speedLimitInKmph: 40
-40.07,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
-40.07,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
-46.82,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-46.82,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=21,dest=Campus Ave & P2 to Campus Ave & University Dr}
-46.82,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-46.82,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 516, speedLimitInKmph: 30
-46.82,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=21,dest=Campus Ave & University Dr to Library Rd & University Dr}
-46.82,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-49.43,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-49.43,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=4,dest=Campus Ave & Library Rd to Campus Ave & P2}
-49.43,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
-49.43,15,Campus Ave & P2,out1,Vehicle{src=P6,id=4,dest=Campus Ave & P2 to Campus Ave & University Dr}
-49.43,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-49.43,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-53.3,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=17,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
-53.3,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 0, lengthInMetres: 190, speedLimitInKmph: 40
-53.3,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
-53.3,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
-56.81,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
-56.81,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=16,dest=P4 & University Dr to Raven Rd & University Dr}
-56.81,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
-56.81,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 310, speedLimitInKmph: 40
-56.81,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=16,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-56.81,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
-64.37,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-64.37,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=4,dest=Campus Ave & P2 to Campus Ave & University Dr}
-64.37,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-64.37,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 4, lengthInMetres: 516, speedLimitInKmph: 30
-64.37,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=4,dest=Campus Ave & University Dr to Library Rd & University Dr}
-64.37,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-64.46,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-64.46,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=11,dest=Campus Ave & P6 to Campus Ave & Library Rd}
-64.46,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 1, lengthInMetres: 347, speedLimitInKmph: 40
-64.46,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=11,dest=Campus Ave & Library Rd to Campus Ave & P2}
-64.46,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-64.46,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-65,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-65,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=6,dest=Library Rd & P1 to Campus Ave & Library Rd}
-65,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 700, speedLimitInKmph: 40
-65,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=6,dest=Campus Ave & Library Rd to Campus Ave & P2}
-65,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-65,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
-81.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-81.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=11,dest=Campus Ave & Library Rd to Campus Ave & P2}
-81.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-81.2,15,Campus Ave & P2,out1,Vehicle{src=P6,id=11,dest=Campus Ave & P2 to Campus Ave & University Dr}
-81.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-81.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-84.71,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=2,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-84.71,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 310, speedLimitInKmph: 40
-84.71,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-84.71,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 5, lengthInMetres: 516, speedLimitInKmph: 30
-84.71,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=2,dest=Campus Ave & University Dr to Library Rd & University Dr}
-84.71,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-95.69,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-95.69,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=18,dest=Campus Ave & P6 to Campus Ave & Library Rd}
-95.69,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 347, speedLimitInKmph: 40
-95.69,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=18,dest=Campus Ave & Library Rd to Campus Ave & P2}
-95.69,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-95.69,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
-96.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-96.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=11,dest=Campus Ave & P2 to Campus Ave & University Dr}
-96.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-96.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 6, lengthInMetres: 516, speedLimitInKmph: 30
-96.14,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=11,dest=Campus Ave & University Dr to Library Rd & University Dr}
-96.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-111.89,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-111.89,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=6,dest=Campus Ave & Library Rd to Campus Ave & P2}
-111.89,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-111.89,15,Campus Ave & P2,out1,Vehicle{src=P1,id=6,dest=Campus Ave & P2 to Campus Ave & University Dr}
-111.89,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-111.89,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-112.61,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=9,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-112.61,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 310, speedLimitInKmph: 40
-112.61,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-112.61,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 7, lengthInMetres: 516, speedLimitInKmph: 30
-112.61,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=9,dest=Campus Ave & University Dr to Library Rd & University Dr}
-112.61,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-126.83,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-126.83,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=6,dest=Campus Ave & P2 to Campus Ave & University Dr}
-126.83,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-126.83,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 8, lengthInMetres: 516, speedLimitInKmph: 30
-126.83,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=6,dest=Campus Ave & University Dr to Library Rd & University Dr}
-126.83,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-128,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-128,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=13,dest=Library Rd & P1 to Campus Ave & Library Rd}
-128,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 1, lengthInMetres: 700, speedLimitInKmph: 40
-128,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=13,dest=Campus Ave & Library Rd to Campus Ave & P2}
-128,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-128,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
-140.51,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=16,dest=Raven Rd & University Dr to Campus Ave & University Dr}
-140.51,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
-140.51,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-140.51,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 9, lengthInMetres: 516, speedLimitInKmph: 30
-140.51,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=16,dest=Campus Ave & University Dr to Library Rd & University Dr}
-140.51,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-144.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-144.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=18,dest=Campus Ave & Library Rd to Campus Ave & P2}
-144.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-144.2,15,Campus Ave & P2,out1,Vehicle{src=P6,id=18,dest=Campus Ave & P2 to Campus Ave & University Dr}
-144.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-144.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-159.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-159.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=18,dest=Campus Ave & P2 to Campus Ave & University Dr}
-159.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-159.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 10, lengthInMetres: 516, speedLimitInKmph: 30
-159.14,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=18,dest=Campus Ave & University Dr to Library Rd & University Dr}
-159.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-160.4,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-160.4,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=13,dest=Campus Ave & Library Rd to Campus Ave & P2}
-160.4,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
-160.4,15,Campus Ave & P2,out1,Vehicle{src=P1,id=13,dest=Campus Ave & P2 to Campus Ave & University Dr}
-160.4,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-160.4,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-175.34,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-175.34,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=13,dest=Campus Ave & P2 to Campus Ave & University Dr}
-175.34,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-175.34,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 11, lengthInMetres: 516, speedLimitInKmph: 30
-175.34,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=13,dest=Campus Ave & University Dr to Library Rd & University Dr}
-175.34,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-191,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
-191,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=20,dest=Library Rd & P1 to Campus Ave & Library Rd}
-191,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
-191,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=20,dest=Campus Ave & Library Rd to Campus Ave & P2}
-191,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-191,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
-207.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
-207.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=20,dest=Campus Ave & Library Rd to Campus Ave & P2}
-207.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
-207.2,15,Campus Ave & P2,out1,Vehicle{src=P1,id=20,dest=Campus Ave & P2 to Campus Ave & University Dr}
-207.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-207.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
-222.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
-222.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=20,dest=Campus Ave & P2 to Campus Ave & University Dr}
-222.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-222.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 12, lengthInMetres: 516, speedLimitInKmph: 30
-222.14,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=20,dest=Campus Ave & University Dr to Library Rd & University Dr}
-222.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-284.06,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=7,dest=Campus Ave & University Dr to Library Rd & University Dr}
-284.06,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 11, lengthInMetres: 516, speedLimitInKmph: 30
-284.06,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-284.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-284.06,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=7,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-284.06,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-288.14,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=7,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-288.14,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-288.14,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-288.14,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-345.98,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=14,dest=Campus Ave & University Dr to Library Rd & University Dr}
-345.98,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 10, lengthInMetres: 516, speedLimitInKmph: 30
-345.98,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-345.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-345.98,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=14,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-345.98,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-350.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=14,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-350.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-350.06,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-350.06,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-407.9,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=21,dest=Campus Ave & University Dr to Library Rd & University Dr}
-407.9,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 9, lengthInMetres: 516, speedLimitInKmph: 30
-407.9,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-407.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-407.9,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=21,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-407.9,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-411.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=21,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-411.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-411.98,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-411.98,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-469.82,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=4,dest=Campus Ave & University Dr to Library Rd & University Dr}
-469.82,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 8, lengthInMetres: 516, speedLimitInKmph: 30
-469.82,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-469.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-469.82,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=4,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-469.82,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-473.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=4,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-473.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-473.9,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-473.9,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-531.74,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=2,dest=Campus Ave & University Dr to Library Rd & University Dr}
-531.74,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 7, lengthInMetres: 516, speedLimitInKmph: 30
-531.74,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-531.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-531.74,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=2,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-531.74,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-535.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=2,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-535.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-535.82,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-535.82,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-593.66,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=11,dest=Campus Ave & University Dr to Library Rd & University Dr}
-593.66,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 6, lengthInMetres: 516, speedLimitInKmph: 30
-593.66,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-593.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-593.66,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=11,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-593.66,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-597.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=11,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-597.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-597.74,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-597.74,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-655.58,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=9,dest=Campus Ave & University Dr to Library Rd & University Dr}
-655.58,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 5, lengthInMetres: 516, speedLimitInKmph: 30
-655.58,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-655.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-655.58,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=9,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-655.58,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-659.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=9,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-659.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-659.66,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-659.66,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-717.5,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=6,dest=Campus Ave & University Dr to Library Rd & University Dr}
-717.5,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 4, lengthInMetres: 516, speedLimitInKmph: 30
-717.5,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-717.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-717.5,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=6,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-717.5,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-721.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=6,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-721.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-721.58,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-721.58,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-779.42,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=16,dest=Campus Ave & University Dr to Library Rd & University Dr}
-779.42,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 516, speedLimitInKmph: 30
-779.42,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-779.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-779.42,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=16,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-779.42,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-783.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=16,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-783.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-783.5,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-783.5,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-841.34,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=18,dest=Campus Ave & University Dr to Library Rd & University Dr}
-841.34,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 516, speedLimitInKmph: 30
-841.34,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-841.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-841.34,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=18,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-841.34,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-845.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=18,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-845.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-845.42,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-845.42,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-903.26,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=13,dest=Campus Ave & University Dr to Library Rd & University Dr}
-903.26,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 516, speedLimitInKmph: 30
-903.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-903.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-903.26,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=13,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-903.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-907.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=13,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-907.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-907.34,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-907.34,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-965.18,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=20,dest=Campus Ave & University Dr to Library Rd & University Dr}
-965.18,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
-965.18,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
-965.18,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
-965.18,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=20,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-965.18,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-969.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=20,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
-969.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-969.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
-969.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-969.26,1,Campus Ave & P6 to Roundabout,,Number of cars on road: 0, lengthInMetres: 92, speedLimitInKmph: 40
-969.26,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 0, lengthInMetres: 190, speedLimitInKmph: 40
-969.26,3,Stadium Way & University Dr to P5 & Stadium Way,,Number of cars on road: 0, lengthInMetres: 59, speedLimitInKmph: 40
-969.26,4,Stadium Way & University Dr to Roundabout,,Number of cars on road: 0, lengthInMetres: 153, speedLimitInKmph: 40
-969.26,5,Raven Rd & University Dr to P4 & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
-969.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
-969.26,7,Roundabout to Campus Ave & P6,,Number of cars on road: 0, lengthInMetres: 92, speedLimitInKmph: 40
-969.26,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 0, lengthInMetres: 133, speedLimitInKmph: 40
-969.26,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
-969.26,10,P3 & Raven Rd to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 185, speedLimitInKmph: 40
-969.26,11,Library Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
-969.26,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 141, speedLimitInKmph: 40
-969.26,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
-969.26,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
-969.26,15,Campus Ave & P2,,Number of vehicles in intersection: 0
-969.26,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
-969.26,17,P7,,0
-969.26,18,P5 & Stadium Way to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 59, speedLimitInKmph: 40
-969.26,19,P4,,0
-969.26,20,Library Rd & P1,,Number of vehicles in intersection: 0
-969.26,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
-969.26,22,P4 & University Dr,,Number of vehicles in intersection: 0
-969.26,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
-969.26,24,Campus Ave & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
-969.26,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
-969.26,26,P5,,0
-969.26,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 347, speedLimitInKmph: 40
-969.26,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
-969.26,29,P6,,0
-969.26,30,P3,,0
-969.26,31,P1,,0
-969.26,32,Raven Rd & University Dr to P3 & Raven Rd,,Number of cars on road: 0, lengthInMetres: 185, speedLimitInKmph: 40
-969.26,33,Stadium Way & University Dr,,Number of vehicles in intersection: 0
-969.26,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
-969.26,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
-969.26,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
-969.26,37,Roundabout to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 151, speedLimitInKmph: 40
-969.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
-969.26,39,P2,,0
-969.26,40,P4 & University Dr to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 219, speedLimitInKmph: 40
-969.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
-969.26,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
-969.26,43,Library Rd & P1 to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 204, speedLimitInKmph: 40
-969.26,44,Campus Ave & P6,,Number of vehicles in intersection: 0
-969.26,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
-969.26,46,Roundabout,,Number of vehicles in intersection: 0
-969.26,47,Library Rd & University Dr to Library Rd & P1,,Number of cars on road: 0, lengthInMetres: 204, speedLimitInKmph: 40
-969.26,48,Stadium Way & University Dr to P4 & University Dr,,Number of cars on road: 0, lengthInMetres: 219, speedLimitInKmph: 40
-969.26,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
-969.26,50,Campus Ave & Library Rd to Library Rd & P1,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
+5,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+5,17,P7,exit,Vehicle{src=P7,id=8,dest=}
+5,17,P7,,1
+5,19,P4,exit,Vehicle{src=P4,id=9,dest=}
+5,19,P4,,1
+5,20,Library Rd & P1,,Number of vehicles in intersection: 1
+5,21,P3 & Raven Rd,,Number of vehicles in intersection: 1
+5,22,P4 & University Dr,,Number of vehicles in intersection: 1
+5,26,P5,exit,Vehicle{src=P5,id=10,dest=}
+5,26,P5,,1
+5,28,P5 & Stadium Way,,Number of vehicles in intersection: 1
+5,29,P6,exit,Vehicle{src=P6,id=11,dest=}
+5,29,P6,,1
+5,30,P3,exit,Vehicle{src=P3,id=12,dest=}
+5,30,P3,,1
+5,31,P1,exit,Vehicle{src=P1,id=13,dest=}
+5,31,P1,,1
+5,39,P2,exit,Vehicle{src=P2,id=14,dest=}
+5,39,P2,,1
+5,44,Campus Ave & P6,,Number of vehicles in intersection: 1
+5,46,Roundabout,,Number of vehicles in intersection: 1
+5,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 2, lengthInMetres: 190, speedLimitInKmph: 40
+5,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 2, lengthInMetres: 133, speedLimitInKmph: 40
+5,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 141, speedLimitInKmph: 40
+5,15,Campus Ave & P2,out1,Vehicle{src=P2,id=14,dest=Campus Ave & P2 to Campus Ave & University Dr}
+5,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+5,20,Library Rd & P1,out2,Vehicle{src=P1,id=13,dest=Library Rd & P1 to Campus Ave & Library Rd}
+5,20,Library Rd & P1,,Number of vehicles in intersection: 0
+5,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=12,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+5,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
+5,22,P4 & University Dr,out1,Vehicle{src=P4,id=9,dest=P4 & University Dr to Raven Rd & University Dr}
+5,22,P4 & University Dr,,Number of vehicles in intersection: 0
+5,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 700, speedLimitInKmph: 40
+5,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 347, speedLimitInKmph: 40
+5,28,P5 & Stadium Way,out2,Vehicle{src=P5,id=10,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
+5,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
+5,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 203, speedLimitInKmph: 40
+5,44,Campus Ave & P6,out2,Vehicle{src=P6,id=11,dest=Campus Ave & P6 to Campus Ave & Library Rd}
+5,44,Campus Ave & P6,,Number of vehicles in intersection: 0
+5,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 166, speedLimitInKmph: 40
+5,46,Roundabout,out2,Vehicle{src=P7,id=8,dest=Roundabout to Bronson Ave & University Dr}
+5,46,Roundabout,,Number of vehicles in intersection: 0
+10,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+10,17,P7,exit,Vehicle{src=P7,id=15,dest=}
+10,17,P7,,0
+10,19,P4,exit,Vehicle{src=P4,id=16,dest=}
+10,19,P4,,0
+10,20,Library Rd & P1,,Number of vehicles in intersection: 1
+10,21,P3 & Raven Rd,,Number of vehicles in intersection: 1
+10,22,P4 & University Dr,,Number of vehicles in intersection: 1
+10,26,P5,exit,Vehicle{src=P5,id=17,dest=}
+10,26,P5,,0
+10,28,P5 & Stadium Way,,Number of vehicles in intersection: 1
+10,29,P6,exit,Vehicle{src=P6,id=18,dest=}
+10,29,P6,,0
+10,30,P3,exit,Vehicle{src=P3,id=19,dest=}
+10,30,P3,,0
+10,31,P1,exit,Vehicle{src=P1,id=20,dest=}
+10,31,P1,,0
+10,39,P2,exit,Vehicle{src=P2,id=21,dest=}
+10,39,P2,,0
+10,44,Campus Ave & P6,,Number of vehicles in intersection: 1
+10,46,Roundabout,,Number of vehicles in intersection: 1
+10,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 3, lengthInMetres: 190, speedLimitInKmph: 40
+10,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 3, lengthInMetres: 133, speedLimitInKmph: 40
+10,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 141, speedLimitInKmph: 40
+10,15,Campus Ave & P2,out1,Vehicle{src=P2,id=21,dest=Campus Ave & P2 to Campus Ave & University Dr}
+10,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+10,20,Library Rd & P1,out2,Vehicle{src=P1,id=20,dest=Library Rd & P1 to Campus Ave & Library Rd}
+10,20,Library Rd & P1,,Number of vehicles in intersection: 0
+10,21,P3 & Raven Rd,out2,Vehicle{src=P3,id=19,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+10,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
+10,22,P4 & University Dr,out1,Vehicle{src=P4,id=16,dest=P4 & University Dr to Raven Rd & University Dr}
+10,22,P4 & University Dr,,Number of vehicles in intersection: 0
+10,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 3, lengthInMetres: 700, speedLimitInKmph: 40
+10,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 3, lengthInMetres: 347, speedLimitInKmph: 40
+10,28,P5 & Stadium Way,out2,Vehicle{src=P5,id=17,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
+10,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
+10,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 203, speedLimitInKmph: 40
+10,44,Campus Ave & P6,out2,Vehicle{src=P6,id=18,dest=Campus Ave & P6 to Campus Ave & Library Rd}
+10,44,Campus Ave & P6,,Number of vehicles in intersection: 0
+10,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 166, speedLimitInKmph: 40
+10,46,Roundabout,out2,Vehicle{src=P7,id=15,dest=Roundabout to Bronson Ave & University Dr}
+10,46,Roundabout,,Number of vehicles in intersection: 0
+21.97,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=5,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+21.97,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 2, lengthInMetres: 133, speedLimitInKmph: 40
+21.97,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
+21.97,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
+22.69,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=1,dest=Roundabout to Bronson Ave & University Dr}
+22.69,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 141, speedLimitInKmph: 40
+22.69,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
+22.69,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
+24.94,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+24.94,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=7,dest=Campus Ave & P2 to Campus Ave & University Dr}
+24.94,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 166, speedLimitInKmph: 40
+24.94,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 516, speedLimitInKmph: 30
+24.94,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=7,dest=Campus Ave & University Dr to Library Rd & University Dr}
+24.94,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+27.1,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=3,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
+27.1,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 2, lengthInMetres: 190, speedLimitInKmph: 40
+27.1,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
+27.1,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
+28.27,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
+28.27,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=2,dest=P4 & University Dr to Raven Rd & University Dr}
+28.27,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 203, speedLimitInKmph: 40
+28.27,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 310, speedLimitInKmph: 40
+28.27,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=2,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+28.27,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
+33.94,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=12,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+33.94,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 1, lengthInMetres: 133, speedLimitInKmph: 40
+33.94,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
+33.94,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
+35.38,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=8,dest=Roundabout to Bronson Ave & University Dr}
+35.38,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 141, speedLimitInKmph: 40
+35.38,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
+35.38,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
+39.88,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+39.88,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=14,dest=Campus Ave & P2 to Campus Ave & University Dr}
+39.88,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+39.88,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 516, speedLimitInKmph: 30
+39.88,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=14,dest=Campus Ave & University Dr to Library Rd & University Dr}
+39.88,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+41.23,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+41.23,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=4,dest=Campus Ave & P6 to Campus Ave & Library Rd}
+41.23,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 347, speedLimitInKmph: 40
+41.23,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=4,dest=Campus Ave & Library Rd to Campus Ave & P2}
+41.23,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+41.23,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+44.2,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=10,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
+44.2,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 1, lengthInMetres: 190, speedLimitInKmph: 40
+44.2,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
+44.2,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
+45.91,8,P3 & Raven Rd to Bronson Ave & Raven Rd,exit,Vehicle{src=P3,id=19,dest=P3 & Raven Rd to Bronson Ave & Raven Rd}
+45.91,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 0, lengthInMetres: 133, speedLimitInKmph: 40
+45.91,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 1
+45.91,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
+46.54,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
+46.54,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=9,dest=P4 & University Dr to Raven Rd & University Dr}
+46.54,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 203, speedLimitInKmph: 40
+46.54,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 310, speedLimitInKmph: 40
+46.54,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=9,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+46.54,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
+48.07,12,Roundabout to Bronson Ave & University Dr,exit,Vehicle{src=P7,id=15,dest=Roundabout to Bronson Ave & University Dr}
+48.07,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 141, speedLimitInKmph: 40
+48.07,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 1
+48.07,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
+54.82,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+54.82,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P2,id=21,dest=Campus Ave & P2 to Campus Ave & University Dr}
+54.82,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+54.82,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 516, speedLimitInKmph: 30
+54.82,36,Campus Ave & University Dr,out1,Vehicle{src=P2,id=21,dest=Campus Ave & University Dr to Library Rd & University Dr}
+54.82,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+57.43,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+57.43,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=4,dest=Campus Ave & Library Rd to Campus Ave & P2}
+57.43,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
+57.43,15,Campus Ave & P2,out1,Vehicle{src=P6,id=4,dest=Campus Ave & P2 to Campus Ave & University Dr}
+57.43,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+57.43,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+61.3,2,P5 & Stadium Way to Bronson Ave & Stadium Way,exit,Vehicle{src=P5,id=17,dest=P5 & Stadium Way to Bronson Ave & Stadium Way}
+61.3,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 0, lengthInMetres: 190, speedLimitInKmph: 40
+61.3,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 1
+61.3,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
+64.81,14,Raven Rd & University Dr,,Number of vehicles in intersection: 1
+64.81,35,P4 & University Dr to Raven Rd & University Dr,exit,Vehicle{src=P4,id=16,dest=P4 & University Dr to Raven Rd & University Dr}
+64.81,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
+64.81,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 3, lengthInMetres: 310, speedLimitInKmph: 40
+64.81,14,Raven Rd & University Dr,out1,Vehicle{src=P4,id=16,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+64.81,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
+72.37,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+72.37,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=4,dest=Campus Ave & P2 to Campus Ave & University Dr}
+72.37,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+72.37,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 4, lengthInMetres: 516, speedLimitInKmph: 30
+72.37,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=4,dest=Campus Ave & University Dr to Library Rd & University Dr}
+72.37,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+72.46,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+72.46,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=11,dest=Campus Ave & P6 to Campus Ave & Library Rd}
+72.46,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 1, lengthInMetres: 347, speedLimitInKmph: 40
+72.46,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=11,dest=Campus Ave & Library Rd to Campus Ave & P2}
+72.46,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+72.46,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+73,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+73,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=6,dest=Library Rd & P1 to Campus Ave & Library Rd}
+73,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 2, lengthInMetres: 700, speedLimitInKmph: 40
+73,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=6,dest=Campus Ave & Library Rd to Campus Ave & P2}
+73,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+73,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
+89.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+89.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=11,dest=Campus Ave & Library Rd to Campus Ave & P2}
+89.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+89.2,15,Campus Ave & P2,out1,Vehicle{src=P6,id=11,dest=Campus Ave & P2 to Campus Ave & University Dr}
+89.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+89.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+92.71,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=2,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+92.71,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 2, lengthInMetres: 310, speedLimitInKmph: 40
+92.71,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+92.71,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 5, lengthInMetres: 516, speedLimitInKmph: 30
+92.71,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=2,dest=Campus Ave & University Dr to Library Rd & University Dr}
+92.71,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+103.69,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+103.69,27,Campus Ave & P6 to Campus Ave & Library Rd,exit,Vehicle{src=P6,id=18,dest=Campus Ave & P6 to Campus Ave & Library Rd}
+103.69,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 347, speedLimitInKmph: 40
+103.69,23,Campus Ave & Library Rd,out2,Vehicle{src=P6,id=18,dest=Campus Ave & Library Rd to Campus Ave & P2}
+103.69,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+103.69,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
+104.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+104.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=11,dest=Campus Ave & P2 to Campus Ave & University Dr}
+104.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+104.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 6, lengthInMetres: 516, speedLimitInKmph: 30
+104.14,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=11,dest=Campus Ave & University Dr to Library Rd & University Dr}
+104.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+119.89,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+119.89,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=6,dest=Campus Ave & Library Rd to Campus Ave & P2}
+119.89,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+119.89,15,Campus Ave & P2,out1,Vehicle{src=P1,id=6,dest=Campus Ave & P2 to Campus Ave & University Dr}
+119.89,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+119.89,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+120.61,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=9,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+120.61,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 310, speedLimitInKmph: 40
+120.61,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+120.61,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 7, lengthInMetres: 516, speedLimitInKmph: 30
+120.61,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=9,dest=Campus Ave & University Dr to Library Rd & University Dr}
+120.61,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+134.83,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+134.83,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=6,dest=Campus Ave & P2 to Campus Ave & University Dr}
+134.83,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+134.83,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 8, lengthInMetres: 516, speedLimitInKmph: 30
+134.83,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=6,dest=Campus Ave & University Dr to Library Rd & University Dr}
+134.83,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+136,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+136,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=13,dest=Library Rd & P1 to Campus Ave & Library Rd}
+136,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 1, lengthInMetres: 700, speedLimitInKmph: 40
+136,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=13,dest=Campus Ave & Library Rd to Campus Ave & P2}
+136,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+136,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 2, lengthInMetres: 180, speedLimitInKmph: 40
+148.51,9,Raven Rd & University Dr to Campus Ave & University Dr,exit,Vehicle{src=P4,id=16,dest=Raven Rd & University Dr to Campus Ave & University Dr}
+148.51,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
+148.51,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+148.51,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 9, lengthInMetres: 516, speedLimitInKmph: 30
+148.51,36,Campus Ave & University Dr,out1,Vehicle{src=P4,id=16,dest=Campus Ave & University Dr to Library Rd & University Dr}
+148.51,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+152.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+152.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P6,id=18,dest=Campus Ave & Library Rd to Campus Ave & P2}
+152.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+152.2,15,Campus Ave & P2,out1,Vehicle{src=P6,id=18,dest=Campus Ave & P2 to Campus Ave & University Dr}
+152.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+152.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+167.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+167.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P6,id=18,dest=Campus Ave & P2 to Campus Ave & University Dr}
+167.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+167.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 10, lengthInMetres: 516, speedLimitInKmph: 30
+167.14,36,Campus Ave & University Dr,out1,Vehicle{src=P6,id=18,dest=Campus Ave & University Dr to Library Rd & University Dr}
+167.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+168.4,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+168.4,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=13,dest=Campus Ave & Library Rd to Campus Ave & P2}
+168.4,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
+168.4,15,Campus Ave & P2,out1,Vehicle{src=P1,id=13,dest=Campus Ave & P2 to Campus Ave & University Dr}
+168.4,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+168.4,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+183.34,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+183.34,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=13,dest=Campus Ave & P2 to Campus Ave & University Dr}
+183.34,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+183.34,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 11, lengthInMetres: 516, speedLimitInKmph: 30
+183.34,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=13,dest=Campus Ave & University Dr to Library Rd & University Dr}
+183.34,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+199,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 1
+199,25,Library Rd & P1 to Campus Ave & Library Rd,exit,Vehicle{src=P1,id=20,dest=Library Rd & P1 to Campus Ave & Library Rd}
+199,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
+199,23,Campus Ave & Library Rd,out2,Vehicle{src=P1,id=20,dest=Campus Ave & Library Rd to Campus Ave & P2}
+199,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+199,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 1, lengthInMetres: 180, speedLimitInKmph: 40
+215.2,15,Campus Ave & P2,,Number of vehicles in intersection: 1
+215.2,34,Campus Ave & Library Rd to Campus Ave & P2,exit,Vehicle{src=P1,id=20,dest=Campus Ave & Library Rd to Campus Ave & P2}
+215.2,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
+215.2,15,Campus Ave & P2,out1,Vehicle{src=P1,id=20,dest=Campus Ave & P2 to Campus Ave & University Dr}
+215.2,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+215.2,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 1, lengthInMetres: 166, speedLimitInKmph: 40
+230.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 1
+230.14,45,Campus Ave & P2 to Campus Ave & University Dr,exit,Vehicle{src=P1,id=20,dest=Campus Ave & P2 to Campus Ave & University Dr}
+230.14,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+230.14,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 12, lengthInMetres: 516, speedLimitInKmph: 30
+230.14,36,Campus Ave & University Dr,out1,Vehicle{src=P1,id=20,dest=Campus Ave & University Dr to Library Rd & University Dr}
+230.14,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+292.06,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=7,dest=Campus Ave & University Dr to Library Rd & University Dr}
+292.06,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 11, lengthInMetres: 516, speedLimitInKmph: 30
+292.06,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+292.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+292.06,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=7,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+292.06,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+296.14,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=7,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+296.14,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+296.14,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+296.14,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+353.98,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=14,dest=Campus Ave & University Dr to Library Rd & University Dr}
+353.98,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 10, lengthInMetres: 516, speedLimitInKmph: 30
+353.98,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+353.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+353.98,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=14,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+353.98,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+358.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=14,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+358.06,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+358.06,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+358.06,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+415.9,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P2,id=21,dest=Campus Ave & University Dr to Library Rd & University Dr}
+415.9,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 9, lengthInMetres: 516, speedLimitInKmph: 30
+415.9,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+415.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+415.9,38,Library Rd & University Dr,out3,Vehicle{src=P2,id=21,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+415.9,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+419.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P2,id=21,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+419.98,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+419.98,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+419.98,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+477.82,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=4,dest=Campus Ave & University Dr to Library Rd & University Dr}
+477.82,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 8, lengthInMetres: 516, speedLimitInKmph: 30
+477.82,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+477.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+477.82,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=4,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+477.82,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+481.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=4,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+481.9,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+481.9,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+481.9,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+539.74,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=2,dest=Campus Ave & University Dr to Library Rd & University Dr}
+539.74,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 7, lengthInMetres: 516, speedLimitInKmph: 30
+539.74,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+539.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+539.74,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=2,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+539.74,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+543.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=2,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+543.82,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+543.82,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+543.82,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+601.66,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=11,dest=Campus Ave & University Dr to Library Rd & University Dr}
+601.66,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 6, lengthInMetres: 516, speedLimitInKmph: 30
+601.66,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+601.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+601.66,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=11,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+601.66,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+605.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=11,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+605.74,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+605.74,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+605.74,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+663.58,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=9,dest=Campus Ave & University Dr to Library Rd & University Dr}
+663.58,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 5, lengthInMetres: 516, speedLimitInKmph: 30
+663.58,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+663.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+663.58,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=9,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+663.58,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+667.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=9,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+667.66,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+667.66,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+667.66,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+725.5,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=6,dest=Campus Ave & University Dr to Library Rd & University Dr}
+725.5,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 4, lengthInMetres: 516, speedLimitInKmph: 30
+725.5,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+725.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+725.5,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=6,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+725.5,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+729.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=6,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+729.58,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+729.58,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+729.58,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+787.42,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P4,id=16,dest=Campus Ave & University Dr to Library Rd & University Dr}
+787.42,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 3, lengthInMetres: 516, speedLimitInKmph: 30
+787.42,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+787.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+787.42,38,Library Rd & University Dr,out3,Vehicle{src=P4,id=16,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+787.42,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+791.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P4,id=16,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+791.5,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+791.5,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+791.5,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+849.34,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P6,id=18,dest=Campus Ave & University Dr to Library Rd & University Dr}
+849.34,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 2, lengthInMetres: 516, speedLimitInKmph: 30
+849.34,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+849.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+849.34,38,Library Rd & University Dr,out3,Vehicle{src=P6,id=18,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+849.34,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+853.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P6,id=18,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+853.42,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+853.42,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+853.42,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+911.26,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=13,dest=Campus Ave & University Dr to Library Rd & University Dr}
+911.26,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 1, lengthInMetres: 516, speedLimitInKmph: 30
+911.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+911.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+911.26,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=13,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+911.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+915.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=13,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+915.34,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+915.34,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+915.34,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+973.18,13,Campus Ave & University Dr to Library Rd & University Dr,exit,Vehicle{src=P1,id=20,dest=Campus Ave & University Dr to Library Rd & University Dr}
+973.18,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
+973.18,38,Library Rd & University Dr,,Number of vehicles in intersection: 1
+973.18,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 1, lengthInMetres: 34, speedLimitInKmph: 30
+973.18,38,Library Rd & University Dr,out3,Vehicle{src=P1,id=20,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+973.18,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+977.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,exit,Vehicle{src=P1,id=20,dest=Library Rd & University Dr to Colonel By Dr & University Dr}
+977.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+977.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 1
+977.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+977.26,1,Campus Ave & P6 to Roundabout,,Number of cars on road: 0, lengthInMetres: 92, speedLimitInKmph: 40
+977.26,2,P5 & Stadium Way to Bronson Ave & Stadium Way,,Number of cars on road: 0, lengthInMetres: 190, speedLimitInKmph: 40
+977.26,3,Stadium Way & University Dr to P5 & Stadium Way,,Number of cars on road: 0, lengthInMetres: 59, speedLimitInKmph: 40
+977.26,4,Stadium Way & University Dr to Roundabout,,Number of cars on road: 0, lengthInMetres: 153, speedLimitInKmph: 40
+977.26,5,Raven Rd & University Dr to P4 & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
+977.26,6,Library Rd & University Dr to Colonel By Dr & University Dr,,Number of cars on road: 0, lengthInMetres: 34, speedLimitInKmph: 30
+977.26,7,Roundabout to Campus Ave & P6,,Number of cars on road: 0, lengthInMetres: 92, speedLimitInKmph: 40
+977.26,8,P3 & Raven Rd to Bronson Ave & Raven Rd,,Number of cars on road: 0, lengthInMetres: 133, speedLimitInKmph: 40
+977.26,9,Raven Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
+977.26,10,P3 & Raven Rd to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 185, speedLimitInKmph: 40
+977.26,11,Library Rd & University Dr to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
+977.26,12,Roundabout to Bronson Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 141, speedLimitInKmph: 40
+977.26,13,Campus Ave & University Dr to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 516, speedLimitInKmph: 30
+977.26,14,Raven Rd & University Dr,,Number of vehicles in intersection: 0
+977.26,15,Campus Ave & P2,,Number of vehicles in intersection: 0
+977.26,16,Bronson Ave & Raven Rd,,Number of vehicles in intersection: 0
+977.26,17,P7,,0
+977.26,18,P5 & Stadium Way to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 59, speedLimitInKmph: 40
+977.26,19,P4,,0
+977.26,20,Library Rd & P1,,Number of vehicles in intersection: 0
+977.26,21,P3 & Raven Rd,,Number of vehicles in intersection: 0
+977.26,22,P4 & University Dr,,Number of vehicles in intersection: 0
+977.26,23,Campus Ave & Library Rd,,Number of vehicles in intersection: 0
+977.26,24,Campus Ave & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 310, speedLimitInKmph: 40
+977.26,25,Library Rd & P1 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
+977.26,26,P5,,0
+977.26,27,Campus Ave & P6 to Campus Ave & Library Rd,,Number of cars on road: 0, lengthInMetres: 347, speedLimitInKmph: 40
+977.26,28,P5 & Stadium Way,,Number of vehicles in intersection: 0
+977.26,29,P6,,0
+977.26,30,P3,,0
+977.26,31,P1,,0
+977.26,32,Raven Rd & University Dr to P3 & Raven Rd,,Number of cars on road: 0, lengthInMetres: 185, speedLimitInKmph: 40
+977.26,33,Stadium Way & University Dr,,Number of vehicles in intersection: 0
+977.26,34,Campus Ave & Library Rd to Campus Ave & P2,,Number of cars on road: 0, lengthInMetres: 180, speedLimitInKmph: 40
+977.26,35,P4 & University Dr to Raven Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 203, speedLimitInKmph: 40
+977.26,36,Campus Ave & University Dr,,Number of vehicles in intersection: 0
+977.26,37,Roundabout to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 151, speedLimitInKmph: 40
+977.26,38,Library Rd & University Dr,,Number of vehicles in intersection: 0
+977.26,39,P2,,0
+977.26,40,P4 & University Dr to Stadium Way & University Dr,,Number of cars on road: 0, lengthInMetres: 219, speedLimitInKmph: 40
+977.26,41,Colonel By Dr & University Dr,,Number of vehicles in intersection: 0
+977.26,42,Bronson Ave & Stadium Way,,Number of vehicles in intersection: 0
+977.26,43,Library Rd & P1 to Library Rd & University Dr,,Number of cars on road: 0, lengthInMetres: 204, speedLimitInKmph: 40
+977.26,44,Campus Ave & P6,,Number of vehicles in intersection: 0
+977.26,45,Campus Ave & P2 to Campus Ave & University Dr,,Number of cars on road: 0, lengthInMetres: 166, speedLimitInKmph: 40
+977.26,46,Roundabout,,Number of vehicles in intersection: 0
+977.26,47,Library Rd & University Dr to Library Rd & P1,,Number of cars on road: 0, lengthInMetres: 204, speedLimitInKmph: 40
+977.26,48,Stadium Way & University Dr to P4 & University Dr,,Number of cars on road: 0, lengthInMetres: 219, speedLimitInKmph: 40
+977.26,49,Bronson Ave & University Dr,,Number of vehicles in intersection: 0
+977.26,50,Campus Ave & Library Rd to Library Rd & P1,,Number of cars on road: 0, lengthInMetres: 700, speedLimitInKmph: 40
