@@ -1,7 +1,7 @@
-#Carleton University Road Network & Simulation Data Generator
+# Carleton University Road Network & Simulation Data Generator
 This script downloads, processes, and exports a drivable road network for Carleton University (Ottawa, Canada) using OpenStreetMap data.
 
-#Environment Setup
+## Environment Setup
 Python 3.8+ recommended
 ```
 python3 -m venv venv
@@ -12,14 +12,14 @@ pip install scikit-learn --no-cache-dir
 ```
 
 
-#Usage
+## Usage
 To execute the data creation run
 ```
 cd data_creation
 python3 your_script_name.py
 ```
 
-#Outputs
+## Outputs
 There will be a 3 file output
 
 1. carleton_campus_car_roads.geojson
