@@ -55,8 +55,8 @@ public:
         // Vehicles enter road. 
 
         // Update all travel times based on elapsed time.
-        for (Vehicle v : state.vehicles) {
-            v.t = v.t - e;
+        for (int i = 0; i < state.vehicles.size(); i++) {
+            state.vehicles[i].t = state.vehicles[i].t - e;
         }
 
         if (!entrance->getBag().empty()) {
