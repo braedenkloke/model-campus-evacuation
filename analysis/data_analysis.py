@@ -5,7 +5,23 @@ import csv
 from collections import defaultdict
 from math import ceil
 
-# regular expressions to extract vehicle ID and destination from message
+import geopandas as gpd
+from collections import defaultdict
+
+gdf = gpd.read_file("data_creation/carleton_campus_car_roads.geojson")
+gdf_m = gdf.to_crs(epsg=32618)
+gdf["seg_len_m"] = gdf_m.geometry.length
+
+road_length_m = defaultdict(float)
+
+for row in gdf.itertuples(index=False):
+    sim_roads = getattr(row, "sim_roads", None)
+    if sim_roads is None or isinstance(sim_roads, float) or len(sim_roads) == 0:
+        continue
+    for sr in sim_roads:
+        road_length_m[sr.strip()] += float(row.seg_len_m)
+
+# Regular expressions to extract vehicle ID and destination from message
 VEH_RE = re.compile(r"id=(\d+)")
 DEST_RE = re.compile(r"dest=([^}]*)")
 
@@ -19,11 +35,11 @@ def parse_line(line: str):
     if not line:
         return None
 
-    # skip Excel hint row
+    # Skip Excel hint row
     if line.startswith("sep="):
         return None
     
-    # skip header
+    # Skip header
     if line.startswith("time,"):
         return None
     
@@ -31,18 +47,18 @@ def parse_line(line: str):
     if len(parts) < 5:
         return None
     
-    # turn time into a float
+    # Turn time into a float
     t = float(parts[0])
     model_id = int(parts[1])
     model_name = parts[2]
     port_name = parts[3]
     msg = parts[4]
 
-    # extract vehicle ID and destination using regex
+    # Extract vehicle ID and destination using regex
     m = VEH_RE.search(msg)
     vehicle_id = int(m.group(1)) if m else None
 
-    # extract destination
+    # Extract destination
     d = DEST_RE.search(msg)
     dest = d.group(1).strip() if d else ""  # dest can be empty
 
@@ -64,10 +80,10 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
     lot_depart_time = {} # vid -> first time vehicle exited parking lot
     campus_exit_time = {} # vid -> first time vehicle exited campus
     
-    # for evac curve
+    # For evac curve
     evac_events = [] # (t, delta)
 
-    # for road heatmap
+    # For road heatmap
     roads_seen = set()
     road_events= [] # (t, road, delta)
 
@@ -106,18 +122,18 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
                 roads_seen.add(road)
                 road_events.append((t, road, -1))
             
-    # compute metrics
+    # Compute metrics
     total_sim_time = max(all_times) if all_times else 0.0
 
     exited_vids = sorted(campus_exit_time.keys())
 
-    # avg from t=0 is just avg(exit_time)
+    # Avg from t=0 is just avg(exit_time)
     avg_from_t0 = (
         sum(campus_exit_time[v] for v in exited_vids) / len(exited_vids)
         if exited_vids else None
     )
 
-    # avg from leaving lot is avg(exit_time - lot_depart_time)
+    # Avg from leaving lot is avg(exit_time - lot_depart_time)
     lot_based_times = []
     for v in exited_vids:
         if v in lot_depart_time:
@@ -129,8 +145,8 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
 
     cars_per_min = (len(exited_vids) / total_sim_time) * 60.0
 
-    # evacuation curve
-    # treating "lot exit" as entering campus, and "campus exit" as leaving campus
+    # Evacuation curve
+    # Treating "lot exit" as entering campus, and "campus exit" as leaving campus
     for v, st in lot_depart_time.items():
         evac_events.append((st, +1))
     for v, et in campus_exit_time.items():
@@ -151,7 +167,7 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
             i += 1
         curve.append((t, occ))
 
-    # heatmap data
+    # Heatmap data
     roads = sorted(roads_seen)
     road_events.sort()
 
@@ -164,8 +180,12 @@ def analyze_log(path: str, exit_models = None, dt_sample: float = 1.0):
             _, road, delta = road_events[j]
             road_occ[road] += delta
             j += 1
+
+        EPS = 1e-9
         for road in roads:
-            heat[road].append(road_occ[road])
+            L = max(road_length_m.get(road, 0.0), EPS)  # meters
+            cars_per_100m = road_occ[road] / (L / 100.0)
+            heat[road].append(cars_per_100m)
 
     return {
         "total_sim_time": total_sim_time,
@@ -228,7 +248,7 @@ if __name__ == "__main__":
     parser.add_argument("--dt", type=float, default=1.0, help="Sampling interval for curve/heatmap")
     args = parser.parse_args()
 
-    # due to how logging is done, exit time = when the vehicle finished the last road segment that connect to outiside
+    # Due to how logging is done, exit time = when the vehicle finished the last road segment that connect to outiside
     exits = {
         "P3 & Raven Rd to Bronson Ave & Raven Rd",
         "Library Rd & University Dr to Colonel By Dr & University Dr",
