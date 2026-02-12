@@ -2,4 +2,15 @@
 #
 # Runs all scenarios as a batch.
 
-./bin/campus_evacuation -i input_data/parking_lot_schedules/scenario_01.csv #-o output_data/raw/scenario_01_log.csv
+declare -a scenarios=(
+    "scenario_01"
+    "scenario_02"
+    "scenario_03"
+)   
+
+for s in "${scenarios[@]}"; do
+    ./bin/campus_evacuation -i input_data/parking_lot_schedules/${s}.csv -o output_data/raw/${s}_log.csv
+    python analysis/data_analysis.py output_data/raw/${s}_log.csv
+    python analysis/visualize_processed.py output_data/processed
+    cp -v output_data/processed/heatmap_matrix.png output_data/processed/${s}_heatmap.png
+    done

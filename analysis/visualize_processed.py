@@ -4,6 +4,8 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
+MAX_CARS_PER_100_M = 25.0
+
 def read_summary_csv(path: str) -> dict:
     with open(path, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
@@ -25,13 +27,16 @@ def read_heatmap_csv(path: str):
         header = next(reader)  # ["time", road1, road2, ...]
         roads = header[1:]
         times = []
-        rows = []
+        cars_per_100_m = []
         for row in reader:
-            if not row:
-                continue
             times.append(float(row[0]))
-            rows.append([float(x) for x in row[1:]])
-    M = np.array(rows)
+            cars_per_100_m.append([float(x) for x in row[1:]])
+            #for i in range(len(cars_per_100_m[0])):
+             #   if cars_per_100_m[0][i] > MAX_CARS_PER_100_M:
+              #      cars_per_100_m[0][i] = MAX_CARS_PER_100_M
+            #for i in cars_per_100_m[0]:
+             #   assert i <= MAX_CARS_PER_100_M, f"Value {i} exceeds max {MAX_CARS_PER_100_M}"
+    M = np.array(cars_per_100_m)
     return np.array(times), roads, M
 
 def write_summary_txt(summary_dict: dict, out_path: str):
@@ -69,7 +74,7 @@ def plot_heatmap(times, roads, M, out_path: str, max_roads_label=20):
     # M is (T, R)
     # roads on Y (rows), time on X (cols) by transposing.
     plt.figure(figsize=(12, 6))
-    plt.imshow(M.T, aspect="auto", origin="lower", cmap="plasma")
+    plt.imshow(M.T, aspect="auto", origin="lower", cmap="plasma", vmax=MAX_CARS_PER_100_M)
 
     plt.xlabel("Time (s)")
     plt.ylabel("Roads Used in This Simulation")
