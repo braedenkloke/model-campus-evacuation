@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
           cxxopts::value<std::string>()->default_value("input_data/parking_lot_schedules/default.csv"))
         ("o,output", "Output file name", cxxopts::value<std::string>()->default_value("")) 
         ("od-data", "Origin destination data file name", 
-         cxxopts::value<std::string>()->default_value("input_data/od_data/campus_traffic_flow_01.csv"))
+         cxxopts::value<std::string>()->default_value("input_data/od_data/simple_poll_results.csv"))
         ("m,max-sim-time", "Max simulation time", cxxopts::value<double>()->default_value("10000.0"))
         ("h,help", "Print usage")
         ;
