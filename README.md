@@ -26,12 +26,18 @@ To execute all scenarios as a batch, run
 source run_scenarios.sh
 ```
 
+To render an animation of simulation, run
+```
+python analysis/create_heatmap_animation.py
+```
+
 ## Install
 Instructions for installing this project's dependencies.
 
-* **Cadmium**: Install Cadmium by following the instructions in the [Cadmium Installation Manual](https://devssim.carleton.ca/manuals/installation/).
-* **External C libraries**: Run, `install.sh`
-* **External Python libraries**: Create a Python virtual environment and run, `pip install -r requirements.txt`
+* Cadmium: Install Cadmium by following the instructions in the [Cadmium Installation Manual](https://devssim.carleton.ca/manuals/installation/).
+* External C libraries: Run, `install.sh`
+* External Python libraries: Create a Python virtual environment and run, `pip install -r requirements.txt`
+* [FFmpeg](https://ffmpeg.org/): Install according to your OS
 
 ## Further Reading
 - [Cadmium and the DEVSsim Server](https://devssim.carleton.ca/): Two tools for discrete-event modeling and simulation.
