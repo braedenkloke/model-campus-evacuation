@@ -9,12 +9,11 @@ from pathlib import Path
 import contextily as ctx
 import argparse
 
-def create_heatmap_animation(heatmap_data, output_file):
+def create_heatmap_animation(heatmap_data_filename):
     """
     Creates a heatmap animation from heatmap data.
 
-    heatmap_data: Heatmap matrix formatted as a CSV
-    output_file: Output filename 
+    heatmap_data_filename: Filename of heatmap matrix CSV
     """
     HERE = Path(__file__).resolve().parent
     ROOT = HERE.parent
@@ -43,7 +42,7 @@ def create_heatmap_animation(heatmap_data, output_file):
             sim_to_edges.setdefault(sr, []).append(eid)
 
     # Load heat matrix
-    HEAT_PATH = ROOT / "output_data" / "processed" / heatmap_data
+    HEAT_PATH = ROOT / "output_data" / "processed" / heatmap_data_filename
     heat = pd.read_csv(HEAT_PATH)
     heat.columns = heat.columns.str.strip()
 
@@ -128,19 +127,19 @@ def create_heatmap_animation(heatmap_data, output_file):
         return lc, time_text
 
     anim = FuncAnimation(fig, update, frames=T, interval=200, blit=False)
-    out = f"{OUTPUT_DATA_DIR}/{output_file}.mp4"
-    anim.save(out, writer="ffmpeg", fps=8)
-    print(out)
+    out_filename,_ = heatmap_data_filename.split(".")
+    out_path = f"{OUTPUT_DATA_DIR}/{out_filename}_animation.mp4"
+    anim.save(out_path, writer="ffmpeg", fps=8)
+    print(out_path)
 
     plt.close(fig)
 
 def execute_script():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i, --input", dest="input", default="simple_heatmap_matrix.csv")
-    parser.add_argument("-o, --output", dest="output", default="simple_heatmap_animation")
 
     args = parser.parse_args()
-    create_heatmap_animation(args.input, args.output)
+    create_heatmap_animation(args.input)
 
 if __name__ == "__main__":
     execute_script()
