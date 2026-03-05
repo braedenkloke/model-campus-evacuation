@@ -6,6 +6,7 @@
 #include "cadmium/modeling/devs/atomic.hpp"
 #include "../constants.hpp"
 #include "../data_structures/vehicle.hpp"
+#include "../data_structures/parking_lot_schedule.hpp"
 
 using namespace cadmium;
 

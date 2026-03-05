@@ -1,7 +1,7 @@
 === Simulation Summary ===
-Total sim time: 5537.62
+Total sim time: 5888.15
 Vehicles exited campus: 3200
 Vehicles with lot-based time: 3200
-Avg evac from t=0: 2289.3025675
-Avg evac from leaving lot: 107.42756750000001
-Cars/min exiting campus: 34.671934874548995
+Avg evac from t=0: 2138.5658784375
+Avg evac from leaving lot: 106.69087843749999
+Cars/min exiting campus: 32.60786494909267

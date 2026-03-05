@@ -60,6 +60,7 @@ public:
         }
         assert(outRoads.size() <= 4);
         state.outRoads = outRoads;
+        //assert(state.outRoads.size() == state.odData.size());
     }
 
     void internalTransition(IntersectionState& state) const override {
@@ -104,22 +105,26 @@ private:
     // Returns a random destination based on the probability distribution of the OD data.
     std::string selectDest(const IntersectionState& state) const {
         std::string dest = "";
-        if (!state.odData.empty()) {
+        if (state.odData.empty()) {
+            // Do nothing
+        } else if (state.odData.size() == 1) {
+            dest = state.odData.front().dest;
+        } else {
             std::vector<ODDatum> data = state.odData;
 
-            // Make flow rates relative to one another
+            // Make flow rates relative to one another: [1, 1, 1, 1] -> [1, 2, 3, 4]
             for (int i = 1; i < data.size(); i++) {
                 assert((data[i].flowRate != 0) && "Assume OD data does not have flow rates equal to zero");
                 data[i].flowRate = data[i - 1].flowRate + data[i].flowRate;
             }
 
-            // Choose random number in range of flow rates [0, max + 1]
+            // Choose random number in between flow rates (0 .. max + 1)
             int r = std::rand() % data.back().flowRate + 1;
 
             // Select destination
             int i = 0;
             while (dest.empty() and i < data.size()) {
-                if (i <= data[i].flowRate) {
+                if (r <= data[i].flowRate) {
                     dest = data[i].dest;
                 }
                 i++;
