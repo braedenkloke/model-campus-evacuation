@@ -4,6 +4,11 @@
 
 declare -a scenarios=(
     "scenario_01"
+    "scenario_02"
+    "scenario_03"
+    "scenario_04"
+    "scenario_05"
+    "scenario_06"
 )   
 
 for s in "${scenarios[@]}"; do

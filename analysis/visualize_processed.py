@@ -4,8 +4,6 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
-MAX_CARS_PER_100_M = 25.0
-
 def read_summary_csv(path: str) -> dict:
     with open(path, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
@@ -74,12 +72,12 @@ def plot_heatmap(times, roads, M, out_path: str, max_roads_label=20):
     # M is (T, R)
     # roads on Y (rows), time on X (cols) by transposing.
     plt.figure(figsize=(12, 6))
-    plt.imshow(M.T, aspect="auto", origin="lower", cmap="plasma", vmax=MAX_CARS_PER_100_M)
+    plt.imshow(M.T, aspect="auto", origin="lower", cmap="plasma", vmax=20)
 
     plt.xlabel("Time (s)")
-    plt.ylabel("Roads Used in This Simulation")
-    plt.title("Road Occupancy Heatmap")
-    plt.colorbar(label="Cars on Road")
+    plt.ylabel("Roads")
+    plt.title("Campus Evacuation Heatmap")
+    plt.colorbar(label="Vehicles per 100 m")
 
     #TODO: with too many long road names, displays should be switched to the R values in documentation
     if len(roads) <= max_roads_label:
