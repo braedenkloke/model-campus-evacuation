@@ -56,15 +56,18 @@ def configure_scenario(scenario_name):
             writer.writerow(row)
         print(f'Configuration saved: {config_filepath}')
 
-def run_scenario(name):
+def run_scenario(scenario_name):
     """
     Runs scenario with the given name.
     """
-    args = ('ls')
-    #args = ('./bin/campus_evacuation', '-i', PARKING_LOT_SCHEDULES_DIR + name + '.csv', 
-            #'-o', RAW_OUTPUT_DATA_DIR + name '_log.csv')
-    p = subprocess.run(args) 
-    p.check_returncode() # Throws error if return code non-zero
+    cmd = input(f'Would you like to run a simulation of your scenario? [{YES}/n]\n')
+    if cmd == YES:
+        parking_lot_schedule_fp = PARKING_LOT_SCHEDULES_DIR + scenario_name + '.csv'
+        log_fp = RAW_OUTPUT_DATA_DIR + scenario_name + '_log.csv'
+        args = ('./bin/campus_evacuation', '-i', parking_lot_schedule_fp, '-o', log_fp)
+        p = subprocess.run(args) 
+        p.check_returncode() # Throws error if return code non-zero
+        print(f'Simulation complete: {log_fp}\n')
 
 def analyze_scenario():
     pass
@@ -72,7 +75,7 @@ def analyze_scenario():
 def execute_script():
     name = name_scenario()
     configure_scenario(name)
-    #run_scenario(name)
+    run_scenario(name)
     #analyze_scenario()
 
 if __name__ == '__main__':
