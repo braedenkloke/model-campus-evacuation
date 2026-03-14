@@ -86,11 +86,17 @@ def analyze_scenario(scenario_name):
     args = ('cp', '-v', default_heatmap_fp, heatmap_fp)
     p = subprocess.run(args) 
 
+    import webbrowser, os
+    webbrowser.open('file://' + os.path.realpath(heatmap_fp)) 
+
 def execute_script():
-    name = name_scenario()
-    configure_scenario(name)
-    run_scenario(name)
-    analyze_scenario(name)
+    cmd = YES
+    while(cmd == YES):
+        name = name_scenario()
+        configure_scenario(name)
+        run_scenario(name)
+        analyze_scenario(name)
+        cmd = input(f'Would you like to create another scenario? [{YES}/n]')
 
 if __name__ == '__main__':
     execute_script()
