@@ -4,6 +4,5 @@ matplotlib
 geopandas
 shapely
 pyproj
-#fiona 
 contextily
 ffmpeg

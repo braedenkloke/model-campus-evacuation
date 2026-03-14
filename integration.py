@@ -4,6 +4,7 @@ import csv
 PARKING_LOT_SCHEDULES_DIR = 'input_data/parking_lot_schedules/'
 DEFAULT_PARKING_LOT_SCHEDULE = PARKING_LOT_SCHEDULES_DIR + 'default.csv'
 RAW_OUTPUT_DATA_DIR = 'output_data/raw/'
+PROCESSED_OUTPUT_DATA_DIR = 'output_data/processed/'
 PARKING_LOT_ID_INDEX = 0
 DELAY_INDEX = 1
 YES = 'y'
@@ -11,7 +12,6 @@ YES = 'y'
 def name_scenario():
     name = input('What would you like to name the scenario?\n')
     return name.lower()
-
 
 def configure_scenario(scenario_name):
     with open(DEFAULT_PARKING_LOT_SCHEDULE, newline='') as f:
@@ -26,7 +26,6 @@ def configure_scenario(scenario_name):
                 parking_lot_ids.append(row[PARKING_LOT_ID_INDEX])
                 config.append(row)
 
-
     cmd = YES
     while (cmd == YES):
         # Display current configuration
@@ -34,7 +33,6 @@ def configure_scenario(scenario_name):
         print(config_header)
         for row in config:
             print('\t\t'.join(row))
-
 
         cmd = input(f'Would you like to change the configuration? [{YES}/n]\n')
         if cmd == YES:
@@ -57,9 +55,6 @@ def configure_scenario(scenario_name):
         print(f'Configuration saved: {config_filepath}')
 
 def run_scenario(scenario_name):
-    """
-    Runs scenario with the given name.
-    """
     cmd = input(f'Would you like to run a simulation of your scenario? [{YES}/n]\n')
     if cmd == YES:
         parking_lot_schedule_fp = PARKING_LOT_SCHEDULES_DIR + scenario_name + '.csv'
@@ -69,14 +64,33 @@ def run_scenario(scenario_name):
         p.check_returncode() # Throws error if return code non-zero
         print(f'Simulation complete: {log_fp}\n')
 
-def analyze_scenario():
-    pass
+def analyze_scenario(scenario_name):
+    log_fp = RAW_OUTPUT_DATA_DIR + scenario_name + '_log.csv'
+    default_heatmap_matrix_fp = PROCESSED_OUTPUT_DATA_DIR + 'heatmap_matrix.csv'
+    heatmap_matrix_fp = PROCESSED_OUTPUT_DATA_DIR + scenario_name + '_heatmap_matrix.csv'
+    default_heatmap_fp = PROCESSED_OUTPUT_DATA_DIR + 'heatmap_matrix.png'
+    heatmap_fp = PROCESSED_OUTPUT_DATA_DIR + scenario_name + '_heatmap.png'
+
+    args = ('python', 'analysis/data_analysis.py', log_fp)
+    p = subprocess.run(args) 
+
+    args = ('cp', '-v', default_heatmap_matrix_fp, heatmap_matrix_fp)
+    p = subprocess.run(args) 
+
+    args = ('python', 'analysis/visualize_processed.py', 'output_data/processed')
+    p = subprocess.run(args) 
+
+    args = ('cp', '-v', default_heatmap_fp, heatmap_fp)
+    p = subprocess.run(args) 
+
+    args = ('cp', '-v', default_heatmap_fp, heatmap_fp)
+    p = subprocess.run(args) 
 
 def execute_script():
     name = name_scenario()
     configure_scenario(name)
     run_scenario(name)
-    #analyze_scenario()
+    analyze_scenario(name)
 
 if __name__ == '__main__':
     execute_script()
