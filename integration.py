@@ -89,6 +89,13 @@ def analyze_scenario(scenario_name):
     import webbrowser, os
     webbrowser.open('file://' + os.path.realpath(heatmap_fp)) 
 
+    cmd = input(f'Would you like to create an animation of your simulation? [{YES}/n]\n')
+    if cmd == YES:
+        print('Creating animation...')
+        args = ('python', 'analysis/create_heatmap_animation.py', '-i', scenario_name + '_heatmap_matrix.csv')
+        p = subprocess.run(args) 
+
+
 def execute_script():
     cmd = YES
     while(cmd == YES):
