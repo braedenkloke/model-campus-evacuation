@@ -1,4 +1,4 @@
-# Campus Evacuation DEVS Model and Simulation
+# Modeling and Simulation of a Campus Evacuation as a Diffusion Process
 [DEVS](https://en.wikipedia.org/wiki/DEVS) model and simulation of a university campus evacuation using [Cadmium](https://devssim.carleton.ca/). 
 
 ## Usage
