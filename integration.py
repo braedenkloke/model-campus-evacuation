@@ -1,5 +1,11 @@
+import os.path
 import subprocess
 import csv
+import sys
+
+from dotenv import load_dotenv
+from paramiko import SSHClient
+from scp import SCPClient
 
 PARKING_LOT_SCHEDULES_DIR = 'input_data/parking_lot_schedules/'
 DEFAULT_PARKING_LOT_SCHEDULE = PARKING_LOT_SCHEDULES_DIR + 'default.csv'
@@ -11,7 +17,9 @@ YES = 'y'
 
 def name_scenario():
     name = input('What would you like to name the scenario?\n')
-    return name.lower()
+    name = name.replace(' ', '_')
+    name = name.lower()
+    return name
 
 def configure_scenario(scenario_name):
     with open(DEFAULT_PARKING_LOT_SCHEDULE, newline='') as f:
@@ -34,7 +42,7 @@ def configure_scenario(scenario_name):
         for row in config:
             print('\t\t'.join(row))
 
-        cmd = input(f'Would you like to change the configuration? [{YES}/n]\n')
+        cmd = input(f'\nWould you like to change the configuration? [{YES}/n]\n')
         if cmd == YES:
             parking_lot_id = input(f'Which parking lot configuration would you like to change? {parking_lot_ids}\n')
             parking_lot_id = parking_lot_id.upper()
@@ -45,6 +53,7 @@ def configure_scenario(scenario_name):
                         row[DELAY_INDEX] = delay_in_seconds
             else:
                 print('Invalid parking lot ID')
+        os.system('clear')
 
     config_filepath = PARKING_LOT_SCHEDULES_DIR + scenario_name +'.csv'
     with open(config_filepath, 'w', newline='') as f:
@@ -52,17 +61,57 @@ def configure_scenario(scenario_name):
         writer.writerow(col_names[0])
         for row in config:
             writer.writerow(row)
-        print(f'Configuration saved: {config_filepath}')
+        print(f'Configuration saved: {config_filepath}\n')
 
 def run_scenario(scenario_name):
     cmd = input(f'Would you like to run a simulation of your scenario? [{YES}/n]\n')
     if cmd == YES:
         parking_lot_schedule_fp = PARKING_LOT_SCHEDULES_DIR + scenario_name + '.csv'
         log_fp = RAW_OUTPUT_DATA_DIR + scenario_name + '_log.csv'
-        args = ('./bin/campus_evacuation', '-i', parking_lot_schedule_fp, '-o', log_fp)
-        p = subprocess.run(args) 
-        p.check_returncode() # Throws error if return code non-zero
+        sim_model_fp = '/bin/campus_evacuation'
+
+        if os.path.isfile(sim_model_fp):
+            # Run simulation locally
+            args = (f'.{sim_model_fp}', '-i', parking_lot_schedule_fp, '-o', log_fp)
+            p = subprocess.run(args) 
+            p.check_returncode() # Throws error if return code non-zero
+        else:
+            # Run simulation remotely
+            #
+            # Setup remote env
+            username = os.getenv('REMOTE_SIM_USERNAME')
+            hostname = os.getenv('REMOTE_SIM_HOSTNAME')
+            cadmium = os.getenv('REMOTE_SIM_CADMIUM')
+            remote_project_fp = os.getenv('REMOTE_SIM_PROJECT_FP')
+            env = {'CADMIUM': cadmium}
+            remote_parking_lot_schedule_fp = f'{remote_project_fp}/{parking_lot_schedule_fp}'
+            remote_log_fp = f'{remote_project_fp}/{log_fp}'
+
+            ssh = SSHClient()
+            ssh.load_system_host_keys()
+            ssh.connect(hostname, username=username)
+
+            # Define progress callback that prints the current percentage completed for the file
+            def progress(filename, size, sent):
+                sys.stdout.write("%s's progress: %.2f%%   \r" % (filename, float(sent)/float(size)*100) )
+            scp = SCPClient(ssh.get_transport(), progress=progress)
+
+            # Copy files and run simulation remotely
+            scp.put(parking_lot_schedule_fp, remote_parking_lot_schedule_fp)
+            stdin, stdout, stderr = ssh.exec_command(f'cd {remote_project_fp} && .{sim_model_fp} -i {parking_lot_schedule_fp} -o {log_fp}', environment=env)
+            assert stderr.channel.recv_exit_status() == 0, 'Remote simulation failed'
+            scp.get(remote_log_fp, log_fp)
+
+            # Cleanup remote server
+            stdin, stdout, stderr = ssh.exec_command(f'rm {remote_parking_lot_schedule_fp}')
+            assert stderr.channel.recv_exit_status() == 0, f'Cleanup failed: {stderr.readlines()}'
+            stdin, stdout, stderr = ssh.exec_command(f'rm {remote_log_fp}')
+            assert stderr.channel.recv_exit_status() == 0, f'Cleanup failed: {stderr.readlines()}'
+
+
         print(f'Simulation complete: {log_fp}\n')
+
+        analyze_scenario(scenario_name)
 
 def analyze_scenario(scenario_name):
     log_fp = RAW_OUTPUT_DATA_DIR + scenario_name + '_log.csv'
@@ -89,20 +138,22 @@ def analyze_scenario(scenario_name):
     import webbrowser, os
     webbrowser.open('file://' + os.path.realpath(heatmap_fp)) 
 
+    """
     cmd = input(f'Would you like to create an animation of your simulation? [{YES}/n]\n')
     if cmd == YES:
         print('Creating animation...')
         args = ('python', 'analysis/create_heatmap_animation.py', '-i', scenario_name + '_heatmap_matrix.csv')
         p = subprocess.run(args) 
-
+    """
 
 def execute_script():
+    load_dotenv()
     cmd = YES
     while(cmd == YES):
+        os.system('clear')
         name = name_scenario()
         configure_scenario(name)
         run_scenario(name)
-        analyze_scenario(name)
         cmd = input(f'Would you like to create another scenario? [{YES}/n]')
 
 if __name__ == '__main__':

@@ -6,3 +6,6 @@ shapely
 pyproj
 contextily
 ffmpeg
+paramiko
+python-dotenv
+scp
