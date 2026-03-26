@@ -2,7 +2,7 @@
 [DEVS](https://en.wikipedia.org/wiki/DEVS) model and simulation of a university campus evacuation using [Cadmium](https://devssim.carleton.ca/). 
 
 ## Usage
-To interactively create a scenario and execute a simulation, run
+To interactively create a scenario and execute a simulation, create a Python virtual environment then run
 ```
 python integration.py
 ```
