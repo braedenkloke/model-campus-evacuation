@@ -42,6 +42,7 @@ Instructions for installing this project's dependencies.
 * Cadmium: Install Cadmium by following the instructions in the [Cadmium Installation Manual](https://devssim.carleton.ca/manuals/installation/).
 * External C libraries: Run, `install.sh`
 * External Python libraries: Create a Python virtual environment and run, `pip install -r requirements.txt`
+* Local environment: Copy `.env.template` to `.env` and modify variables
 * [FFmpeg](https://ffmpeg.org/): Install according to your OS
 
 ## Further Reading
